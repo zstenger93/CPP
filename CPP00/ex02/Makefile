@@ -1,8 +1,7 @@
 NAME	= megaphone
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
-RM		= rm -rf
+CFLAGS	= -Wall -Wextra -Werror -std=c++98
 CC		= c++
-SRC		= src/megaphone.cpp
+SRC		= megaphone.cpp
 
 all: $(NAME)
 
@@ -13,13 +12,13 @@ $(NAME): $(SRC)
 
 clean:
 	@echo "$(YELLOW)Cleaning...$(COLOR_END)"
-	@$(RM) $(NAME)
+	@rm -f $(NAME)
 	@echo "$(GREEN)Cleaning done.$(COLOR_END)"
 
 
 fclean: clean
 	@echo "$(YELLOW)Cleaning everything...$(COLOR_END)"
-	@$(RM) $(NAME)
+	@rm -f $(NAME)
 	@echo "$(GREEN)Cleaning done.$(COLOR_END)"
 
 re:
