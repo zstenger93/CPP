@@ -3,7 +3,7 @@
 class	PhoneBook
 {
 	public:
-		char	**contacts;
+		char	contacts[8];
 };
 
 
