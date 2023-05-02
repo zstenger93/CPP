@@ -13,20 +13,17 @@ int	IsAllNum(std::string number)
 
 void ShortPrint(std::string contact_details)
 {
-	int i = 0;
+	int i = 0, max_char = 10;
+	int	len = contact_details.length();
 
-	while (contact_details[i] && i < 9)
+	max_char = max_char - len;
+	if (max_char > 0)
+		for (int j = 0; j < max_char; j++)
+			std::cout << " ";
+	while (contact_details[i] && i < 9 && (i + max_char < 9))
 	{
 		std::cout << contact_details[i];
 		i++;
-	}
-	if (i != 9 && contact_details.length() < 10)
-	{
-		for(int k = i; k < 9; k++)
-		{
-			i++;
-			std::cout << " ";
-		}
 	}
 	if (contact_details[i + 1])
 		std::cout << '.';

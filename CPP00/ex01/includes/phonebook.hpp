@@ -66,7 +66,7 @@ class	PhoneBook
 int		AddNewContact(PhoneBook *contacts, int max);
 void	PrintBook(PhoneBook *contacts, int i);
 void	FindContactToPrint(PhoneBook *contacts, int max);
-void	PrintContactDetails(PhoneBook *contacts);
+void	PrintContactDetails(PhoneBook *contacts, int max);
 
 // UTILS
 int		IndexCheck(std::string index);

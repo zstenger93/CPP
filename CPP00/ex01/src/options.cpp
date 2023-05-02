@@ -2,7 +2,7 @@
 
 int	AddNewContact(PhoneBook *contacts, int max)
 {
-	int	i = 0;
+	static int i;
 	int	error = 0;
 
 	contacts[i].SetContactIndex(i + 1);
@@ -31,7 +31,7 @@ void	FindContactToPrint(PhoneBook *contacts, int max)
 	{
 		for(int k = 0; k < max; k++)
 			PrintBook(contacts, k);
-		PrintContactDetails(contacts);
+		PrintContactDetails(contacts, max);
 	}
 }
 
@@ -46,7 +46,7 @@ void	PrintBook(PhoneBook *contacts, int i)
 	std::cout << PIPE << std::endl;
 }
 
-void	PrintContactDetails(PhoneBook *contacts)
+void	PrintContactDetails(PhoneBook *contacts, int max)
 {
 	std::string	str;
 	std::string input;
@@ -57,7 +57,7 @@ void	PrintContactDetails(PhoneBook *contacts)
 	std::stringstream ss(input);
 	ss >> str;
 	index = std::atoi(str.c_str());
-	if (IndexCheck(str) == 0 && index < 9)
+	if (IndexCheck(str) == 0 && (index < 9 && index > 0) && index <= max)
 	{
 		std::cout << FN << contacts[index - 1].GetContactData().GetFirstName() << std::endl;
 		std::cout << LN << contacts[index - 1].GetContactData().GetLastName() << std::endl;
