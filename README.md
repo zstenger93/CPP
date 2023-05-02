@@ -1,6 +1,9 @@
 <h1 align="center">
 	📖 C++
 </h1>
+
+# Random things learned from the cpp projects
+
 # CPP00
 namespace:
 
@@ -21,3 +24,14 @@ can be accessed only inside of the class
 public:
 
 can be accessed from anywhere, even from outside of the class
+
+constructor:
+initialize the data members of the object, either way to default values or initialize to the passed
+parameters in the constructor. Has the same name as the class and no return type
+
+destructor:
+called when the the object is being destroyed and it frees up everything what should been freed. It
+takes no arguments neither returns anything
+
+
+# CPP01
