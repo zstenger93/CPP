@@ -37,6 +37,7 @@ class	Contact
 		std::string		nickname;
 		std::string		phone_number;
 		std::string		darkest_secret;
+
 	public:
 		void			SetFirstName(std::string input);
 		void			SetLastName(std::string input);
@@ -55,6 +56,7 @@ class	PhoneBook
 	private:
 		int				index;
 		class Contact	contact_list;
+
 	public:
 		void			SetContactIndex(int i);
 		int				GetContactIndex();
@@ -62,7 +64,7 @@ class	PhoneBook
 		class Contact	GetContactData();
 };
 
-// OPTIONS
+// EXEC OPTIONS
 int		AddNewContact(PhoneBook *contacts, int max);
 void	PrintBook(PhoneBook *contacts, int i);
 void	FindContactToPrint(PhoneBook *contacts, int max);
@@ -72,6 +74,5 @@ void	PrintContactDetails(PhoneBook *contacts, int max);
 int		IndexCheck(std::string index);
 int		IsAllNum(std::string phone_number);
 void	ShortPrint(std::string contact_details);
-
 
 #endif
