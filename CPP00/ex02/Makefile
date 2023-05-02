@@ -1,24 +1,38 @@
-NAME	= megaphone
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
+NAME	= phonebook
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
+RM		= rm -rf
 CC		= c++
-SRC		= megaphone.cpp
+SRC_DIR = src/
+OBJ_DIR = objects/
 
+SRC		= main \
+		  utils \
+		  options \
+		  contact \
+		  phonebook \
+
+SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
+OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
 all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(OBJS)
 	@echo "$(YELLOW)Compiling...$(COLOR_END)"
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRC)
-	@echo "$(GREEN)Megaphone is compiled and ready to make a call!$(COLOR_END)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo "$(GREEN)Phonebook is ready to take in your contacts!$(COLOR_END)"
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "$(YELLOW)Cleaning...$(COLOR_END)"
-	@rm -f $(NAME)
+	@$(RM) $(OBJ_DIR)
 	@echo "$(GREEN)Cleaning done.$(COLOR_END)"
 
 
 fclean: clean
 	@echo "$(YELLOW)Cleaning everything...$(COLOR_END)"
-	@rm -f $(NAME)
+	@$(RM) $(NAME)
 	@echo "$(GREEN)Cleaning done.$(COLOR_END)"
 
 re:
@@ -30,7 +44,7 @@ re:
 .PHONY: all clean fclean re
 
 COLOR_END = \033[0;39m
-CYAN3 = \033[1;96m
+CYAN3 = \033[1;4;96m
 YELLOW = \033[1;33m
 PURPLE = \033[1;35m
 BWhite = \033[1;37m
