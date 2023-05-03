@@ -62,10 +62,10 @@ bool Account::makeWithdrawal(int withdrawal) {
         std::cout << "withdrawal:refused" << std::endl;
         return 1;
     }
-    _amount += withdrawal;
+    _amount -= withdrawal;
     _nbWithdrawals++;
     _totalNbWithdrawals++;
-    _totalAmount += withdrawal;
+    _totalAmount -= withdrawal;
     std::cout << "amount:" << _amount << ";";
     std::cout << "nb_withdrawals:" << _nbWithdrawals << std::endl;
     return true;
@@ -79,7 +79,7 @@ parameters in the constructor. Has the same name as the class and no return type
 Account::Account() {}
 Account::Account(int initial_deposit)
     : _accountIndex(_nbAccounts++), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0) {
-    _totalAmount = initial_deposit;
+    _totalAmount += initial_deposit;
     _displayTimestamp();
     std::cout << " index:" << _accountIndex << ";";
     std::cout << "amount:" << _amount << ";";
@@ -90,10 +90,11 @@ Account::Account(int initial_deposit)
 /*
 called when the the object is being destroyed and it frees up everything what should been freed. It
 takes no arguments neither returns anything
+going from last to frist.
 */
 Account::~Account() {
     _displayTimestamp();
     std::cout << " index:" << _accountIndex << ";";
     std::cout << "amount:" << _amount << ";";
-    std::cout << "created" << std::endl;
+    std::cout << "closed" << std::endl;
 }

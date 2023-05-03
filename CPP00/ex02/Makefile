@@ -1,15 +1,12 @@
-NAME	= phonebook
+NAME	= restored_log
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
 SRC_DIR = src/
 OBJ_DIR = objects/
 
-SRC		= main \
-		  utils \
-		  options \
-		  contact \
-		  phonebook \
+SRC		= tests \
+		  Account \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
 OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
@@ -18,7 +15,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "$(YELLOW)Compiling...$(COLOR_END)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-	@echo "$(GREEN)Phonebook is ready to take in your contacts!$(COLOR_END)"
+	@echo "$(GREEN)The log file has been restored! Damn You're impressive!$(COLOR_END)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	@mkdir -p $(@D)
