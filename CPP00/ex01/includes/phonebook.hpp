@@ -1,5 +1,5 @@
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 // ERRORS AND INPUT REQUESTS
 # define PIPE "\033[1;33m|\033[0m"
