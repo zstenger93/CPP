@@ -12,6 +12,7 @@
 #define INFO "My allocation status is malloc'd but never free'd"
 #define DEBUG "Well, you created the bugs, so debugIT yourself as well!"
 #define INSIGNIFICANT "Probably complaining about insignificant problems"
+#define SWITCH_OFF "Switching off Harl, because he's complaining too much."
 #define INVALID "If you want to have another option, then go and write it by yourself!"
 #define INPUT_ERROR                                                                             \
     "Error! You're dumb!.. Uh.. I mean.. Invalid number of arguments. This program requires 1 " \
