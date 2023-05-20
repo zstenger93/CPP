@@ -1,4 +1,4 @@
-NAME	= sed
+NAME	= harl
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -6,16 +6,16 @@ SRC_DIR = src/
 OBJ_DIR = objects/
 
 SRC		= main \
-		  Harl.cpp \
+		  Harl \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
 OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "$(YELLOW)Compiling...$(COLOR_END)"
+	@echo "$(YELLOW)Complaining...SHUT UP HARL!! It's COMPILING not COMPLAINING$(COLOR_END)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-	@echo "$(GREEN)This project is so sed :I$(COLOR_END)"
+	@echo "$(GREEN)This project is so arrog.. I mean.. whatever.. it's compiled..$(COLOR_END)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	@mkdir -p $(@D)
