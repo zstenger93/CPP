@@ -12,11 +12,11 @@ void Harl::complain(std::string level) {
     std::string options[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     void (Harl::*options_ptr[4])() = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 
-    int type = -1;
+    int option_id = -1;
 
     for (int i = -1; i < 4; ++i)
-        if (level.compare(options[i]) == 0) type = i;
-    switch (type) {
+        if (level.compare(options[i]) == 0) option_id = i;
+    switch (option_id) {
         case 0:
             std::cout << "[ " << COLOR_Y << options[0] << COLOR_END << " ]" << std::endl;
             (this->*options_ptr[0])();
