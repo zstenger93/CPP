@@ -13,9 +13,9 @@ OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "$(YELLOW)Complaining...SHUT UP HARL!! It's COMPILING not COMPLAINING$(COLOR_END)"
+	@echo "$(YELLOW)Compiling...$(COLOR_END)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-	@echo "$(GREEN)This project is so arrog.. I mean.. whatever.. it's compiled..$(COLOR_END)"
+	@echo "$(GREEN)The project has been compiled..$(COLOR_END)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	@mkdir -p $(@D)

@@ -15,8 +15,7 @@ void ShortPrint(std::string contact_details) {
 
     max_char = max_char - len;
     if (max_char > 0)
-        for (int j = 0; j < max_char; j++)
-            std::cout << " ";
+        for (int j = 0; j < max_char; j++) std::cout << " ";
     while (contact_details[i] && i < 9 && (i + max_char < 9)) {
         std::cout << contact_details[i];
         i++;
@@ -32,9 +31,7 @@ int IndexCheck(std::string index) {
 
     size = index.length();
     for (size_t i = 0; i < size; i++)
-        if (std::isdigit(index.at(i)) == 0)
-            return 1;
-    if (size > 1)
-        return 1;
+        if (std::isdigit(index.at(i)) == 0) return 1;
+    if (size > 1) return 1;
     return 0;
 }

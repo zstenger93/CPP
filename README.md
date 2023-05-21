@@ -4,7 +4,7 @@
 
 # Random things learned from the cpp projects
 
-# CPP00
+# CPP 00
 namespace:
 
 gruping related declarations(functions, variables etc) together under a single name
@@ -33,5 +33,30 @@ destructor:
 called when the the object is being destroyed and it frees up everything what should been freed. It
 takes no arguments neither returns anything
 
+ex00:
+simple function to convert the input into uppercase and return it.
 
-# CPP01
+ex01:
+creating a phonebook where you can:
+
+add new contacts up to 8
+
+search for contacts and
+
+exit
+
+ex 02:
+
+here you need to recreate the account file based on the test and the way you can do it will be similiar the way to create the phonebook, but of course a bit different.
+
+# CPP 01
+ex00:
+Creating a zombie
+
+ex01:
+creating a horde of zombies
+
+ex02:
+
+
+# CPP 02
