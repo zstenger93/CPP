@@ -53,5 +53,5 @@ void PrintContactDetails(PhoneBook *contacts, int max) {
         std::cout << PN << contacts[index - 1].GetContactData().GetPhoneNumber() << std::endl;
         std::cout << DS << contacts[index - 1].GetContactData().GetDarkestSecret() << std::endl;
     } else
-        std::cout << OUT_OF_RANGE << std::endl;
+        std::cerr << OUT_OF_RANGE << std::endl;
 }

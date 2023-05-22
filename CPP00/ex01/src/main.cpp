@@ -17,7 +17,7 @@ int main() {
             break;
         else
 		{
-            std::cout << INVALID_OPTION << option << std::endl;
+            std::cerr << INVALID_OPTION << option << std::endl;
             std::cout << AVAILABLE << std::endl;
             std::cout << ADD << std::endl;
             std::cout << SEARCH << std::endl;
