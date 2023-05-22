@@ -15,5 +15,5 @@ void Harl::complain(std::string level) {
     for (int i = -1; i < 4; ++i) {
         if (level.compare(options[i]) == 0) return (this->*options_ptr[i])();
     }
-    std::cout << INVALID << std::endl;
+    std::cerr << INVALID << std::endl;
 }
