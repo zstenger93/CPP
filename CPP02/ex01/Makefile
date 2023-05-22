@@ -38,9 +38,6 @@ re:
 	@make all
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
 
-test:
-	./sed test/test "to_replace" "replacement"
-
 .PHONY: all clean fclean re test
 
 COLOR_END = \033[0;39m

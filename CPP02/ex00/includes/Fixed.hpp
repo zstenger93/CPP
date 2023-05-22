@@ -11,10 +11,6 @@
 #define SETRAWBITS "setRawBits member function called"
 
 class Fixed {
-   private:
-    int _fixed;
-    static const int _fractional = 8;
-
    public:
     Fixed();
     ~Fixed();
@@ -22,6 +18,10 @@ class Fixed {
     Fixed &operator=(Fixed const &number);
     int getRawBits(void) const;
     void setRawBits(int const raw);
+
+   private:
+    int _fixed;
+    static const int _fractional = 8;
 };
 
 #endif

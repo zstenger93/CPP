@@ -16,10 +16,6 @@
 #define SETRAWBITS "setRawBits member function called"
 
 class Fixed {
-   private:
-    int _fixed;
-    static const int _fractional = 8;
-
    public:
     Fixed();
     ~Fixed();
@@ -31,6 +27,10 @@ class Fixed {
     float toFloat(void) const;
     int getRawBits(void) const;
     void setRawBits(int const raw);
+
+   private:
+    int _fixed;
+    static const int _fractional = 8;
 };
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed_num);
