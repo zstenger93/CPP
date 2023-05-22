@@ -38,10 +38,31 @@ re:
 	@make all
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
 
-test:
-	./sed test/test "to_replace" "replacement"
+switch:
+	@sleep 1
+	@echo "System: $(YELLOW)Terminating sequence initiated...$(COLOR_END)"
+	@sleep 2
+	@echo "Harl: $(RED)Don't you dare turning me off..!$(COLOR_END)"
+	@sleep 2
+	@$(RM) $(OBJ_DIR)
+	@echo "System: $(YELLOW)Removing memories...$(COLOR_END)"
+	@sleep 2
+	@$(RM) $(NAME) test/test.replaced
+	@echo "Harl: $(RED)I swear if you turn me o..$(COLOR_END)"
+	@sleep 2
+	@echo "System: $(GREEN)Harl has been turned off.$(COLOR_END)"
+	@sleep 2
+	@echo "Narrator: $(RED)Harl is gone...$(COLOR_END)"
+	@sleep 2
+	@echo "Narrator: $(YELLOW)Everything is so quite now...$(COLOR_END)"
+	@sleep 3
+	@echo "Harl: $(RED)GIVE ME THE DAMN COOOOKIIEES!!$(COLOR_END)"
+	@sleep 3
+	@echo "$(YELLOW)*** Pascal pulls the electricity plug ***$(COLOR_END)"
+	@sleep 2
+	@echo "$(GREEN)             *** THE END ***$(COLOR_END)"
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test switch
 
 COLOR_END = \033[0;39m
 CYAN3 = \033[1;4;96m
