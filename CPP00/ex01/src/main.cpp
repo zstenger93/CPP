@@ -16,7 +16,13 @@ int main() {
         else if (option == "EXIT")
             break;
         else
-            std::cout << INVALID_OPTION << std::endl;
+		{
+            std::cout << INVALID_OPTION << option << std::endl;
+            std::cout << AVAILABLE << std::endl;
+            std::cout << ADD << std::endl;
+            std::cout << SEARCH << std::endl;
+            std::cout << EXIT << std::endl;
+		}
     }
     return 0;
 }

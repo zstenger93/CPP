@@ -61,6 +61,7 @@ switch:
 	@echo "$(YELLOW)*** Pascal pulls the electricity plug ***$(COLOR_END)"
 	@sleep 2
 	@echo "$(GREEN)             *** THE END ***$(COLOR_END)"
+	@sleep 1
 
 .PHONY: all clean fclean re test switch
 
