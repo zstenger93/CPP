@@ -13,8 +13,8 @@
 #define AVAILABLE "\033[1;32mThe available options are:\033[0m"
 #define ADD "\033[1;33mADD    \033[1;34m-> \033[1;37mAdd a new contact to the phonebook.\033[0m"
 #define SEARCH                                                                     \
-    "\033[1;33mSEARCH \033[1;34m-> \033[1;37mSearch for an index from 1-8 in the " \
-    "phonebook.\033[0m"
+	"\033[1;33mSEARCH \033[1;34m-> \033[1;37mSearch for an index from 1-8 in the " \
+	"phonebook.\033[0m"
 #define EXIT "\033[1;33mEXIT   \033[1;34m-> \033[1;37mQuit the program.\033[0m"
 
 // GET CONTACT COLORS
@@ -37,35 +37,35 @@
 
 class Contact {
    private:
-    std::string first_name;
-    std::string last_name;
-    std::string nickname;
-    std::string phone_number;
-    std::string darkest_secret;
+	std::string first_name;
+	std::string last_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;
 
    public:
-    void SetFirstName(std::string input);
-    void SetLastName(std::string input);
-    void SetNickName(std::string input);
-    void SetPhoneNumber(std::string input);
-    void SetDarkestSecret(std::string input);
-    std::string GetFirstName();
-    std::string GetLastName();
-    std::string GetNickName();
-    std::string GetPhoneNumber();
-    std::string GetDarkestSecret();
+	void SetFirstName(std::string input);
+	void SetLastName(std::string input);
+	void SetNickName(std::string input);
+	void SetPhoneNumber(std::string input);
+	void SetDarkestSecret(std::string input);
+	std::string GetFirstName();
+	std::string GetLastName();
+	std::string GetNickName();
+	std::string GetPhoneNumber();
+	std::string GetDarkestSecret();
 };
 
 class PhoneBook {
-   private:
-    int index;
-    class Contact contact_list;
-
    public:
-    void SetContactIndex(int i);
-    int GetContactIndex();
-    int GetContactDetails();
-    class Contact GetContactData();
+	void SetContactIndex(int i);
+	int GetContactIndex();
+	int GetContactDetails();
+	class Contact GetContactData();
+
+   private:
+	int index;
+	class Contact contact_list;
 };
 
 // EXEC OPTIONS
