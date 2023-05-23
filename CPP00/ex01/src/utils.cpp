@@ -1,3 +1,5 @@
+#include <cctype>
+
 #include "../includes/phonebook.hpp"
 
 int IsAllNum(std::string number) {
@@ -16,7 +18,8 @@ void ShortPrint(std::string contact_details) {
 	max_char = max_char - len;
 	if (max_char > 0)
 		for (int j = 0; j < max_char; j++)
-			std::cout << "\033[1;4;37m" << " ";
+			std::cout << "\033[1;4;37m"
+					  << " ";
 	while (contact_details[i] && i < 9 && (i + max_char < 9)) {
 		std::cout << "\033[1;4;37m" << contact_details[i];
 		i++;
@@ -35,4 +38,11 @@ int IndexCheck(std::string index) {
 		if (std::isdigit(index.at(i)) == 0) return 1;
 	if (size > 1) return 1;
 	return 0;
+}
+
+int IsOnlySpace(std::string str) {
+	for (unsigned int i = 0; i < str.length(); i++)
+		if (!std::isspace(str[i])) return 0;
+	std::cout << INVALID_INPUT << std::endl;
+	return 1;
 }

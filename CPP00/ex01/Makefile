@@ -38,7 +38,7 @@ fclean: clean
 re:
 	@echo "$(YELLOW)Recompiling...$(COLOR_END)"
 	@make fclean
-	@make all
+	@make
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
 
 .PHONY: all clean fclean re

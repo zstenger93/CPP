@@ -9,7 +9,8 @@ int AddNewContact(PhoneBook *contacts, int max) {
 		i = 0;
 		max = 8;
 	}
-	if (contacts[i].GetContactDetails() == 1) error = 1;
+	if (contacts[i].GetContactDetails() == 1)
+		error = 1;
 	else if (max != 8 && error == 0) {
 		i++;
 		max++;
