@@ -50,8 +50,7 @@ int IsValid(std::string input) {
 	if (input[0] == '\0') {
 		std::cout << INPUT_REQUIRED << std::endl;
 		return 1;
-	}
-	else if (IsOnlySpace(input) == 1) {
+	} else if (IsOnlySpace(input) == 1) {
 		std::cout << INVALID_INPUT << std::endl;
 		return 1;
 	}
