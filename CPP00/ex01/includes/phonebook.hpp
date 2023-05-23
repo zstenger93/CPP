@@ -1,8 +1,14 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-// ERRORS AND INPUT REQUESTS
+// CONTACT LIST
 #define PIPE "\033[1;33m|\033[0m"
+#define CONTACT_FN "\033[1;4;31mFIRST NAME\033[0m"
+#define CONTACT_LN "\033[1;4;31m LAST NAME\033[0m"
+#define CONTACT_NN "\033[1;4;31m NICK NAME\033[0m"
+#define CONTACTS "\033[1;4;33m              CONTACTS             \033[0m"
+
+// ERRORS AND INPUT REQUESTS
 #define INVALID_OPTION "\033[1;31mInvalid option: \033[0m"
 #define CHOOSE_INDEX "\033[1;34mChoose One Index:	\033[0m"
 #define CHOOSE_OPTION "\033[1;4;33mChoose an Option:\033[0m	"
@@ -36,13 +42,6 @@
 #include <sstream>
 
 class Contact {
-   private:
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
-
    public:
 	void SetFirstName(std::string input);
 	void SetLastName(std::string input);
@@ -54,6 +53,13 @@ class Contact {
 	std::string GetNickName();
 	std::string GetPhoneNumber();
 	std::string GetDarkestSecret();
+
+   private:
+	std::string first_name;
+	std::string last_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;
 };
 
 class PhoneBook {
