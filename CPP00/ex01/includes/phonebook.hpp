@@ -3,10 +3,10 @@
 
 // CONTACT LIST
 #define PIPE "\033[1;33m|\033[0m"
-#define CONTACT_FN "\033[1;4;31mFIRST NAME\033[0m"
-#define CONTACT_LN "\033[1;4;31m LAST NAME\033[0m"
-#define CONTACT_NN "\033[1;4;31m NICK NAME\033[0m"
-#define CONTACTS "\033[1;4;33m              CONTACTS             \033[0m"
+#define CONTACT_FN "\033[1;4;31mFIRST NAME"
+#define CONTACT_LN "\033[1;4;31m LAST NAME"
+#define CONTACT_NN "\033[1;4;31m NICK NAME"
+#define CONTACTS " \033[1;4;33m             CONTACTS             \033[0m"
 
 // ERRORS AND INPUT REQUESTS
 #define INVALID_OPTION "\033[1;31mInvalid option: \033[0m"
