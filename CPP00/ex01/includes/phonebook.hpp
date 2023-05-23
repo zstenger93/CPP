@@ -14,16 +14,16 @@
 #define INVALID_OPTION "\033[1;31mInvalid option: \033[0m"
 #define CHOOSE_INDEX "\033[1;34mChoose One Index:	\033[0m"
 #define CHOOSE_OPTION "\033[1;4;33mChoose an Option:\033[0m	"
-#define AVAILABLE "\033[1;32mThe available options are:\033[0m"
+#define AVAILABLE "\033[1;32mThe available options are:\n\033[0m"
 #define INVALID_INPUT "\033[1;31mEmpty string is not a valid input\033[0m"
 #define OUT_OF_RANGE "\033[1;31mThe Requested Index Is Out Of Range\033[0m"
 #define INPUT_REQUIRED "\033[1;31mInput is required in every field.\033[0m"
 #define EXIT "\033[1;33mEXIT   \033[1;34m-> \033[1;37mQuit the program.\033[0m"
 #define WRONG_PHONE_NUMBER "\033[1;31mError! Phone Number Should Contain Only Numbers!\033[0m\n"
-#define ADD "\033[1;33mADD    \033[1;34m-> \033[1;37mAdd a new contact to the phonebook.\033[0m"
+#define ADD "\033[1;33mADD    \033[1;34m-> \033[1;37mAdd a new contact to the phonebook.\n\033[0m"
 #define SEARCH                                                                     \
 	"\033[1;33mSEARCH \033[1;34m-> \033[1;37mSearch for an index from 1-8 in the " \
-	"phonebook.\033[0m"
+	"phonebook.\n\033[0m"
 
 // GET CONTACT COLORS
 #define ENTER_FN "\033[1;34mEnter Your First Name:	\033[0m"
