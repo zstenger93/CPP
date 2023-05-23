@@ -9,6 +9,7 @@
 #define CONTACTS " \033[1;4;33m             CONTACTS             \033[0m"
 
 // ERRORS AND INPUT REQUESTS
+#define INPUT_REQUIRED "\033[1;31mInput is required in every field.\033[0m"
 #define NO_CONTACT "\033[1;31mNo Contact Found!\033[0m\n"
 #define INVALID_INDEX "\033[1;31mInvalid Index!\033[0m\n"
 #define INVALID_OPTION "\033[1;31mInvalid option: \033[0m"
@@ -87,5 +88,6 @@ int IsAllNum(std::string phone_number);
 void ShortPrint(std::string contact_details);
 
 int IsOnlySpace(std::string str);
+int IsValid(std::string input);
 
 #endif

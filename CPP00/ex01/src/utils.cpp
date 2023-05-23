@@ -43,6 +43,17 @@ int IndexCheck(std::string index) {
 int IsOnlySpace(std::string str) {
 	for (unsigned int i = 0; i < str.length(); i++)
 		if (!std::isspace(str[i])) return 0;
-	std::cout << INVALID_INPUT << std::endl;
 	return 1;
+}
+
+int IsValid(std::string input) {
+	if (input[0] == '\0') {
+		std::cout << INPUT_REQUIRED << std::endl;
+		return 1;
+	}
+	else if (IsOnlySpace(input) == 1) {
+		std::cout << INVALID_INPUT << std::endl;
+		return 1;
+	}
+	return 0;
 }
