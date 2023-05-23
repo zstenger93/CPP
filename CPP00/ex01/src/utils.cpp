@@ -5,7 +5,7 @@
 int IsAllNum(std::string number) {
 	for (unsigned long i = 0; i < number.length(); i++)
 		if (number[i] < '0' || number[i] > '9') {
-			std::cout << WRONG_PHONE_NUMBER;
+			std::cerr << WRONG_PHONE_NUMBER;
 			return 1;
 		}
 	return 0;
@@ -48,10 +48,10 @@ int IsOnlySpace(std::string str) {
 
 int IsValid(std::string input) {
 	if (input[0] == '\0') {
-		std::cout << INPUT_REQUIRED << std::endl;
+		std::cerr << INPUT_REQUIRED << std::endl;
 		return 1;
 	} else if (IsOnlySpace(input) == 1) {
-		std::cout << INVALID_INPUT << std::endl;
+		std::cerr << INVALID_INPUT << std::endl;
 		return 1;
 	}
 	return 0;
