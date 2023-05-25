@@ -1,6 +1,7 @@
 #ifndef HARL_HPP
 #define HARL_HPP
 
+#include <cstdlib>
 #include <iostream>
 #include <string>
 
@@ -25,6 +26,7 @@ class Harl {
 	Harl();
 	~Harl();
 	void complain(std::string level);
+	void ExecuteOption(const std::string& option, void (Harl::*optionFunc)());
 
    private:
 	void _debug(void);

@@ -8,33 +8,34 @@ void Harl::_info(void) { std::cout << INFO << std::endl; }
 void Harl::_warning(void) { std::cout << WARNING << std::endl; }
 void Harl::_error(void) { std::cout << ERROR << std::endl; }
 
+void Harl::ExecuteOption(const std::string& option, void (Harl::*optionFunc)()) {
+	std::cout << "[ " << COLOR_Y << option << COLOR_END << " ]" << std::endl;
+	(this->*optionFunc)();
+	std::cout << std::endl;
+}
+
 void Harl::complain(std::string level) {
+	int option_id = -1, k = -1;
 	std::string options[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*options_ptr[4])() = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
-
-	int option_id = -1;
 
 	for (int i = -1; i < 4; ++i)
 		if (level.compare(options[i]) == 0) option_id = i;
 	switch (option_id) {
 		case 0:
-			std::cout << "[ " << COLOR_Y << options[0] << COLOR_END << " ]" << std::endl;
-			(this->*options_ptr[0])();
-			std::cout << std::endl;
+			ExecuteOption(options[0], options_ptr[0]);
+			break;
 		case 1:
-			std::cout << "[ " << COLOR_Y << options[1] << COLOR_END << " ]" << std::endl;
-			(this->*options_ptr[1])();
-			std::cout << std::endl;
+			while (++k < 2) ExecuteOption(options[k], options_ptr[k]);
+			break;
 		case 2:
-			std::cout << "[ " << COLOR_Y << options[2] << COLOR_END << " ]" << std::endl;
-			(this->*options_ptr[2])();
-			std::cout << std::endl;
+			while (++k < 3) ExecuteOption(options[k], options_ptr[k]);
+			break;
 		case 3:
-			std::cout << "[ " << COLOR_Y << options[3] << COLOR_END << " ]" << std::endl;
-			(this->*options_ptr[3])();
-			std::cout << std::endl;
+			while (++k < 4) ExecuteOption(options[k], options_ptr[k]);
 			break;
 		default:
 			std::cout << "[ " << INSIGNIFICANT << " ]" << std::endl;
+			break;
 	}
 }

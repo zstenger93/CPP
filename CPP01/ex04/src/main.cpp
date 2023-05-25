@@ -24,9 +24,18 @@ int is_input_good(int argc, char **argv) {
 }
 
 int fstream_setup(std::string infile, std::ifstream &ifs, std::ofstream &ofs) {
-	ifs.open(infile);
+	char	array[infile.size() + 1];
+	array[infile.size()] = '\0';
+	for (unsigned long i = 0; i < infile.size(); i++)
+		array[i] = infile.at(i);	
+	ifs.open(array);
 	if (ifs.is_open() == false) return std::cerr << INFILE_ERROR << infile << std::endl, false;
-	ofs.open(infile.append(".replaced"));
+
+	infile.append(".replaced");
+	array[infile.size()] = '\0';
+	for (unsigned long i = 0; i < infile.size(); i++)
+		array[i] = infile.at(i);	
+	ofs.open(array);
 	if (ifs.is_open() == false) return std::cerr << OUTFILE_ERROR << infile << std::endl, false;
 	return true;
 }
