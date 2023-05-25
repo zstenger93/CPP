@@ -15,6 +15,7 @@
 #define CHOOSE_INDEX "\033[1;34mChoose One Index:	\033[0m"
 #define CHOOSE_OPTION "\033[1;4;33mChoose an Option:\033[0m	"
 #define AVAILABLE "\033[1;32mThe available options are:\n\033[0m"
+#define NO_ARG "\033[1;31mThis program doesn't take any arguments\033[0m"
 #define INVALID_INPUT "\033[1;31mEmpty string is not a valid input\033[0m"
 #define OUT_OF_RANGE "\033[1;31mThe Requested Index Is Out Of Range\033[0m"
 #define INPUT_REQUIRED "\033[1;31mInput is required in every field.\033[0m"
@@ -38,6 +39,9 @@
 #define NN "\033[1;96mNick Name	:	\033[0m\033[1;30m"
 #define PN "\033[1;96mPhone Number	:	\033[0m\033[1;30m"
 #define DS "\033[1;96mDarkest Secret	:	\033[0m\033[1;30m"
+
+// MISC
+#define YOU_LEFT "You throwed my awesome phonebook out of the window.."
 
 #include <cstdlib>
 #include <iostream>
