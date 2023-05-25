@@ -8,7 +8,7 @@ int main(void) {
 }
 
 void ZombieHordeTester() {
-    Zombie *horde = zombieHorde(AMOUNT, "SanyibBazmeg");
+    Zombie *horde = zombieHorde(AMOUNT, NAME);
 
     for (int i = 0; i < AMOUNT; i++) {
         std::cout << i << " ";

@@ -1,6 +1,9 @@
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
+#define DESTROY " is destroyed"
+#define BRAIN ": BraiiiiiiinnnzzzZ..."
+
 #include <iostream>
 
 class Zombie {
