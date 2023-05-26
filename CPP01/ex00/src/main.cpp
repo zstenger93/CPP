@@ -1,6 +1,15 @@
 #include "../includes/Zombie.hpp"
 
-int main(void) {
+static void InputCheck(int argc, char **argv) {
+	(void)argv;
+	if (argc != 1) {
+		std::cerr << NO_ARG << std::endl;
+		exit(1);
+	}
+}
+
+int main(int argc, char **argv) {
+	InputCheck(argc, argv);
     Zombie stack1("ZombieOnStack1");  // allocate memory for a short-lived object
     Zombie stack2("ZombieOnStack2");  // managed automatically by the compiler
     Zombie stack3("ZombieOnStack3");  // managed and destroyed in a single function

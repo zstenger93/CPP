@@ -1,7 +1,16 @@
 #include "../includes/HumanA.hpp"
 #include "../includes/HumanB.hpp"
 
-int main(void) {
+static void InputCheck(int argc, char **argv) {
+	(void)argv;
+	if (argc != 1) {
+		std::cerr << NO_ARG << std::endl;
+		exit(1);
+	}
+}
+
+int main(int argc, char **argv) {
+	InputCheck(argc, argv);
     {
         Weapon club = Weapon(C_CLUB);
 

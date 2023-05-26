@@ -50,6 +50,7 @@ ex 02:
 here you need to recreate the account file based on the test and the way you can do it will be similiar the way to create the phonebook, but of course a bit different.
 
 # CPP 01
+<img align=center src="https://github.com/zstenger93/CPP/images/blob/master/mindmap.png">
 ex00:
 Creating a zombie
 

@@ -2,7 +2,16 @@
 
 void ZombieHordeTester();
 
-int main(void) {
+static void InputCheck(int argc, char **argv) {
+	(void)argv;
+	if (argc != 1) {
+		std::cerr << NO_ARG << std::endl;
+		exit(1);
+	}
+}
+
+int main(int argc, char **argv) {
+	InputCheck(argc, argv);
     ZombieHordeTester();
     return 0;
 }

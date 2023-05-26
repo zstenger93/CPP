@@ -1,10 +1,11 @@
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
-#define NAME "Sanyiii"
 #define AMOUNT 15
+#define NAME "Sanyiii"
 #define DESTROY " is destroyed"
 #define BRAIN ": BraiiiiiiinnnzzzZ..."
+#define NO_ARG "\033[1;31mThis program doesn't take any arguments\033[0m"
 
 #include <iostream>
 

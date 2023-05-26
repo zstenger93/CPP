@@ -5,6 +5,7 @@
 #define ATTACK " attacks with their "
 #define O_CLUB "some other type of club"
 #define NO_WEAPON " doesn't have weapon yet, but you can see it"
+#define NO_ARG "\033[1;31mThis program doesn't take any arguments\033[0m"
 
 #include <iostream>
 

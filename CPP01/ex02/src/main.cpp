@@ -1,6 +1,17 @@
 #include <iostream>
 
-int main(void) {
+#define NO_ARG "\033[1;31mThis program doesn't take any arguments\033[0m"
+
+static void InputCheck(int argc, char **argv) {
+	(void)argv;
+	if (argc != 1) {
+		std::cerr << NO_ARG << std::endl;
+		exit(1);
+	}
+}
+
+int main(int argc, char **argv) {
+	InputCheck(argc, argv);
     std::string str = "HI THIS IS BRAIN";
     std::string *stringPTR = &str;
     std::string stringREF = str;
