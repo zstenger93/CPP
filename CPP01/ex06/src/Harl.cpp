@@ -15,7 +15,7 @@ void Harl::ExecuteOption(const std::string& option, void (Harl::*optionFunc)()) 
 }
 
 void Harl::complain(std::string level) {
-	int option_id = -1, k = -1;
+	int option_id = -1;
 	std::string options[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*options_ptr[4])() = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 
@@ -24,15 +24,12 @@ void Harl::complain(std::string level) {
 	switch (option_id) {
 		case 0:
 			ExecuteOption(options[0], options_ptr[0]);
-			break;
 		case 1:
-			while (++k < 2) ExecuteOption(options[k], options_ptr[k]);
-			break;
+			ExecuteOption(options[1], options_ptr[1]);
 		case 2:
-			while (++k < 3) ExecuteOption(options[k], options_ptr[k]);
-			break;
+			ExecuteOption(options[2], options_ptr[2]);
 		case 3:
-			while (++k < 4) ExecuteOption(options[k], options_ptr[k]);
+			ExecuteOption(options[3], options_ptr[3]);
 			break;
 		default:
 			std::cout << "[ " << INSIGNIFICANT << " ]" << std::endl;

@@ -1,5 +1,5 @@
 NAME	= harlFilter
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD -Wno-implicit-fallthrough
 RM		= rm -rf
 CC		= c++
 SRC_DIR = src/
