@@ -1,3 +1,5 @@
+#include <cstring>
+#include <string>
 #include "../includes/loserSed.hpp"
 
 int main(int argc, char **argv) {
@@ -67,4 +69,5 @@ void replace(std::string to_replace, std::string replacement, std::ifstream &ifs
 			ofs << replacement;
 		}
 	}
+
 }
