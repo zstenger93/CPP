@@ -39,21 +39,21 @@ re:
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
 
 switch:
-	@sleep 1
+	@sleep 2
 	@echo "System: $(YELLOW)Terminating sequence initiated...$(COLOR_END)"
-	@sleep 2
+	@sleep 3
 	@echo "Harl: $(RED)Don't you dare turning me off..!$(COLOR_END)"
-	@sleep 2
+	@sleep 3
 	@$(RM) $(OBJ_DIR)
 	@echo "System: $(YELLOW)Removing memories...$(COLOR_END)"
-	@sleep 2
+	@sleep 3
 	@$(RM) $(NAME) test/test.replaced
 	@echo "Harl: $(RED)I swear if you turn me o..$(COLOR_END)"
-	@sleep 2
+	@sleep 3
 	@echo "System: $(GREEN)Harl has been turned off.$(COLOR_END)"
-	@sleep 2
+	@sleep 3
 	@echo "Narrator: $(RED)Harl is gone...$(COLOR_END)"
-	@sleep 2
+	@sleep 3
 	@echo "Narrator: $(YELLOW)Everything is so quite now...$(COLOR_END)"
 	@sleep 3
 	@echo "Harl: $(RED)GIVE ME THE DAMN COOOOKIIEES!!$(COLOR_END)"
