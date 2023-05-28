@@ -17,14 +17,14 @@ int main(int argc, char **argv) {
     std::string stringREF = str;
     std::cout << std::endl;
 
-    std::cout << "Address of str: \t\t" << &str << std::endl;
-    std::cout << "Address held by stringPTR: \t" << stringPTR << std::endl;
-    std::cout << "Address held by stringREF: \t" << stringREF << std::endl;
+    std::cout << "Address of str:             " << &str << std::endl;
+    std::cout << "Address held by stringPTR:  " << stringPTR << std::endl;
+    std::cout << "Address held by stringREF:  " << &stringREF << std::endl;
     std::cout << std::endl;
 
-    std::cout << "Value of str: \t\t\t" << str << std::endl;
-    std::cout << "Value pointed by stringPTR: \t" << *stringPTR << std::endl;
-    std::cout << "Value pointed by stringREF: \t" << stringREF << std::endl;
+    std::cout << "Value of str:               " << str << std::endl;
+    std::cout << "Value pointed by stringPTR: " << *stringPTR << std::endl;
+    std::cout << "Value pointed by stringREF: " << stringREF << std::endl;
 
     return 0;
 }

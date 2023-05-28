@@ -5,7 +5,7 @@ ClapTrap::ClapTrap() : name("ClapTrap"), HitPoints(10), EnergyPoints(10), Attack
 }
 
 ClapTrap::ClapTrap(std::string const &name)
-	: name("ClapTrap"), HitPoints(10), EnergyPoints(10), AttackDamage(0) {
+	: name(name), HitPoints(10), EnergyPoints(10), AttackDamage(0) {
 	std::cout << COLOR_Y << name << COLOR_END << CONSTRUCTED << std::endl;
 }
 
@@ -29,12 +29,14 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rhs) {
 
 void ClapTrap::attack(const std::string &target) {
 	if (HitPoints == 0)
-		std::cout << COLOR_Y << name << COLOR_END << DEAD_NO_ATCK << COLOR_R << target << COLOR_END << std::endl;
-	else if (EnergyPoints == 0)
-		std::cout << COLOR_Y << name << COLOR_END << CANT_ATTACK << COLOR_R << target << COLOR_END << std::endl;
-	else if (HitPoints > 0 && EnergyPoints > 0) {
-		std::cout << COLOR_Y << name << COLOR_END << " attacks " << COLOR_R << target << COLOR_END << " causing " << AttackDamage << " damage"
+		std::cout << COLOR_Y << name << COLOR_END << DEAD_NO_ATCK << COLOR_R << target << COLOR_END
 				  << std::endl;
+	else if (EnergyPoints == 0)
+		std::cout << COLOR_Y << name << COLOR_END << CANT_ATTACK << COLOR_R << target << COLOR_END
+				  << std::endl;
+	else if (HitPoints > 0 && EnergyPoints > 0) {
+		std::cout << COLOR_Y << name << COLOR_END << " attacks " << COLOR_R << target << COLOR_END
+				  << " causing " << AttackDamage << " damage" << std::endl;
 		EnergyPoints--;
 	}
 }
