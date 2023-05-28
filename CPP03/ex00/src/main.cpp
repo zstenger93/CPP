@@ -10,8 +10,8 @@ static void InputCheck(int argc, char **argv) {
 
 int main(int argc, char **argv) {
 	InputCheck(argc, argv);
-	ClapTrap trapA;
-	ClapTrap trapB;
+	ClapTrap trapA("Bela");
+	ClapTrap trapB("Joska");
 	ClapTrap trapC(trapB);
 
 	trapA.attack("Sanyiii");

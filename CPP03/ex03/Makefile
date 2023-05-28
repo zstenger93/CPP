@@ -1,5 +1,6 @@
 NAME	= diamondTrap
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
+# -Wshadow  -Wno-shadow is for potential bugs caused by accidentally reusing variable names
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD -Wshadow  -Wno-shadow
 RM		= rm -rf
 CC		= c++
 SRC_DIR = src/
@@ -18,7 +19,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "$(YELLOW)Compiling..$(COLOR_END)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-	@echo "$(GREEN)The gate has been built, traps set, project compiled..$(COLOR_END)"
+	@echo "$(GREEN)The diamond is shiny, frags are thrown, gate has been built, traps set and the project is compiled..$(COLOR_END)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	@mkdir -p $(@D)
