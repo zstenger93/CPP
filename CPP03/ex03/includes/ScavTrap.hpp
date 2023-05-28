@@ -3,7 +3,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : public virtual ClapTrap {
 	public:
 		ScavTrap();
 		ScavTrap(std::string name);
@@ -13,6 +13,7 @@ class ScavTrap : public ClapTrap {
 		ScavTrap &operator=(ScavTrap const &rhs);
 		void guardGate(void);
 		void attack(const std::string &target);
+	private:
 };
 
 #endif

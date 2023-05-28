@@ -19,7 +19,9 @@ FragTrap::FragTrap(FragTrap const &rhs) {
 	*this = rhs;
 }
 
-FragTrap::~FragTrap() { std::cout << COLOR_Y << name << COLOR_END << DESTRUCTOR << std::endl; }
+FragTrap::~FragTrap() {
+	std::cout << FT << COLOR_Y << name << COLOR_END << DESTRUCTOR << std::endl;
+}
 
 FragTrap &FragTrap::operator=(FragTrap const &rhs) {
 	std::cout << ASSIGNMENT << std::endl;

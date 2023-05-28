@@ -1,4 +1,4 @@
-NAME	= fragTrap
+NAME	= diamondTrap
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -9,6 +9,7 @@ SRC		= main \
 		  ClapTrap \
 		  ScavTrap \
 		  FragTrap \
+		  DiamondTrap \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
 OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
