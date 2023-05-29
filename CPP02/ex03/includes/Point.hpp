@@ -5,8 +5,8 @@
 
 #define POINT_INSIDE 1
 #define POINT_OUTSIDE -1
-#define TRUE "\033[1;92mtrue\033[0;39m"
-#define FALSE "\033[1;91mfalse\033[0;39m"
+#define TRUE "\033[1;92mTRUE\033[0;39m"
+#define FALSE "\033[1;91mFALSE\033[0;39m"
 #define RESULT "\033[1;4;37mThe Result Is:\033[0;39m "
 
 class Point {
