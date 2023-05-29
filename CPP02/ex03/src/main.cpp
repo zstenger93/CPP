@@ -1,7 +1,6 @@
 #include "../includes/Point.hpp"
 
 static void inside(void) {
-	// std::cout << RESULT << TRUE << std::endl;
 	std::cout << COLOR_B << "                        /\\  " << std::endl
 			  << "                       /  \\  " << std::endl
 			  << RESULT << TRUE << COLOR_B << "   /    \\  " << std::endl
@@ -11,7 +10,6 @@ static void inside(void) {
 }
 
 static void outside(void) {
-	// std::cout << RESULT << FALSE << std::endl;
 	std::cout << COLOR_B << "                        /\\  " << std::endl
 			  << "                       /  \\  " << std::endl
 			  << RESULT << FALSE << COLOR_B << "  /    \\  ." << std::endl
