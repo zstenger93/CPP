@@ -9,23 +9,23 @@
 #define COLOR_END "\033[0;39m"
 
 #define ASINT " as integer"
-#define DESTRUCTOR "Destructor called"
-#define INT_CALL "Int constructor called"
-#define COPYCONS "Copy constructor called"
 #define FLOAT_CALL "Float constructor called"
-#define CONSTRUCTOR "Default constructor called"
-#define COPYASSIGN "Copy assignment operator called"
-#define GETRAWBITS "getRawBits member function called"
-#define SETRAWBITS "setRawBits member function called"
+#define INT_CALL "Int constructor called"
+#define DESTRUCTOR "\033[1;31mDestructor called\033[0;39m"
+#define COPYCONS "\033[1;37mCopy constructor called\033[0;39m"
+#define CONSTRUCTOR "\033[1;33mDefault constructor called\033[0;39m"
+#define COPYASSIGN "\033[1;32mCopy assignment operator called\033[0;39m"
+#define GETRAWBITS "\033[1;34mgetRawBits member function called\033[0;39m"
+#define SETRAWBITS "\033[1;34msetRawBits member function called\033[0;39m"
 
 class Fixed {
    public:
     Fixed();
+    Fixed(Fixed const &number);
+    Fixed &operator=(Fixed const &number);
     ~Fixed();
     Fixed(int const number);
     Fixed(float const number);
-    Fixed(Fixed const &number);
-    Fixed &operator=(Fixed const &number);
     int toInt(void) const;
     float toFloat(void) const;
     int getRawBits(void) const;

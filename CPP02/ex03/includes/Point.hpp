@@ -12,10 +12,10 @@
 class Point {
    public:
     Point();
-    ~Point();
     Point(Point const &number);
-    Point(Fixed const x, Fixed const y);
     Point &operator=(Point const &number);
+    ~Point();
+    Point(Fixed const x, Fixed const y);
     Fixed calc_x_pos(void) const;
     Fixed calc_y_pos(void) const;
     int point_position(Point const &a, Point const &b) const;
