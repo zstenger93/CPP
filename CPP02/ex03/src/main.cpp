@@ -1,21 +1,23 @@
 #include "../includes/Point.hpp"
 
 static void inside(void) {
-	std::cout << RESULT << TRUE << std::endl;
-	std::cout << COLOR_B << "    /\\  " << std::endl
-			  << "   /  \\  " << std::endl
-			  << "  /    \\  " << std::endl
-			  << " /   .  \\  " << std::endl
-			  << "/________\\  " << COLOR_END << std::endl;
+	// std::cout << RESULT << TRUE << std::endl;
+	std::cout << COLOR_B << "                        /\\  " << std::endl
+			  << "                       /  \\  " << std::endl
+			  << RESULT << TRUE << COLOR_B << "   /    \\  " << std::endl
+			  << "                     /   .  \\  " << std::endl
+			  << "                    /________\\  " << COLOR_END << std::endl
+			  << std::endl;
 }
 
 static void outside(void) {
-	std::cout << RESULT << FALSE << std::endl;
-	std::cout << COLOR_B << "    /\\  " << std::endl
-			  << "   /  \\  " << std::endl
-			  << "  /    \\  ." << std::endl
-			  << " /      \\  " << std::endl
-			  << "/________\\  " << COLOR_END << std::endl;
+	// std::cout << RESULT << FALSE << std::endl;
+	std::cout << COLOR_B << "                        /\\  " << std::endl
+			  << "                       /  \\  " << std::endl
+			  << RESULT << FALSE << COLOR_B << "  /    \\  ." << std::endl
+			  << "                     /      \\  " << std::endl
+			  << "                    /________\\  " << COLOR_END << std::endl
+			  << std::endl;
 }
 
 static void print_result(int result) {
