@@ -61,3 +61,24 @@ ex02:
 
 
 # CPP 02
+
+By overloading operators, you can make your classes behave like built-in types and
+define intuitive and concise syntax for operations on objects of your class.
+
+To overload an operator, you define a special member function or a global function
+that has the same name as the operator you want to overload. The syntax for overloading
+operators depends on whether you are overloading them as member functions or as global functions.
+
+Ad-hoc polymorphism, also known as function overloading or method overloading, is a feature in programming languages
+that allows multiple functions or methods with the same name but different parameter types or a different number of
+parameters to be defined. It enables a single function or method name to have different
+implementations based on the types or number of arguments passed to it.
+
+In ad-hoc polymorphism, the appropriate function or method implementation is determined based on the types or number
+of arguments at the time of function or method invocation. The compiler or runtime system selects the most suitable
+version of the function or method based on the provided arguments.
+
+The basic idea behind binary space partitioning is to split a space (such as a 3D scene
+or a 2D polygonal region) into two halves repeatedly until a desired condition is met.
+This process creates a binary tree structure where each node represents a region of space,
+and the splitting planes or lines divide the space into two child nodes.
