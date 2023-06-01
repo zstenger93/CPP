@@ -10,11 +10,11 @@ Dog::Dog(Dog const &rhs) {
 Dog::~Dog() { std::cout << type << DESTRUCTOR << std::endl; }
 
 Dog &Dog::operator=(Dog const &rhs) {
-	std::cout << type << COPYCON << std::endl;
+	std::cout << type << ASSIGNMENT << std::endl;
 	if (this != &rhs) {
 		type = rhs.type;
 	}
 	return *this;
 }
 
-void Dog::makeSound() const { std::cout << "bark" << std::endl; }
+void Dog::makeSound() const { std::cout << type << " does: bark" << std::endl; }

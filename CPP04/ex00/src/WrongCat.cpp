@@ -1,16 +1,16 @@
 #include "../includes/WrongCat.hpp"
 
-WrongCat::WrongCat() : WrongAnimal("WrongCat") { std::cout << type << CONSTRUCTOR << std::endl; }
+WrongCat::WrongCat() : WrongAnimal("WrongCat") { std::cout << type << CONSTRUCTOR_W << std::endl; }
 
 WrongCat::WrongCat(WrongCat const &rhs) {
-	std::cout << type << COPYCON << std::endl;
+	std::cout << type << COPYCON_WA << std::endl;
 	*this = rhs;
 }
 
-WrongCat::~WrongCat() { std::cout << type << DESTRUCTOR << std::endl; }
+WrongCat::~WrongCat() { std::cout << type << DESTRUCTOR_W << std::endl; }
 
 WrongCat &WrongCat::operator=(WrongCat const &rhs) {
-	std::cout << type << ASSIGNMENT << std::endl;
+	std::cout << type << ASSIGNMENT_W << std::endl;
 	if (this != &rhs) {
 		type = rhs.type;
 	}

@@ -14,7 +14,7 @@ WrongAnimal::WrongAnimal(WrongAnimal const &rhs) {
 WrongAnimal::~WrongAnimal() { std::cout << type << DESTRUCTOR_WA << std::endl; }
 
 WrongAnimal &WrongAnimal::operator=(WrongAnimal const &rhs) {
-	std::cout << type << ASSIGNMENT << std::endl;
+	std::cout << type << ASSIGNMENT_W << std::endl;
 	if (this != &rhs) {
 		type = rhs.type;
 	}

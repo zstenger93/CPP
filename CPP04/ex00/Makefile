@@ -1,4 +1,4 @@
-NAME	= diamondTrap
+NAME	= animal
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -20,7 +20,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "$(YELLOW)Compiling..$(COLOR_END)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-	@echo "$(GREEN)The diamond is shiny, frags are thrown, gate has been built, traps set and the project is compiled..$(COLOR_END)"
+	@echo "$(GREEN)The project is compiled..$(COLOR_END)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	@mkdir -p $(@D)

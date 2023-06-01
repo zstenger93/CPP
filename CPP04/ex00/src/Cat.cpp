@@ -17,4 +17,4 @@ Cat &Cat::operator=(Cat const &rhs) {
 	return *this;
 }
 
-void Cat::makeSound() const { std::cout << "Meow" << std::endl; }
+void Cat::makeSound() const { std::cout << type << " does: Meow" << std::endl; }
