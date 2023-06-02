@@ -13,15 +13,16 @@
 #include <iostream>
 
 class WrongAnimal {
-	public:
-		WrongAnimal();
-		WrongAnimal(std::string const &type);
-		WrongAnimal(WrongAnimal const &rhs);
-		~WrongAnimal();
-		WrongAnimal &operator=(WrongAnimal const &rhs);
-		void makeSound() const;
-	protected:
-		std::string type;
+   public:
+	WrongAnimal();
+	WrongAnimal(std::string const &type);
+	WrongAnimal(WrongAnimal const &rhs);
+	~WrongAnimal();
+	WrongAnimal &operator=(WrongAnimal const &rhs);
+	void makeSound() const;
+
+   protected:
+	std::string type;
 };
 
 #endif
