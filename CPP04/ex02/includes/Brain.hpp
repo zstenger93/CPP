@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "Animal.hpp"
+#include "AbstractAnimal.hpp"
 
 class Brain {
    public:

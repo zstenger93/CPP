@@ -1,4 +1,4 @@
-NAME	= worldOnFire
+NAME	= abstractAnimal
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -6,10 +6,10 @@ SRC_DIR = src/
 OBJ_DIR = objects/
 
 SRC		= main \
-		  Animal \
+		  AbstractAnimal \
+		  Brain \
 		  Dog \
 		  Cat \
-		  Brain \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
 OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))

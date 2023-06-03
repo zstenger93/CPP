@@ -1,11 +1,11 @@
 #include "../includes/Cat.hpp"
 
-Cat::Cat() : Animal("Cat") {
+Cat::Cat() : AbstractAnimal("Cat") {
 	brain = new Brain();
 	std::cout << type << CONSTRUCTOR << std::endl;
 }
 
-Cat::Cat(Cat const &rhs) : Animal(rhs) {
+Cat::Cat(Cat const &rhs) : AbstractAnimal(rhs.type) {
 	brain = NULL;
 	std::cout << type << COPYCON << std::endl;
 	*this = rhs;

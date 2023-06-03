@@ -1,11 +1,11 @@
 #include "../includes/Dog.hpp"
 
-Dog::Dog() : Animal("Dog") {
+Dog::Dog() : AbstractAnimal("Dog") {
 	brain = new Brain();
 	std::cout << type << CONSTRUCTOR << std::endl;
 }
 
-Dog::Dog(Dog const &rhs) : Animal(rhs) {
+Dog::Dog(Dog const &rhs) : AbstractAnimal(rhs.type) {
 	brain = NULL;
 	std::cout << type << COPYCON << std::endl;
 	*this = rhs;
