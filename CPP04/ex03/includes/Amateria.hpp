@@ -12,8 +12,8 @@ class Amateria {
 	virtual Amateria* clone() const = 0;
 	virtual void use(ICharacter& target);
 
-   private:
    protected:
+   private:
 };
 
 #endif

@@ -12,8 +12,8 @@ class Ice : public Amateria {
 	Amateria* clone() const;
 	void use(ICharacter& target);
 
-   private:
    protected:
+   private:
 };
 
 #endif

@@ -18,17 +18,18 @@
 #include <iostream>
 
 class AbstractAnimal {
-	public:
-		virtual ~AbstractAnimal();
-		virtual void makeSound() const = 0;
-	private:
-		AbstractAnimal();
-		AbstractAnimal(AbstractAnimal const &rhs);
-		AbstractAnimal &operator=(AbstractAnimal const &rhs);
-	protected:
-		std::string type;
-		AbstractAnimal(std::string const &type);
-};
+   public:
+	virtual ~AbstractAnimal();
+	virtual void makeSound() const = 0;
 
+   protected:
+	std::string type;
+	AbstractAnimal(std::string const &type);
+
+   private:
+	AbstractAnimal();
+	AbstractAnimal(AbstractAnimal const &rhs);
+	AbstractAnimal &operator=(AbstractAnimal const &rhs);
+};
 
 #endif

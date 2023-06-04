@@ -17,11 +17,11 @@ class Brain {
 	void GenerateIdea(std::string const &idea);
 	void PrintIdea() const;
 
-   private:
-	int IdeaIndex;
-
    protected:
 	std::string ideas[IDEAS];
+
+   private:
+	int IdeaIndex;
 };
 
 #endif
