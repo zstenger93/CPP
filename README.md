@@ -82,3 +82,21 @@ The basic idea behind binary space partitioning is to split a space (such as a 3
 or a 2D polygonal region) into two halves repeatedly until a desired condition is met.
 This process creates a binary tree structure where each node represents a region of space,
 and the splitting planes or lines divide the space into two child nodes.
+
+# CPP 03
+
+inheritance
+
+# cpp 04
+
+Subtype polymorphism, abstract classes, interfaces
+
+# cpp 05
+
+# cpp 06
+
+# cpp 07
+
+# cpp 08
+
+# cpp 09
