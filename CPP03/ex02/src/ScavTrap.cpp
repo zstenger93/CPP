@@ -34,7 +34,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &rhs) {
 	return *this;
 }
 
-void ScavTrap::guardGate(void) { std::cout << COLOR_Y << name << COLOR_END << GUARD << std::endl; }
+void ScavTrap::guardGate(void) { std::cout << ST << COLOR_Y << name << COLOR_END << GUARD << std::endl; }
 
 void ScavTrap::attack(const std::string &target) {
 	if (HitPoints == 0)

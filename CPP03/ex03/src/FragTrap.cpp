@@ -35,7 +35,7 @@ FragTrap &FragTrap::operator=(FragTrap const &rhs) {
 }
 
 void FragTrap::highFivesGuys(void) {
-	std::cout << HEY << COLOR_Y << name << COLOR_END HIGH5 << std::endl;
+	std::cout << FT << HEY << COLOR_Y << name << COLOR_END HIGH5 << std::endl;
 }
 
 void FragTrap::attack(const std::string &target) {
