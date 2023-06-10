@@ -41,9 +41,6 @@ re:
 	@make all
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
 
-dj:
-	@curl https://icanhazdadjoke.com
-
 .PHONY: all clean fclean re dj
 
 COLOR_END = \033[0;39m

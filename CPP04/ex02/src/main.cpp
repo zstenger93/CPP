@@ -10,6 +10,8 @@ int main(void) {
 	Dog Brian;
 	Cat Tom;
 
+	std::cout << std::endl;
+
 	for (int i = 0; i < ARRAY_LENGTH; i++) {
 		std::ostringstream oss;
 		if (i % 2 == 0) {

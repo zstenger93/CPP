@@ -6,6 +6,18 @@
 
 #define ARRAY_LENGTH 10
 
+static void pdf_example_test() {
+	const Animal *dog = new Dog();
+	const Animal *cat = new Cat();
+
+	std::cout << std::endl;
+
+	delete cat;
+	delete dog;
+
+	std::cout << std::endl;
+}
+
 int main(void) {
 	Dog Brian;
 	Cat Tom;
@@ -22,5 +34,8 @@ int main(void) {
 	}
 	Brian.PrintIdea();
 	Tom.PrintIdea();
+
+	pdf_example_test();
+
 	return 0;
 }

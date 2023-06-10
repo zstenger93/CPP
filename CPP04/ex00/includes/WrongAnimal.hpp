@@ -20,6 +20,7 @@ class WrongAnimal {
 	~WrongAnimal();
 	WrongAnimal &operator=(WrongAnimal const &rhs);
 	void makeSound() const;
+	void GetType() const;
 
    protected:
 	std::string type;

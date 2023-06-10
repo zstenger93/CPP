@@ -9,6 +9,13 @@ Brain::Brain(Brain const &rhs) {
 
 Brain::~Brain() { std::cout << "Brain" << DESTRUCTOR << std::endl; }
 
+/*
+deep copy
+duplicate the entire object
+thread safe copies
+ensures that the object hierarchy is stays the same
+shallow -> only top level attributes are copied
+*/
 Brain &Brain::operator=(Brain const &rhs) {
 	std::cout << "Brain" << ASSIGNMENT << std::endl;
 	if (this != &rhs) {

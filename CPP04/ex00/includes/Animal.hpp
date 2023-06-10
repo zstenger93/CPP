@@ -17,6 +17,11 @@
 
 #include <iostream>
 
+/*
+base class with virtual functions to inherit from
+virtual enables dynamic binding which determines the correct function at runtime
+*/
+
 class Animal {
    public:
 	Animal();
@@ -25,6 +30,7 @@ class Animal {
 	virtual ~Animal();
 	Animal &operator=(Animal const &rhs);
 	virtual void makeSound() const;
+	virtual void GetType() const;
 
    protected:
 	std::string type;

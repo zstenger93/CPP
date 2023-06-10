@@ -21,4 +21,6 @@ Animal &Animal::operator=(Animal const &rhs) {
 	return *this;
 }
 
-void Animal::makeSound() const { std::cout << "Animal sound" << std::endl; }
+void Animal::makeSound() const { std::cout << " does: Animal sound" << std::endl; }
+
+void Animal::GetType() const { std::cout << type; }

@@ -4,7 +4,7 @@
 #include "../includes/WrongDog.hpp"
 
 int main(void) {
-	// create and allocate correct animals
+	// create correct animals
 	Animal *Animals[3];
 
 	Animals[0] = new Animal();
@@ -12,12 +12,12 @@ int main(void) {
 	Animals[2] = new Cat();
 
 	std::cout << std::endl << std::endl;
-
-	for (size_t i = 0; i < 3; i++) Animals[i]->makeSound();
+	// print the type of the animal and the sound it makes
+	for (size_t i = 0; i < 3; i++) Animals[i]->GetType(), Animals[i]->makeSound();
 
 	std::cout << std::endl << std::endl;
 
-	// create and allocate wrong animals
+	// create wrong animals
 	WrongAnimal *WrongAnimals[3];
 
 	WrongAnimals[0] = new WrongAnimal();
@@ -26,17 +26,16 @@ int main(void) {
 
 	std::cout << std::endl << std::endl;
 
-	for (size_t i = 0; i < 3; i++) WrongAnimals[i]->makeSound();
+	for (size_t i = 0; i < 3; i++) Animals[i]->GetType(), WrongAnimals[i]->makeSound();
 
 	std::cout << std::endl << std::endl;
 
 	// free
-	for (size_t i = 0; i < 3; i++)
-		delete Animals[i];
-	
+	for (size_t i = 0; i < 3; i++) delete Animals[i];
+
 	std::cout << std::endl << std::endl;
-	
-	for (size_t i = 0; i < 3; i++)
-		delete WrongAnimals[i];
+
+	for (size_t i = 0; i < 3; i++) delete WrongAnimals[i];
+
 	return 0;
 }
