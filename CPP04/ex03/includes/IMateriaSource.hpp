@@ -4,7 +4,7 @@
 #include "AMateria.hpp"
 
 #define IM_DESTRUCTOR "IMateriaSource Destructor called"
-#define IM_CONSTRUCTOR "IMateriaSource Default Constructor"
+#define IM_CONSTRUCTOR "IMateriaSource Default Constructor is called"
 #define IM_COPYCON "IMateriaSource copy constructor called"
 #define IM_ASSIGN "IMateriaSource assignment operator called"
 

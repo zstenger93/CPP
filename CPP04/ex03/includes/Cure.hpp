@@ -7,7 +7,7 @@
 #include "ICharacter.hpp"
 
 #define CURE_DESTRUCTOR "Cure Destructor called"
-#define CURE_CONSTRUCTOR "Cure Default Constructor"
+#define CURE_CONSTRUCTOR "Cure Default Constructor is called"
 #define CURE_COPYCON "Cure copy constructor called"
 #define CURE_ASSIGN "Cure assignment operator called"
 

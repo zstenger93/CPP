@@ -5,6 +5,11 @@
 #include "Amateria.hpp"
 
 #define INVENTORY_SIZE 4
+#define C_DESTRUCTOR "Character Destructor called"
+#define C_CONSTRUCTOR "Character Default Constructor is called"
+#define C_COPYCON "Character copy constructor called"
+#define C_ASSIGN "Character assignment operator called"
+#define CHARCON "Character is constructed"
 
 class Character : public ICharacter {
    public:

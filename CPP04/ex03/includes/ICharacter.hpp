@@ -4,7 +4,7 @@
 #include "AMateria.hpp"
 
 #define IC_DESTRUCTOR "ICharacter Destructor called"
-#define IC_CONSTRUCTOR "ICharacter Default Constructor"
+#define IC_CONSTRUCTOR "ICharacter Default Constructor is called"
 #define IC_COPYCON "ICharacter copy constructor called"
 #define IC_ASSIGN "ICharacter assignment operator called"
 

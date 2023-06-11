@@ -5,7 +5,7 @@
 #include <iostream>
 
 #define AM_DESTRUCTOR "AMateria Destructor called"
-#define AM_CONSTRUCTOR "AMateria Default Constructor"
+#define AM_CONSTRUCTOR "AMateria Default Constructor is called"
 #define AM_COPYCON "AMateria copy constructor called"
 #define AM_ASSIGN "AMateria assignment operator called"
 #define AM_STRINGCON "AMateria string constructor called"

@@ -8,7 +8,7 @@
 
 #define SHOOT "* shoots an icebolt at "
 #define ICE_DESTRUCTOR "Ice Destructor called"
-#define ICE_CONSTRUCTOR "Ice Default Constructor"
+#define ICE_CONSTRUCTOR "Ice Default Constructor is called"
 #define ICE_COPYCON "Ice copy constructor called"
 #define ICE_ASSIGN "Ice assignment operator called"
 
