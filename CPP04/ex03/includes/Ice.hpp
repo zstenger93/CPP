@@ -3,16 +3,24 @@
 
 #include <iostream>
 
-#include "Amateria.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class Ice : public Amateria {
+#define SHOOT "* shoots an icebolt at "
+#define ICE_DESTRUCTOR "Ice Destructor called"
+#define ICE_CONSTRUCTOR "Ice Default Constructor"
+#define ICE_COPYCON "Ice copy constructor called"
+#define ICE_ASSIGN "Ice assignment operator called"
+
+class Ice : public AMateria {
    public:
 	Ice();
-	Ice(Ice const &cpy)
+	Ice(Ice const &cpy);
 	~Ice();
+	Ice &operator=(Ice const &rhs);
 	Ice(std::string const &type);
 	std::string const &getType() const;	 // Returns the materia type
-	Amateria *clone() const;
+	AMateria *clone() const;
 	void use(ICharacter &target);
 
    protected:

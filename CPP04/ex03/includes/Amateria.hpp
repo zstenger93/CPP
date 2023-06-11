@@ -1,26 +1,26 @@
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
-#include <iostream>
 #include <string>
+#include <iostream>
 
-#define AM_CONSTRUCTOR "AMateria Default Constructor"
 #define AM_DESTRUCTOR "AMateria Destructor called"
+#define AM_CONSTRUCTOR "AMateria Default Constructor"
 #define AM_COPYCON "AMateria copy constructor called"
 #define AM_ASSIGN "AMateria assignment operator called"
 #define AM_STRINGCON "AMateria string constructor called"
 
 class ICharacter;
 
-class Amateria {
+class AMateria {
    public:
-	Amateria();
-	Amateria(std::string const &type);	// amateria string constructor
-	Amateria(Amateria const &cpy);		// copycon
-	virtual ~Amateria();
-	Amateria &operator=(Amateria const &rhs);  // overload
+	AMateria();
+	AMateria(std::string const &type);	// AMateria string constructor
+	AMateria(AMateria const &cpy);		// copycon
+	virtual ~AMateria();
+	AMateria &operator=(AMateria const &rhs);  // overload
 	std::string const &getType() const;		   // Returns the materia type
-	virtual Amateria *clone() const = 0;
+	virtual AMateria *clone() const = 0;
 	virtual void use(ICharacter &target);
 
    protected:

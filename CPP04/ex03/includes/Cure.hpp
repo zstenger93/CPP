@@ -3,13 +3,23 @@
 
 #include <iostream>
 
-#include "Amateria.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class Cure : public Amateria {
+#define CURE_DESTRUCTOR "Cure Destructor called"
+#define CURE_CONSTRUCTOR "Cure Default Constructor"
+#define CURE_COPYCON "Cure copy constructor called"
+#define CURE_ASSIGN "Cure assignment operator called"
+
+class Cure : public AMateria {
    public:
+	Cure();
+	Cure(Cure const &cpy);
+	~Cure();
+	Cure &operator=(Cure const &rhs);
 	Cure(std::string const &type);
 	std::string const &getType() const;	 // Returns the materia type
-	Amateria *clone() const;
+	AMateria *clone() const;
 	void use(ICharacter &target);
 
    protected:
