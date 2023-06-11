@@ -7,10 +7,13 @@
 
 class Ice : public Amateria {
    public:
-	Ice(std::string const& type);
-	std::string const& getType() const;	 // Returns the materia type
-	Amateria* clone() const;
-	void use(ICharacter& target);
+	Ice();
+	Ice(Ice const &cpy)
+	~Ice();
+	Ice(std::string const &type);
+	std::string const &getType() const;	 // Returns the materia type
+	Amateria *clone() const;
+	void use(ICharacter &target);
 
    protected:
    private:
