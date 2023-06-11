@@ -6,7 +6,7 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-#define SHOOT "* shoots an icebolt at "
+#define SHOOT " shoots an icebolt at "
 #define ICE_COPYCON "Ice copy constructor called"
 #define ICE_ASSIGN "Ice assignment operator called"
 #define ICE_DESTRUCTOR "\033[1;91mIce Destructor called\033[0;39m"

@@ -35,9 +35,13 @@ Character &Character::operator=(Character const &rhs) {
 
 /*____________________________________ FUNCTIONS ____________________________________*/
 
+std::string const &Character::getName() const { return _name; }
+
 void Character::use(int idx, ICharacter &target) {
-	if (inventory[idx] != NULL && idx > -1 && idx < 4)
+	if (inventory[idx] != NULL && idx > -1 && idx < 4) {
+		std::cout << "* " << _name;
 		inventory[idx]->use(target);
+	}
 	else if (inventory[idx] == NULL)
 		std::cout << ITEM << idx << MISSING << std::endl;
 	else

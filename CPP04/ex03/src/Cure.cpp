@@ -21,11 +21,13 @@ Cure &Cure::operator=(Cure const &rhs) {
 
 /*____________________________________ FUNCTIONS ____________________________________*/
 
+std::string const &Cure::getType() const { return _type; }
+
 AMateria *Cure::clone() const {
 	AMateria *clone = new Cure();
 	return clone;
 }
 
 void Cure::use(ICharacter &target) {
-	std::cout << "* heals " << _type << "'s wounds *" << std::endl;
+	std::cout << " heals " << target.getName() << "'s wounds *" << std::endl;
 }

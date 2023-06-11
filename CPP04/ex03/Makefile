@@ -11,6 +11,7 @@ SRC		= main \
 		  AMateria \
 		  Character \
 		  ICharacter \
+		  MateriaSource \
 		  IMateriaSource \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
