@@ -6,10 +6,10 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-#define CURE_DESTRUCTOR "Cure Destructor called"
-#define CURE_CONSTRUCTOR "Cure Default Constructor is called"
 #define CURE_COPYCON "Cure copy constructor called"
 #define CURE_ASSIGN "Cure assignment operator called"
+#define CURE_DESTRUCTOR "\033[1;91mCure Destructor called\033[0;39m"
+#define CURE_CONSTRUCTOR "\033[1;33mCure Default Constructor is called\033[0;39m"
 
 class Cure : public AMateria {
    public:
@@ -21,9 +21,6 @@ class Cure : public AMateria {
 	std::string const &getType() const;	 // Returns the materia type
 	AMateria *clone() const;
 	void use(ICharacter &target);
-
-   protected:
-   private:
 };
 
 #endif

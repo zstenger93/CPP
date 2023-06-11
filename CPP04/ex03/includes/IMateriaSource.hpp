@@ -3,17 +3,14 @@
 
 #include "AMateria.hpp"
 
-#define IM_DESTRUCTOR "IMateriaSource Destructor called"
-#define IM_CONSTRUCTOR "IMateriaSource Default Constructor is called"
 #define IM_COPYCON "IMateriaSource copy constructor called"
 #define IM_ASSIGN "IMateriaSource assignment operator called"
+#define IM_DESTRUCTOR "\033[1;91mIMateriaSource Destructor called\033[0;39m"
+#define IM_CONSTRUCTOR "\033[1;33mIMateriaSource Default Constructor is called\033[0;39m"
 
 class IMateriaSource {
    public:
-	IMateriaSource();
-	IMateriaSource(const IMateriaSource &cpy);
 	virtual ~IMateriaSource();
-	IMateriaSource &operator=(IMateriaSource const &Rhs);
 	virtual void learnMateria(AMateria *) = 0;
 	virtual AMateria *createMateria(std::string const &type) = 0;
 };
