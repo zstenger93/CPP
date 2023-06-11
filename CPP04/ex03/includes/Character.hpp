@@ -1,15 +1,23 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include "../includes/ICharacter.hpp"
-#include "Amateria.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 #define INVENTORY_SIZE 4
-#define C_DESTRUCTOR "Character Destructor called"
-#define C_CONSTRUCTOR "Character Default Constructor is called"
-#define C_COPYCON "Character copy constructor called"
-#define C_ASSIGN "Character assignment operator called"
+#define ITEM "Item slot #"
+#define FULL "Inventory is full."
+#define ENULL "The equipment is NULL."
+#define UNEQ " has been unequipped."
 #define CHARCON "Character is constructed"
+#define IIDXW "The inventory index is wrong."
+#define ADDED " has been added to the inventory"
+#define MISSING " is not found in the inventory."
+#define C_DESTRUCTOR "Character Destructor called"
+#define C_COPYCON "Character copy constructor called"
+#define HASONE " is already present in the inventory."
+#define C_ASSIGN "Character assignment operator called"
+#define C_CONSTRUCTOR "Character Default Constructor is called"
 
 class Character : public ICharacter {
    public:

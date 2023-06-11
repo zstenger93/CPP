@@ -4,6 +4,10 @@
 #include "IMateriaSource.hpp"
 
 #define SLOTS 4
+#define ISNULL "Materia is NULL."
+#define BOOKFULL "The spellbook is full"
+#define NOTFOUND " materia is not available."
+#define M_CREATED " materia has been created."
 #define M_COPYCON "MateriaSource copy constructor called"
 #define M_ASSIGN "MateriaSource assignment operator called"
 #define M_DESTRUCTOR "\033[1;91mMateriaSource Destructor called\033[0;39m"

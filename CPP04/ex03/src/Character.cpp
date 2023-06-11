@@ -39,15 +39,35 @@ void Character::use(int idx, ICharacter &target) {
 	if (inventory[idx] != NULL && idx > -1 && idx < 4)
 		inventory[idx]->use(target);
 	else if (inventory[idx] == NULL)
-		std::cout << "Item #" << idx << " is not found" << std::endl;
+		std::cout << ITEM << idx << MISSING << std::endl;
 	else
-		std::cout << "wrong index" << std::endl;
+		std::cout << IIDXW << std::endl;
 }
 
-void Character::equip(AMateria *m) {
-
+void Character::equip(AMateria *materia) {
+	if (materia != NULL) {
+		for (int i = 0; i < INVENTORY_SIZE; i++) {
+			if (inventory[i] == NULL) {
+				std::cout << _name << " " << materia->getType() << ADDED << std::endl;
+				inventory[i] = materia;
+				return;
+			}
+			if (inventory[i] == materia) {
+				std::cout << _name << materia->getType() << HASONE << std::endl;
+				return;
+			}
+		}
+		std::cout << FULL << std::endl;
+	} else
+		std::cout << ENULL << std::endl;
 }
 
 void Character::unequip(int idx) {
-	
+	if (inventory[idx] != NULL && idx > -1 && idx < 4) {
+		inventory[idx] = NULL;
+		std::cout << ITEM << idx << UNEQ << std::endl;
+	} else if (inventory[idx] == NULL)
+		std::cout << ITEM << idx << MISSING << std::endl;
+	else
+		std::cout << IIDXW << std::endl;
 }
