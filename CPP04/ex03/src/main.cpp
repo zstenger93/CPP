@@ -25,8 +25,10 @@ static void TestUnEquip() {
 	EquipMaster->equip(tmp);
 	ICharacter* brain = new Character("brain");
 	EquipMaster->use(0, *brain);
+
 	EquipMaster->unequip(1);
 	EquipMaster->use(1, *brain);
+
 	delete brain;
 	delete EquipMaster;
 	delete src;

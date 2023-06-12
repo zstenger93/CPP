@@ -1,6 +1,7 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
+#include "AMateria.hpp"
 #include "ICharacter.hpp"
 
 #define INVENTORY_SIZE 4
@@ -20,13 +21,15 @@
 
 class Character : public ICharacter {
    public:
-	Character();
 	Character(Character const &cpy);
 	Character(std::string const &name);
 	~Character();
 	Character &operator=(Character const &rhs);
 	std::string const &getName() const;
 	void InitInventory();
+	void InitSavedPointers();
+	void SavePointer(int idx);
+	void DeleteSavedPointers();
 	void DeleteInventory();
 	void equip(AMateria *m);
 	void unequip(int idx);
@@ -35,6 +38,7 @@ class Character : public ICharacter {
    private:
 	std::string _name;
 	AMateria *inventory[INVENTORY_SIZE];
+	AMateria *SavedPointer[INVENTORY_SIZE];
 };
 
 #endif
