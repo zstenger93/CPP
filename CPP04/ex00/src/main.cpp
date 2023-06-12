@@ -13,7 +13,7 @@ int main(void) {
 
 	std::cout << std::endl << std::endl;
 	// print the type of the animal and the sound it makes
-	for (size_t i = 0; i < 3; i++) Animals[i]->GetType(), Animals[i]->makeSound();
+	for (size_t type = 0; type < 3; type++) Animals[type]->GetType(), Animals[type]->makeSound();
 
 	std::cout << std::endl << std::endl;
 
@@ -26,7 +26,8 @@ int main(void) {
 
 	std::cout << std::endl << std::endl;
 
-	for (size_t i = 0; i < 3; i++) Animals[i]->GetType(), WrongAnimals[i]->makeSound();
+	for (size_t type = 0; type < 3; type++)
+		Animals[type]->GetType(), WrongAnimals[type]->makeSound();
 
 	std::cout << std::endl << std::endl;
 

@@ -38,11 +38,23 @@ static void OverKill() {
 		project->equip(tmp);
 		i++, d++;
 		if (i >= INVENTORY_SIZE || d >= SLOTS) break;
+		src->learnMateria(new Ice());
+		tmp = src->createMateria("ice");
+		project->equip(tmp);
+		i++, d++;
+		if (i >= INVENTORY_SIZE || d >= SLOTS) break;
+		src->learnMateria(new Ice());
+		tmp = src->createMateria("ice");
+		project->equip(tmp);
+		i++, d++;
+		if (i >= INVENTORY_SIZE || d >= SLOTS) break;
 	}
 
 	project->use(0, *brain);
 	project->use(1, *brain);
 	project->use(2, *me);
+	project->use(3, *me);
+	project->use(4, *me);
 
 	delete me;
 	delete brain;
