@@ -1,8 +1,8 @@
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 #include <string>
 
 #define BLUE "\033[1;34m"

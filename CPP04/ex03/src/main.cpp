@@ -1,5 +1,5 @@
-#include "../includes/Character.hpp"
 #include "../includes/BrainDamage.hpp"
+#include "../includes/Character.hpp"
 #include "../includes/Cure.hpp"
 #include "../includes/Ice.hpp"
 #include "../includes/MateriaSource.hpp"
@@ -16,22 +16,34 @@ static void AvailableTestCases() {
 
 static void OverKill() {
 	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	src->learnMateria(new BrainDamage());
 	ICharacter* project = new Character("project");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	project->equip(tmp);
-	tmp = src->createMateria("cure");
-	project->equip(tmp);
-	tmp = src->createMateria("braindamage");
-	project->equip(tmp);
 	ICharacter* brain = new Character("brain");
 	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	int i = 0, d = 0;
+
+	while (i < INVENTORY_SIZE && d < SLOTS) {
+		src->learnMateria(new Ice());
+		tmp = src->createMateria("ice");
+		project->equip(tmp);
+		i++, d++;
+		if (i >= INVENTORY_SIZE || d >= SLOTS) break;
+		src->learnMateria(new Cure());
+		tmp = src->createMateria("cure");
+		project->equip(tmp);
+		i++, d++;
+		if (i >= INVENTORY_SIZE || d >= SLOTS) break;
+		src->learnMateria(new BrainDamage());
+		tmp = src->createMateria("braindamage");
+		project->equip(tmp);
+		i++, d++;
+		if (i >= INVENTORY_SIZE || d >= SLOTS) break;
+	}
+
 	project->use(0, *brain);
 	project->use(1, *brain);
 	project->use(2, *me);
+
 	delete me;
 	delete brain;
 	delete project;
@@ -50,7 +62,6 @@ static void TestUnEquip() {
 	EquipMaster->equip(tmp);
 	ICharacter* brain = new Character("brain");
 	EquipMaster->use(0, *brain);
-
 	EquipMaster->unequip(1);
 	EquipMaster->use(1, *brain);
 
@@ -126,7 +137,6 @@ static void TestFromPdf() {
 	ICharacter* brain = new Character("brain");
 	project->use(0, *brain);
 	project->use(1, *brain);
-
 	delete brain;
 	delete project;
 	delete src;
@@ -136,7 +146,7 @@ static int GetId(int argc, char** argv, int TestCaseId) {
 	if (argc > 1) {
 		int input = std::atoi(argv[1]);
 		if (input < 0 || input > 5) return AvailableTestCases(), exit(1), 1;
-		for (int i = 1; i > 0; i++) {
+		for (int i = 1; i >= 0; i++) {
 			if (i == input) {
 				TestCaseId = i;
 				return TestCaseId;

@@ -2,7 +2,8 @@
 
 /*____________________________ CONSTRUCTORS / DESTRUCTOR ____________________________*/
 
-AMateria::AMateria() {/* std::cout << AM_CONSTRUCTOR << std::endl;*/ }
+AMateria::AMateria() { /* std::cout << AM_CONSTRUCTOR << std::endl;*/
+}
 
 AMateria::AMateria(AMateria const &cpy) {
 	// std::cout << AM_COPYCON << std::endl;
@@ -13,7 +14,8 @@ AMateria::AMateria(std::string const &type) : _type(type) {
 	/*std::cout << AM_STRINGCON << std::endl;*/
 }
 
-AMateria::~AMateria() { /*std::cout << AM_DESTRUCTOR << std::endl;*/ }
+AMateria::~AMateria() { /*std::cout << AM_DESTRUCTOR << std::endl;*/
+}
 
 /*________________________________ OPERATOR OVERLOAD ________________________________*/
 

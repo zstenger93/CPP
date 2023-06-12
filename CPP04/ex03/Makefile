@@ -10,10 +10,8 @@ SRC		= main \
 		  Cure \
 		  AMateria \
 		  Character \
-		  ICharacter \
 		  BrainDamage \
 		  MateriaSource \
-		  IMateriaSource \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
 OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))

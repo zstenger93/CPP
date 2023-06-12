@@ -2,14 +2,16 @@
 
 /*____________________________ CONSTRUCTORS / DESTRUCTOR ____________________________*/
 
-Cure::Cure() : AMateria("cure") { /*std::cout << CURE_CONSTRUCTOR << std::endl;*/ }
+Cure::Cure() : AMateria("cure") { /*std::cout << CURE_CONSTRUCTOR << std::endl;*/
+}
 
 Cure::Cure(Cure const &cpy) : AMateria(cpy) {
 	// std::cout << CURE_COPYCON << std::endl;
 	*this = cpy;
 }
 
-Cure::~Cure() { /*std::cout << CURE_DESTRUCTOR << std::endl;*/ }
+Cure::~Cure() { /*std::cout << CURE_DESTRUCTOR << std::endl;*/
+}
 
 /*________________________________ OPERATOR OVERLOAD ________________________________*/
 
