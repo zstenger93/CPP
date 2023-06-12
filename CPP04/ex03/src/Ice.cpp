@@ -5,7 +5,7 @@
 Ice::Ice() : AMateria("ice") { /*std::cout << ICE_CONSTRUCTOR << std::endl;*/
 }
 
-Ice::Ice(Ice const &cpy) {
+Ice::Ice(Ice const &cpy) : AMateria(cpy) {
 	// std::cout << ICE_COPYCON << std::endl;
 	*this = cpy;
 }

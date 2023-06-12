@@ -2,7 +2,9 @@
 
 /*____________________________ CONSTRUCTORS / DESTRUCTOR ____________________________*/
 
-Character::Character() { /*std::cout << C_CONSTRUCTOR << std::endl;*/
+Character::Character() {
+	// std::cout << C_CONSTRUCTOR << std::endl;
+	InitInventory();
 }
 
 Character::Character(Character const &cpy) {
@@ -12,10 +14,11 @@ Character::Character(Character const &cpy) {
 
 Character::Character(std::string const &name) : _name(name) {
 	// std::cout << CHARCON << std::endl;
-	for (int i = 0; i < INVENTORY_SIZE; i++) inventory[i] = NULL;
 }
 
-Character::~Character() { /*std::cout << C_DESTRUCTOR << std::endl;*/
+Character::~Character() {
+	// std::cout << C_DESTRUCTOR << std::endl;
+	DeleteInventory();
 }
 
 /*________________________________ OPERATOR OVERLOAD ________________________________*/
@@ -39,12 +42,20 @@ Character &Character::operator=(Character const &rhs) {
 
 std::string const &Character::getName() const { return _name; }
 
+void Character::InitInventory() {
+	for (int i = 0; i < INVENTORY_SIZE; i++) inventory[i] = NULL;
+}
+
+void Character::DeleteInventory() {
+	for (int i = 0; i < INVENTORY_SIZE; i++) delete inventory[i];
+}
+
 void Character::use(int idx, ICharacter &target) {
 	if (inventory[idx] != NULL && idx > -1 && idx < 4) {
 		std::cout << "* " << RED << _name << END;
 		inventory[idx]->use(target);
 	} else if (inventory[idx] == NULL)
-		std::cout << YELLOW << ITEM << idx << MISSING_S << END << std::endl;
+		std::cout << YELLOW << ITEM << idx << MISSING << END << std::endl;
 	else
 		std::cout << RED << IIDXW << END << std::endl;
 }
@@ -69,6 +80,7 @@ void Character::equip(AMateria *materia) {
 
 void Character::unequip(int idx) {
 	if (inventory[idx] != NULL && idx > -1 && idx < 4) {
+		delete inventory[idx];
 		inventory[idx] = NULL;
 		std::cout << ITEM << idx << UNEQ << std::endl;
 	} else if (inventory[idx] == NULL)

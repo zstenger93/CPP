@@ -1,7 +1,5 @@
 #include "../includes/MateriaSource.hpp"
 
-#include <regex>
-
 /*____________________________ CONSTRUCTORS / DESTRUCTOR ____________________________*/
 
 MateriaSource::MateriaSource() {
@@ -12,8 +10,7 @@ MateriaSource::MateriaSource() {
 MateriaSource::MateriaSource(AMateria *materia) {
 	if (materia != NULL) {
 		spellbook[0] = materia;
-		for (int i = 1; i < SLOTS; i++)
-			spellbook[i] = NULL;
+		for (int i = 1; i < SLOTS; i++) spellbook[i] = NULL;
 	} else
 		InitSpellBook();
 }

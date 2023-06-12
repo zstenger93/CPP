@@ -1,6 +1,7 @@
-#include "../includes/Character.hpp"
-#include "../includes/Cure.hpp"
+#include <cstdlib>
 #include "../includes/Ice.hpp"
+#include "../includes/Cure.hpp"
+#include "../includes/Character.hpp"
 #include "../includes/MateriaSource.hpp"
 
 static void AvailableTestCases() {
@@ -102,11 +103,10 @@ static void TestFromPdf() {
 	delete project;
 	delete src;
 }
-
 static int GetId(int argc, char** argv, int TestCaseId) {
 	if (argc > 1) {
-		std::string arg = argv[1];
-		int input = std::stoi(arg);
+		// std::string arg = argv[1];
+		int input = std::atoi(argv[1]);
 		if (input < 0 || input > 4) return AvailableTestCases(), exit(1), 1;
 		for (int i = 1; i > 0; i++) {
 			if (i == input) {

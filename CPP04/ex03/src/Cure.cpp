@@ -4,7 +4,7 @@
 
 Cure::Cure() : AMateria("cure") { /*std::cout << CURE_CONSTRUCTOR << std::endl;*/ }
 
-Cure::Cure(Cure const &cpy) {
+Cure::Cure(Cure const &cpy) : AMateria(cpy) {
 	// std::cout << CURE_COPYCON << std::endl;
 	*this = cpy;
 }
