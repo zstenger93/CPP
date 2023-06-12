@@ -2,4 +2,4 @@
 
 /*____________________________ CONSTRUCTORS / DESTRUCTOR ____________________________*/
 
-ICharacter::~ICharacter() { std::cout << IC_DESTRUCTOR << std::endl; }
+ICharacter::~ICharacter() { /*std::cout << IC_DESTRUCTOR << std::endl; */}

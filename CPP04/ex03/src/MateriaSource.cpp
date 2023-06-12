@@ -5,8 +5,17 @@
 /*____________________________ CONSTRUCTORS / DESTRUCTOR ____________________________*/
 
 MateriaSource::MateriaSource() {
-	std::cout << M_CONSTRUCTOR << std::endl;
+	// std::cout << M_CONSTRUCTOR << std::endl;
 	InitSpellBook();
+}
+
+MateriaSource::MateriaSource(AMateria *materia) {
+	if (materia != NULL) {
+		spellbook[0] = materia;
+		for (int i = 1; i < SLOTS; i++)
+			spellbook[i] = NULL;
+	} else
+		InitSpellBook();
 }
 
 MateriaSource::MateriaSource(MateriaSource const &cpy) {
@@ -15,7 +24,7 @@ MateriaSource::MateriaSource(MateriaSource const &cpy) {
 }
 
 MateriaSource::~MateriaSource() {
-	std::cout << M_CONSTRUCTOR << std::endl;
+	// std::cout << M_CONSTRUCTOR << std::endl;
 	DeleteSpellBook();
 }
 

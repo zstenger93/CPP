@@ -4,9 +4,17 @@
 #include <string>
 #include <iostream>
 
-#define COLOR_Y "\033[1;33m"
-#define COLOR_R "\033[1;91m"
-#define COLOR_END "\033[0;39m"
+#define BLUE "\033[1;34m"
+#define YELLOW "\033[1;33m"
+#define RED "\033[1;31m"
+#define END "\033[1;39m"
+
+#define BAD_INPUT "Wrong testcase ID. Available options are:"
+#define TEST0 "      nothing -> test from the PDF"
+#define TEST1 "         1    -> test for wrong spells passed to createMateria()"
+#define TEST2 "         2    -> test for wrong index in use()"
+#define TEST3 "         3    -> test for the item not being in the inventory for use()"
+#define TEST4 "         4    -> test for unequip() from the inventory"
 
 #define AM_COPYCON "AMateria copy constructor called"
 #define AM_ASSIGN "AMateria assignment operator called"
@@ -19,7 +27,7 @@ class ICharacter;
 class AMateria {
    public:
 	AMateria();
-	AMateria(std::string const &type);	// AMateria string constructor
+	AMateria(std::string const &type);	// materia type
 	AMateria(AMateria const &cpy);		// copycon
 	virtual ~AMateria();
 	AMateria &operator=(AMateria const &rhs);  // overload

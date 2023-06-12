@@ -12,6 +12,7 @@
 #define IIDXW "The inventory index is wrong."
 #define ADDED " has been added to the inventory"
 #define MISSING " is not found in the inventory."
+#define MISSING_S " spell is not found in the spellbook."
 #define C_DESTRUCTOR "Character Destructor called"
 #define C_COPYCON "Character copy constructor called"
 #define HASONE " is already present in the inventory."
