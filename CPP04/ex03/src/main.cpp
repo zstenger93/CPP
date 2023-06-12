@@ -100,7 +100,7 @@ static void TestForWrongIndex() {
 	WrongIndex->equip(tmp);
 	ICharacter* brain = new Character("brain");
 	WrongIndex->use(-3, *brain);
-	WrongIndex->use(5, *brain);
+	WrongIndex->use(8, *brain);
 	delete brain;
 	delete WrongIndex;
 	delete src;

@@ -2,15 +2,17 @@
 
 /*____________________________ CONSTRUCTORS / DESTRUCTOR ____________________________*/
 
-Character::Character(Character const &cpy) {
-	// std::cout << C_COPYCON << std::endl;
-	*this = cpy;
-}
-
 Character::Character(std::string const &name) : _name(name) {
 	// std::cout << C_CONSTRUCTOR << std::endl;
 	InitSavedPointers();
 	InitInventory();
+}
+
+Character::Character(Character const &cpy) {
+	// std::cout << C_COPYCON << std::endl;
+	InitSavedPointers();
+	InitInventory();
+	*this = cpy;
 }
 
 Character::~Character() {
@@ -21,6 +23,7 @@ Character::~Character() {
 
 /*________________________________ OPERATOR OVERLOAD ________________________________*/
 
+// must be deep copy
 Character &Character::operator=(Character const &rhs) {
 	// std::cout << C_ASSIGN << std::endl;
 	if (this != &rhs) {
@@ -56,6 +59,7 @@ void Character::DeleteSavedPointers() {
 	for (int i = 0; i < INVENTORY_SIZE; i++) delete SavedPointer[i];
 }
 
+// to save the pointer to the materia at unequip
 void Character::SavePointer(int idx) {
 	for (int i = 0; i < INVENTORY_SIZE; i++) {
 		if (SavedPointer[i] != NULL)
@@ -67,11 +71,12 @@ void Character::SavePointer(int idx) {
 	}
 }
 
+// using the item/spell on the target
 void Character::use(int idx, ICharacter &target) {
-	if (inventory[idx] != NULL && idx > -1 && idx < 4) {
+	if (idx < INVENTORY_SIZE && inventory[idx] != NULL && idx > -1) {
 		std::cout << "* " << RED << _name << END;
 		inventory[idx]->use(target);
-	} else if (inventory[idx] == NULL)
+	} else if (INVENTORY_SIZE > idx && inventory[idx] == NULL)
 		std::cout << YELLOW << ITEM << idx << MISSING << END << std::endl;
 	else
 		std::cout << RED << IIDXW << END << std::endl;
