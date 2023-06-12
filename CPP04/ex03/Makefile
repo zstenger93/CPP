@@ -11,6 +11,7 @@ SRC		= main \
 		  AMateria \
 		  Character \
 		  ICharacter \
+		  BrainDamage \
 		  MateriaSource \
 		  IMateriaSource \
 

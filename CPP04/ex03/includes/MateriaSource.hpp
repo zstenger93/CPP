@@ -26,7 +26,7 @@ class MateriaSource : public IMateriaSource {
 	AMateria *createMateria(std::string const &type);
 
    private:
-	AMateria *spellbook[4];
+	AMateria *spellbook[SLOTS];
 };
 
 #endif

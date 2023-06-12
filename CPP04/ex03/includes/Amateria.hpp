@@ -1,8 +1,9 @@
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
-#include <string>
 #include <iostream>
+#include <cstdlib>
+#include <string>
 
 #define BLUE "\033[1;34m"
 #define YELLOW "\033[1;33m"
@@ -15,6 +16,9 @@
 #define TEST2 "         2    -> test for wrong index in use()"
 #define TEST3 "         3    -> test for the item not being in the inventory for use()"
 #define TEST4 "         4    -> test for unequip() from the inventory"
+#define TEST5                                                                                 \
+	"         5    -> test for inventory or spellbook being full\n                 for this " \
+	"values has to be changed in the header files"
 
 #define AM_COPYCON "AMateria copy constructor called"
 #define AM_ASSIGN "AMateria assignment operator called"

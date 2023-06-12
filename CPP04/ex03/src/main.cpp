@@ -1,7 +1,7 @@
-#include <cstdlib>
-#include "../includes/Ice.hpp"
-#include "../includes/Cure.hpp"
 #include "../includes/Character.hpp"
+#include "../includes/BrainDamage.hpp"
+#include "../includes/Cure.hpp"
+#include "../includes/Ice.hpp"
 #include "../includes/MateriaSource.hpp"
 
 static void AvailableTestCases() {
@@ -11,6 +11,31 @@ static void AvailableTestCases() {
 	std::cout << TEST2 << std::endl;
 	std::cout << TEST3 << std::endl;
 	std::cout << TEST4 << std::endl;
+	std::cout << TEST5 << std::endl;
+}
+
+static void OverKill() {
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	src->learnMateria(new BrainDamage());
+	ICharacter* project = new Character("project");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	project->equip(tmp);
+	tmp = src->createMateria("cure");
+	project->equip(tmp);
+	tmp = src->createMateria("braindamage");
+	project->equip(tmp);
+	ICharacter* brain = new Character("brain");
+	ICharacter* me = new Character("me");
+	project->use(0, *brain);
+	project->use(1, *brain);
+	project->use(2, *me);
+	delete me;
+	delete brain;
+	delete project;
+	delete src;
 }
 
 static void TestUnEquip() {
@@ -101,19 +126,21 @@ static void TestFromPdf() {
 	ICharacter* brain = new Character("brain");
 	project->use(0, *brain);
 	project->use(1, *brain);
+
 	delete brain;
 	delete project;
 	delete src;
 }
+
 static int GetId(int argc, char** argv, int TestCaseId) {
 	if (argc > 1) {
-		// std::string arg = argv[1];
 		int input = std::atoi(argv[1]);
-		if (input < 0 || input > 4) return AvailableTestCases(), exit(1), 1;
+		if (input < 0 || input > 5) return AvailableTestCases(), exit(1), 1;
 		for (int i = 1; i > 0; i++) {
 			if (i == input) {
 				TestCaseId = i;
-				return TestCaseId;;
+				return TestCaseId;
+				;
 			}
 		}
 	}
@@ -123,7 +150,6 @@ static int GetId(int argc, char** argv, int TestCaseId) {
 int main(int argc, char** argv) {
 	int TestCaseId = GetId(argc, argv, 0);
 
-	
 	switch (TestCaseId) {
 		case 1:
 			TestForWrongSpells();
@@ -136,6 +162,9 @@ int main(int argc, char** argv) {
 			break;
 		case 4:
 			TestUnEquip();
+			break;
+		case 5:
+			OverKill();
 			break;
 		default:
 			TestFromPdf();
