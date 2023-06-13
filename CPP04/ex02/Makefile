@@ -41,7 +41,7 @@ re:
 	@make all
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
 
-.PHONY: all clean fclean re dj
+.PHONY: all clean fclean re
 
 COLOR_END = \033[0;39m
 CYAN3 = \033[1;4;96m

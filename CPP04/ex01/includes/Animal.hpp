@@ -6,6 +6,11 @@
 #define COLOR_R "\033[1;91m"
 #define COLOR_END "\033[0;39m"
 
+#define BAD_INPUT "Wrong testcase ID. Available options are:"
+#define TEST0 "      nothing -> test from the PDF"
+#define TEST1 "         1    -> test for creating an array of animals and deleting them"
+#define TEST2 "         2    -> test for generating ideas"
+
 #define CONSTRUCTOR_A "Default animal is being cunstructed"
 #define DESTRUCTOR_A " type of animal was destructed"
 #define COPYCON_A "Animal copy constructor called"

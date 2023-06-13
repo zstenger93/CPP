@@ -27,7 +27,7 @@ int main(void) {
 	std::cout << std::endl << std::endl;
 
 	for (size_t type = 0; type < 3; type++)
-		Animals[type]->GetType(), WrongAnimals[type]->makeSound();
+		WrongAnimals[type]->GetType(), WrongAnimals[type]->makeSound();
 
 	std::cout << std::endl << std::endl;
 

@@ -43,7 +43,7 @@ void Brain::PrintIdea() const {
 	for (int i = 0; i < IDEAS; i++) {
 		if (ideas[i].empty()) break;
 		std::cout << ideas[i] << std::endl;
-		system("make dj");
+		system("curl https://icanhazdadjoke.com");
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
