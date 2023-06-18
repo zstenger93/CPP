@@ -1,4 +1,4 @@
-NAME	= polymorphism
+NAME	= bureaucrat
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -6,12 +6,7 @@ SRC_DIR = src/
 OBJ_DIR = objects/
 
 SRC		= main \
-		  Animal \
-		  Dog \
-		  Cat \
-		  WrongAnimal \
-		  WrongDog \
-		  WrongCat \
+		  Bureaucrat \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
 OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
