@@ -2,6 +2,9 @@
 #define FORM_HPP
 
 #include <iostream>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form {
    public:
@@ -14,7 +17,9 @@ class Form {
 	static const int MaxGrade = 1;
 	std::string const &getName() const;
 	int getGrade() const;  // lowest 1 highest is 150
-	void beSigned() const;	
+	void beSigned(Bureaucrat &bureaucrap);
+	bool getIsSigned();
+	int getGradeRequirement();	
 
 	class GradeTooLowExecption : public std::exception {
 	   public:
@@ -39,7 +44,8 @@ class Form {
    private:
 	std::string const name;
 	const int grade;
-	bool isSigned;
+	bool isSigned; // is the form signed
+	const int gradeRequirement; // to execute
 };
 
 std::ostream &operator<<(std::ostream &os, Form const &Form);
