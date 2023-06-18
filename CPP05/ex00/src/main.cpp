@@ -2,6 +2,7 @@
 
 static void AvailableTestCases() {
 	std::cout << BAD_INPUT << std::endl << std::endl;
+	std::cout << TEST0 << std::endl;
 	std::cout << TEST1 << std::endl;
 	std::cout << TEST2 << std::endl;
 	std::cout << TEST3 << std::endl;

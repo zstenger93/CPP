@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &cpy) {
 
 Bureaucrat::~Bureaucrat() { std::cout << name << DESTRUCTOR << std::endl; }
 
-/*_____________________________________ OPERATOR OVERLOADS ______________________________________*/
+/*______________________________________ OPERATOR OVERLOAD ______________________________________*/
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs) {
 	std::cout << BUREAUCRAT << name << ASSIGNMENT << std::endl;
@@ -32,19 +32,21 @@ std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat) {
 	return os;
 }
 
-/*_______________________________________ NESTED CLASSES ________________________________________*/
+/*___________________________________________ NESTED ____________________________________________*/
 
 const char *Bureaucrat::WrongDecrement::what() const throw() { return WD; }
+
 const char *Bureaucrat::WrongIncrement::what() const throw() { return WI; }
+
 const char *Bureaucrat::GradeTooLowExecption::what() const throw() { return GTL; }
+
 const char *Bureaucrat::GradeTooHighExecption::what() const throw() { return GTH; }
 
-/*___________________________________________ GETTERS ___________________________________________*/
+/*__________________________________________ FUNCTIONS __________________________________________*/
 
 int Bureaucrat::getGrade() const { return grade; }
-std::string const &Bureaucrat::getName() const { return name; }
 
-/*__________________________________________ FUNCTIONS __________________________________________*/
+std::string const &Bureaucrat::getName() const { return name; }
 
 void Bureaucrat::IncrementGrade() {
 	if (grade <= MaxGrade) throw(Bureaucrat::WrongIncrement());
