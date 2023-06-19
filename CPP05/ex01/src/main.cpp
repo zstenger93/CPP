@@ -1,4 +1,5 @@
-#include "../includes/Bureaucrat.hpp"
+#include "../includes/Form.hpp"
+#include <cstdlib>
 
 static void AvailableTestCases() {
 	std::cout << BAD_INPUT << std::endl << std::endl;
@@ -15,7 +16,7 @@ static void AvailableTestCases() {
 static int GetId(int argc, char **argv, int TestCaseId) {
 	if (argc > 1) {
 		int input = std::atoi(argv[1]);
-		if (input < 0 || input > 6) return AvailableTestCases(), exit(1), 1;
+		if (input < 1 || input > 3) return AvailableTestCases(), exit(1), 1;
 		for (int i = 1; i >= 0; i++) {
 			if (i == input) {
 				TestCaseId = i;
@@ -27,78 +28,58 @@ static int GetId(int argc, char **argv, int TestCaseId) {
 	return TestCaseId;
 }
 
-static void TestIncrement() {
-	Bureaucrat tva("TVA", 120);
-
-	std::cout << tva;
-	tva.IncrementGrade();
-	std::cout << tva;
-	tva.IncrementGrade();
-	std::cout << tva;
-	tva.IncrementGrade();
-	std::cout << tva << std::endl;
-}
-
-static void TestDecrement() {
-	Bureaucrat loki("Loki", 10);
-
-	std::cout << loki;
-	loki.DecrementGrade();
-	std::cout << loki;
-	loki.DecrementGrade();
-	std::cout << loki;
-	loki.DecrementGrade();
-	std::cout << loki << std::endl;
-}
-
-static void TestGradeRangeIncrement() {
-	Bureaucrat loki("Loki", 140);
-	try {
-		while (true) {
-			std::cout << loki;
-			loki.IncrementGrade();
-		}
-	} catch (const std::exception &error) {
-		std::cerr << loki.getName() << RED << error.what() << END << std::endl;
-	}
-}
-
-static void TestGradeRangeDecrement() {
-	Bureaucrat loki("Loki", 10);
-	try {
-		while (true) {
-			std::cout << loki;
-			loki.DecrementGrade();
-		}
-	} catch (const std::exception &error) {
-		std::cerr << loki.getName() << RED << error.what() << END << std::endl;
-	}
-}
-
-static void TestTooHighGrade() {
+static void TestFormSigning() {
 	Bureaucrat loki;
+	Bureaucrat mobius;
+
+	std::cout << std::endl;
 	try {
-		Bureaucrat loki("Loki", 0);
-		while (true) {
-			std::cout << loki;
-			loki.IncrementGrade();
-		}
+		Bureaucrat loki("Loki", 42);
+		Bureaucrat mobius("Mobius", 42);
+		Form everythingYouHaveEverSaid("EverythingYouHaveEverSaid", false, 42);
+
+		loki.signForm(everythingYouHaveEverSaid);
+		std::cout << std::endl;
 	} catch (const std::exception &error) {
 		std::cerr << loki.getName() << RED << error.what() << END << std::endl;
 	}
 }
 
-static void TestTooLowGrade() {
+static void TestAlreadySigned() {
 	Bureaucrat loki;
-	try {
-		Bureaucrat loki("Loki", 151);
-		while (true) {
-			std::cout << loki;
-			loki.DecrementGrade();
-		}
+	Bureaucrat mobius;
 
+	std::cout << std::endl;
+	try {
+		Bureaucrat loki("Loki", 42);
+		Bureaucrat mobius("Mobius", 42);
+		Form everythingYouHaveEverSaid("EverythingYouHaveEverSaid", false, 42);
+
+		loki.signForm(everythingYouHaveEverSaid);
+		mobius.signForm(everythingYouHaveEverSaid);
+		std::cout << std::endl;
 	} catch (const std::exception &error) {
 		std::cerr << loki.getName() << RED << error.what() << END << std::endl;
+	}
+}
+
+static void TestRequirement() {
+	Bureaucrat loki;
+	Bureaucrat mobius;
+	Form lokiIsAnnoying;
+
+	std::cout << std::endl;
+	try {
+		Form lokiIsAnnoying("LokiIsAnnoying", false, -10);
+		Form everythingYouHaveEverSaid("EverythingYouHaveEverSaid", false, 14);
+		Bureaucrat loki("Loki", 42);
+		Bureaucrat mobius("Mobius", 42);
+
+		loki.signForm(everythingYouHaveEverSaid);
+		mobius.signForm(lokiIsAnnoying);
+		std::cout << std::endl;
+	} catch (const std::exception &error) {
+		std::cerr << lokiIsAnnoying.Name() << RED << error.what() << END << std::endl;
 	}
 }
 
@@ -107,22 +88,13 @@ int main(int argc, char **argv) {
 
 	switch (TestCaseId) {
 		case 1:
-			TestIncrement();
+			TestFormSigning();
 			break;
 		case 2:
-			TestDecrement();
+			TestAlreadySigned();
 			break;
 		case 3:
-			TestGradeRangeIncrement();
-			break;
-		case 4:
-			TestGradeRangeDecrement();
-			break;
-		case 5:
-			TestTooLowGrade();
-			break;
-		case 6:
-			TestTooHighGrade();
+			TestRequirement();
 			break;
 		default:
 			AvailableTestCases();

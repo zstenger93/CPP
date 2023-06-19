@@ -15,7 +15,7 @@ static void AvailableTestCases() {
 static int GetId(int argc, char **argv, int TestCaseId) {
 	if (argc > 1) {
 		int input = std::atoi(argv[1]);
-		if (input < 0 || input > 6) return AvailableTestCases(), exit(1), 1;
+		if (input < 1 || input > 6) return AvailableTestCases(), exit(1), 1;
 		for (int i = 1; i >= 0; i++) {
 			if (i == input) {
 				TestCaseId = i;
