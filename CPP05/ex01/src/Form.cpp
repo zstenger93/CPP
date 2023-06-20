@@ -9,10 +9,10 @@ Form::Form() : formName(DEFORM), isSigned(false), gradeRequirement(42) {
 Form::Form(std::string const &_formName, bool _isSigned, const int _gradeRequirement)
 	: formName(_formName), isSigned(_isSigned), gradeRequirement(_gradeRequirement) {
 	if (_gradeRequirement < MaxGrade) {
-		throw(Form::FormGradeTooHighExecption());
+		throw(Form::FormGradeTooHighException());
 	}
 	if (_gradeRequirement > MinGrade) {
-		throw(Form::FormGradeTooLowExecption());
+		throw(Form::FormGradeTooLowException());
 	}
 }
 
@@ -41,8 +41,8 @@ std::ostream &operator<<(std::ostream &os, Form &form) {
 
 /*___________________________________________ NESTED ____________________________________________*/
 
-const char *Form::FormGradeTooLowExecption::what() const throw() {	return F_GTL; }
-const char *Form::FormGradeTooHighExecption::what() const throw() {	return F_GTH; }
+const char *Form::FormGradeTooLowException::what() const throw() { return F_GTL; }
+const char *Form::FormGradeTooHighException::what() const throw() { return F_GTH; }
 const char *Form::FormCannotBeSignedExecption::what() const throw() { return FCBS; }
 const char *Form::FormIsAlreadySignedExecption::what() const throw() { return FIAS; }
 

@@ -21,22 +21,22 @@ class Bureaucrat {
 	void IncrementGrade();
 	void DecrementGrade();
 
-	class GradeTooLowExecption : public std::exception {
+	class GradeTooLowException : public std::exception {
 	   public:
 		virtual const char *what() const throw();
 	};
 
-	class GradeTooHighExecption : public std::exception {
+	class GradeTooHighException : public std::exception {
 	   public:
 		virtual const char *what() const throw();
 	};
 
-	class WrongIncrementExecption : public std::exception {
+	class WrongIncrementException : public std::exception {
 	   public:
 		virtual const char *what() const throw();
 	};
 
-	class WrongDecrementExecption : public std::exception {
+	class WrongDecrementException : public std::exception {
 	   public:
 		virtual const char *what() const throw();
 	};

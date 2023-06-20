@@ -7,8 +7,8 @@ Bureaucrat::Bureaucrat() : name(DEFBURO), grade(42) {
 }
 
 Bureaucrat::Bureaucrat(std::string const &_name, int _grade) : name(_name) {
-	if (_grade < MaxGrade) throw(Bureaucrat::GradeTooHighExecption());
-	if (_grade > MinGrade) throw(Bureaucrat::GradeTooLowExecption());
+	if (_grade < MaxGrade) throw(Bureaucrat::GradeTooHighException());
+	if (_grade > MinGrade) throw(Bureaucrat::GradeTooLowException());
 	grade = _grade;
 }
 
@@ -34,10 +34,10 @@ std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat) {
 
 /*_______________________________________ NESTED CLASSES ________________________________________*/
 
-const char *Bureaucrat::WrongDecrementExecption::what() const throw() { return WD; }
-const char *Bureaucrat::WrongIncrementExecption::what() const throw() { return WI; }
-const char *Bureaucrat::GradeTooLowExecption::what() const throw() { return GTL; }
-const char *Bureaucrat::GradeTooHighExecption::what() const throw() { return GTH; }
+const char *Bureaucrat::WrongDecrementException::what() const throw() { return WD; }
+const char *Bureaucrat::WrongIncrementException::what() const throw() { return WI; }
+const char *Bureaucrat::GradeTooLowException::what() const throw() { return GTL; }
+const char *Bureaucrat::GradeTooHighException::what() const throw() { return GTH; }
 
 /*___________________________________________ GETTERS ___________________________________________*/
 
@@ -47,13 +47,13 @@ std::string const &Bureaucrat::getName() const { return name; }
 /*__________________________________________ FUNCTIONS __________________________________________*/
 
 void Bureaucrat::IncrementGrade() {
-	if (grade <= MaxGrade) throw(Bureaucrat::WrongIncrementExecption());
+	if (grade <= MaxGrade) throw(Bureaucrat::WrongIncrementException());
 	std::cout << BUREAUCRAT << name << INCR << std::endl;
 	grade--;
 }
 
 void Bureaucrat::DecrementGrade() {
-	if (grade >= MinGrade) throw(Bureaucrat::WrongDecrementExecption());
+	if (grade >= MinGrade) throw(Bureaucrat::WrongDecrementException());
 	std::cout << BUREAUCRAT << name << DECR << std::endl;
 	grade++;
 }

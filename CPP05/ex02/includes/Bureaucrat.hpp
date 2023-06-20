@@ -7,7 +7,7 @@
 
 #include "BureaucraftDefines.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
    public:
@@ -22,7 +22,8 @@ class Bureaucrat {
 	int getGrade() const;  // lowest 1 highest is 150
 	void IncrementGrade();
 	void DecrementGrade();
-	void signForm(Form &formName);
+	void signForm(AForm &formName);
+	void executeForm(AForm const &form);
 
 	class GradeTooLowException : public std::exception {
 	   public:

@@ -22,12 +22,12 @@ class Form {
 	int requirementGrade();
 	bool isAlreadySigned();
 
-	class FormGradeTooLowExecption : public std::exception {
+	class FormGradeTooLowException : public std::exception {
 	   public:
 		virtual const char *what() const throw();
 	};
 
-	class FormGradeTooHighExecption : public std::exception {
+	class FormGradeTooHighException : public std::exception {
 	   public:
 		virtual const char *what() const throw();
 	};

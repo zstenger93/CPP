@@ -1,6 +1,8 @@
 #include "../includes/Bureaucrat.hpp"
 
-#include "../includes/Form.hpp"
+#include <exception>
+
+#include "../includes/AForm.hpp"
 
 /*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
 
@@ -9,6 +11,7 @@ Bureaucrat::Bureaucrat() : name(DEFBURO), grade(42) {
 }
 
 Bureaucrat::Bureaucrat(std::string const &_name, int _grade) : name(_name) {
+	std::cout << name << CONSTRUCTOR << std::endl;
 	if (_grade < MaxGrade) throw(Bureaucrat::GradeTooHighException());
 	if (_grade > MinGrade) throw(Bureaucrat::GradeTooLowException());
 	grade = _grade;
@@ -60,10 +63,20 @@ void Bureaucrat::DecrementGrade() {
 	grade++;
 }
 
-void Bureaucrat::signForm(Form &form) {
+void Bureaucrat::signForm(AForm &form) {
 	try {
 		form.beSigned(*this);
 	} catch (const std::exception &error) {
 		std::cerr << form.Name() << RED << error.what() << END << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form) {
+	try {
+		form.execute(*this);
+		std::cout << BUREAUCRAT << name << " executed " << form.Name() << std::endl;
+	} catch (std::exception &error) {
+		std::cout << BUREAUCRAT << name << " cannot execute " << form.Name() << " because "
+				  << error.what() << std::endl;
 	}
 }
