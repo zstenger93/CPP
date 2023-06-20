@@ -1,6 +1,8 @@
 #ifndef FORMDEFINES_HPP
 #define FORMDEFINES_HPP
 
+#include <cstdlib>
+
 #define DEFORM "Default Form"
 #define FORM "\033[1;33mForm \033[1;39m"
 #define SIGNED "\033[1;39m have signed the form called: \033[1;34m"

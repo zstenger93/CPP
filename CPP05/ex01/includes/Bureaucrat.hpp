@@ -34,12 +34,12 @@ class Bureaucrat {
 		virtual const char *what() const throw();
 	};
 
-	class WrongIncrement : public std::exception {
+	class WrongIncrementExecption : public std::exception {
 	   public:
 		virtual const char *what() const throw();
 	};
 
-	class WrongDecrement : public std::exception {
+	class WrongDecrementExecption : public std::exception {
 	   public:
 		virtual const char *what() const throw();
 	};

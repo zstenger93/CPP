@@ -1,5 +1,4 @@
 #include "../includes/Form.hpp"
-#include <cstdlib>
 
 static void AvailableTestCases() {
 	std::cout << BAD_INPUT << std::endl << std::endl;
@@ -30,12 +29,10 @@ static int GetId(int argc, char **argv, int TestCaseId) {
 
 static void TestFormSigning() {
 	Bureaucrat loki;
-	Bureaucrat mobius;
 
 	std::cout << std::endl;
 	try {
 		Bureaucrat loki("Loki", 42);
-		Bureaucrat mobius("Mobius", 42);
 		Form everythingYouHaveEverSaid("EverythingYouHaveEverSaid", false, 42);
 
 		loki.signForm(everythingYouHaveEverSaid);

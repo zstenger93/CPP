@@ -34,8 +34,8 @@ std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat) {
 
 /*_______________________________________ NESTED CLASSES ________________________________________*/
 
-const char *Bureaucrat::WrongDecrement::what() const throw() { return WD; }
-const char *Bureaucrat::WrongIncrement::what() const throw() { return WI; }
+const char *Bureaucrat::WrongDecrementExecption::what() const throw() { return WD; }
+const char *Bureaucrat::WrongIncrementExecption::what() const throw() { return WI; }
 const char *Bureaucrat::GradeTooLowExecption::what() const throw() { return GTL; }
 const char *Bureaucrat::GradeTooHighExecption::what() const throw() { return GTH; }
 
@@ -47,13 +47,13 @@ std::string const &Bureaucrat::getName() const { return name; }
 /*__________________________________________ FUNCTIONS __________________________________________*/
 
 void Bureaucrat::IncrementGrade() {
-	if (grade <= MaxGrade) throw(Bureaucrat::WrongIncrement());
+	if (grade <= MaxGrade) throw(Bureaucrat::WrongIncrementExecption());
 	std::cout << BUREAUCRAT << name << INCR << std::endl;
 	grade--;
 }
 
 void Bureaucrat::DecrementGrade() {
-	if (grade >= MinGrade) throw(Bureaucrat::WrongDecrement());
+	if (grade >= MinGrade) throw(Bureaucrat::WrongDecrementExecption());
 	std::cout << BUREAUCRAT << name << DECR << std::endl;
 	grade++;
 }
