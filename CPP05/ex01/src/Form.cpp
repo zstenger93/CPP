@@ -41,8 +41,8 @@ std::ostream &operator<<(std::ostream &os, Form &form) {
 
 /*___________________________________________ NESTED ____________________________________________*/
 
-const char *Form::FormGradeTooLowExecption::what() const throw() { return F_GTL; }
-const char *Form::FormGradeTooHighExecption::what() const throw() { return F_GTH; }
+const char *Form::FormGradeTooLowExecption::what() const throw() {	return F_GTL; }
+const char *Form::FormGradeTooHighExecption::what() const throw() {	return F_GTH; }
 const char *Form::FormCannotBeSignedExecption::what() const throw() { return FCBS; }
 const char *Form::FormIsAlreadySignedExecption::what() const throw() { return FIAS; }
 

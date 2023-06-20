@@ -1,6 +1,8 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
+#include <exception>
+
 #include "Bureaucrat.hpp"
 #include "FormDefines.hpp"
 
