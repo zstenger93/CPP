@@ -33,7 +33,7 @@ clean:
 
 fclean: clean
 	@echo "$(YELLOW)Cleaning everything...$(COLOR_END)"
-	@$(RM) $(NAME) test/test.replaced
+	@$(RM) $(NAME) kocsogfa_shrubbery
 	@echo "$(GREEN)Cleaning done.$(COLOR_END)"
 
 re:
