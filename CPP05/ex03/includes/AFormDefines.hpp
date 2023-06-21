@@ -15,5 +15,6 @@
 #define GROOT "I AM GROOOOOT. Tree has been grooted."
 #define CANTOPEN "Cannot open this kibaszott fa file.."
 #define PARDONED " has been pardoned by Zaphod Beeblebrox"
+#define FCF " form creation failed. The requested form doesn't exist"
 
 #endif

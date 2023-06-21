@@ -46,6 +46,7 @@ const char *AForm::AFormGradeTooHighException::what() const throw() { return F_G
 const char *AForm::AFormCannotBeSignedExecption::what() const throw() { return FCBS; }
 const char *AForm::AFormIsAlreadySignedExecption::what() const throw() { return FIAS; }
 const char *AForm::AFormRobotomyFailedException::what() const throw() { return RFE; }
+const char *AForm::AFormCreationFailedException::what() const throw() { return FCF; }
 const char *AForm::AFormCannotExecuteException::what() const throw() { return CEE; }
 
 /*___________________________________________ GETTERS ___________________________________________*/

@@ -54,8 +54,12 @@ class AForm {
 		virtual const char *what() const throw();
 	};
 
-   private:
-	std::string const formName;
+	class AFormCreationFailedException : public std::exception {
+	   public:
+		virtual const char *what() const throw();
+	};
+
+	private : std::string const formName;
 	bool isSigned;				 // is the Aform signed
 	const int gradeRequirement;	 // to execute
 };
