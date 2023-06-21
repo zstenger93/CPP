@@ -1,4 +1,4 @@
-NAME	= pardon
+NAME	= intern
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -7,6 +7,7 @@ OBJ_DIR = objects/
 
 SRC		= main \
 		  AForm \
+		  Intern \
 		  Bureaucrat \
 		  RobotomyRequestForm \
 		  ShrubberyCreationForm \

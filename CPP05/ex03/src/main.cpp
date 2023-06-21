@@ -1,6 +1,5 @@
-#include <exception>
-
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/Intern.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/ShrubberyCreationForm.hpp"
@@ -10,7 +9,6 @@ static void AvailableTestCases() {
 	std::cout << TEST0 << std::endl;
 	std::cout << TEST1 << std::endl;
 	std::cout << TEST2 << std::endl;
-	std::cout << TEST3 << std::endl;
 	std::cout << std::endl;
 }
 
@@ -29,38 +27,41 @@ static int GetId(int argc, char **argv, int TestCaseId) {
 	return TestCaseId;
 }
 
-static void TestShrubbery() {
+static void TestMakeForm() {
+	Bureaucrat loki("Loki", 1);
+	Intern brainDamage;
+	AForm *shrubberyCreation = NULL;
+	AForm *robotomyRequest = NULL;
+	AForm *presidentalPardon = NULL;
+	AForm *iDontExist = NULL;
+
+	try {
+		shrubberyCreation = brainDamage.makeForm("shrubbery creation", "home");
+		robotomyRequest = brainDamage.makeForm("robotomy request", "idiotTasks");
+		presidentalPardon = brainDamage.makeForm("presidental pardon", "TVA");
+		iDontExist = brainDamage.makeForm("dontexist", "nope");
+	} catch (const std::exception &error) {
+		std::cout << RED << error.what() << END << std::endl;
+	}
+	std::cout << std::endl << std::endl;
+	loki.signForm(*shrubberyCreation);
+	loki.signForm(*robotomyRequest);
+	loki.signForm(*presidentalPardon);
+	loki.executeForm(*shrubberyCreation);
+	loki.executeForm(*robotomyRequest);
+	loki.executeForm(*presidentalPardon);
+	loki.signForm(*iDontExist);
+	std::cout << std::endl << std::endl;
+	delete shrubberyCreation;
+	delete robotomyRequest;
+	delete presidentalPardon;
+	delete iDontExist;
+}
+
+static void TestMakeMoreForm() {
 	try {
 		Bureaucrat loki("Loki", 130);
 		ShrubberyCreationForm everSaid("kocsogfa");
-
-		std::cout << std::endl;
-		loki.signForm(everSaid);
-		everSaid.execute(loki);
-		std::cout << std::endl;
-	} catch (const std::exception &error) {
-		std::cout << RED << error.what() << END << std::endl;
-	}
-}
-
-static void TestRobotomy() {
-	try {
-		Bureaucrat loki("Loki", 30);
-		RobotomyRequestForm everSaid("are_you_a_robot");
-
-		std::cout << std::endl;
-		loki.signForm(everSaid);
-		everSaid.execute(loki);
-		std::cout << std::endl;
-	} catch (const std::exception &error) {
-		std::cout << RED << error.what() << END << std::endl;
-	}
-}
-
-static void TestPardon() {
-	try {
-		Bureaucrat loki("Loki", 2);
-		PresidentialPardonForm everSaid("Loki");
 
 		std::cout << std::endl;
 		loki.signForm(everSaid);
@@ -76,13 +77,10 @@ int main(int argc, char **argv) {
 
 	switch (TestCaseId) {
 		case 1:
-			TestShrubbery();
+			TestMakeForm();
 			break;
 		case 2:
-			TestRobotomy();
-			break;
-		case 3:
-			TestPardon();
+			TestMakeMoreForm();
 			break;
 		default:
 			AvailableTestCases();
