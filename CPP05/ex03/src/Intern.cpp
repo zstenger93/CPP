@@ -23,11 +23,11 @@ Intern &Intern::operator=(Intern const &rhs) {
 
 AForm *Intern::makeForm(std::string const &formName, std::string const &target) const {
 	int caseId;
-	AForm *form = NULL;
+	AForm *form = nullptr;
 	std::string forms[3] = {"shrubbery creation", "robotomy request", "presidental pardon"};
 
-	for (int i = 0; i < 4; i++)
-		if (formName == forms[i]) caseId = i;
+	for (caseId = -1; caseId < 3; caseId++)
+		if (formName == forms[caseId]) break;
 	switch (caseId) {
 		case 0:
 			form = new ShrubberyCreationForm(target);
@@ -39,7 +39,7 @@ AForm *Intern::makeForm(std::string const &formName, std::string const &target) 
 			form = new PresidentialPardonForm(target);
 			break;
 		default:
-			std::cout << formName;
+			std::cout << RED << DUMB << END << formName;
 			throw(AForm::AFormCreationFailedException());
 	}
 	return form;

@@ -34,7 +34,7 @@ clean:
 
 fclean: clean
 	@echo "$(YELLOW)Cleaning everything...$(COLOR_END)"
-	@$(RM) $(NAME) kocsogfa_shrubbery
+	@$(RM) $(NAME) home_shrubbery
 	@echo "$(GREEN)Cleaning done.$(COLOR_END)"
 
 re:

@@ -30,16 +30,18 @@ static int GetId(int argc, char **argv, int TestCaseId) {
 static void TestMakeForm() {
 	Bureaucrat loki("Loki", 1);
 	Intern brainDamage;
-	AForm *shrubberyCreation = NULL;
-	AForm *robotomyRequest = NULL;
-	AForm *presidentalPardon = NULL;
-	AForm *iDontExist = NULL;
+	AForm *shrubberyCreation = nullptr;
+	AForm *robotomyRequest = nullptr;
+	AForm *presidentalPardon = nullptr;
+	AForm *iDontExist = nullptr;
 
 	try {
 		shrubberyCreation = brainDamage.makeForm("shrubbery creation", "home");
 		robotomyRequest = brainDamage.makeForm("robotomy request", "idiotTasks");
 		presidentalPardon = brainDamage.makeForm("presidental pardon", "TVA");
+		std::cout << std::endl << std::endl;
 		iDontExist = brainDamage.makeForm("dontexist", "nope");
+		std::cout << std::endl << std::endl;
 	} catch (const std::exception &error) {
 		std::cout << RED << error.what() << END << std::endl;
 	}
@@ -50,7 +52,10 @@ static void TestMakeForm() {
 	loki.executeForm(*shrubberyCreation);
 	loki.executeForm(*robotomyRequest);
 	loki.executeForm(*presidentalPardon);
-	loki.signForm(*iDontExist);
+	if (iDontExist != nullptr) {
+		loki.signForm(*iDontExist);
+		loki.executeForm(*iDontExist);
+	} 
 	std::cout << std::endl << std::endl;
 	delete shrubberyCreation;
 	delete robotomyRequest;
