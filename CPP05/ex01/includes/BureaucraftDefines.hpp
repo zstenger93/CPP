@@ -21,11 +21,8 @@
 
 #define BAD_INPUT "Wrong testcase ID. Available options are:"
 #define TEST0 "      nothing -> options"
-#define TEST1 "         1    -> test for increment"
-#define TEST2 "         2    -> test for decrement"
-#define TEST3 "         3    -> test for wrong grade range while increment"
-#define TEST4 "         4    -> test for wrong grade range while decrement"
-#define TEST5 "         5    -> test for initializing with too low grade"
-#define TEST6 "         6    -> test for initializing with too  grade"
+#define TEST1 "         1    -> test for FormSigning"
+#define TEST2 "         2    -> test for AlreadySigned"
+#define TEST3 "         3    -> test for Requirement"
 
 #endif

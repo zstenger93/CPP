@@ -1,4 +1,4 @@
-NAME	= polymorphism
+NAME	= pardon
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -6,12 +6,11 @@ SRC_DIR = src/
 OBJ_DIR = objects/
 
 SRC		= main \
-		  Animal \
-		  Dog \
-		  Cat \
-		  WrongAnimal \
-		  WrongDog \
-		  WrongCat \
+		  AForm \
+		  Bureaucrat \
+		  RobotomyRequestForm \
+		  ShrubberyCreationForm \
+		  PresidentialPardonForm \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
 OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
@@ -34,7 +33,7 @@ clean:
 
 fclean: clean
 	@echo "$(YELLOW)Cleaning everything...$(COLOR_END)"
-	@$(RM) $(NAME) test/test.replaced
+	@$(RM) $(NAME) kocsogfa_shrubbery
 	@echo "$(GREEN)Cleaning done.$(COLOR_END)"
 
 re:
