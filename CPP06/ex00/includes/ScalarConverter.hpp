@@ -27,6 +27,8 @@ class ScalarConverter {
 	static bool containsOnlySpace(std::string &input);
 	static bool hasInvalidSpace(std::string &input);
 	static std::string trimSpace(std::string &input, std::string toTrim);
+	static bool isInf(std::string &input);
+	static bool isValidNumber(std::string &input);
 };
 
 #endif
