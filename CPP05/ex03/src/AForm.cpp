@@ -39,7 +39,7 @@ std::ostream &operator<<(std::ostream &os, AForm &Aform) {
 	return os;
 }
 
-/*___________________________________________ NESTED ____________________________________________*/
+/*_______________________________________ NESTED CLASSES ________________________________________*/
 
 const char *AForm::AFormGradeTooLowException::what() const throw() { return F_GTL; }
 const char *AForm::AFormGradeTooHighException::what() const throw() { return F_GTH; }

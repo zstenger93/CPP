@@ -6,6 +6,7 @@ SRC_DIR = src/
 OBJ_DIR = objects/
 
 SRC		= main \
+		  Parser \
 		  ScalarConverter \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))

@@ -88,4 +88,5 @@ int main(int argc, char **argv) {
 			AvailableTestCases();
 			break;
 	}
+	return 0;
 }

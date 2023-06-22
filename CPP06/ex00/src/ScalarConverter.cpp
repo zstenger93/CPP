@@ -1,15 +1,13 @@
 #include "../includes/ScalarConverter.hpp"
 
-/*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
+/*_______________________________________ NESTED CLASSES ________________________________________*/
 
-ScalarConverter::ScalarConverter() { std::cout << }
-ScalarConverter::ScalarConverter(ScalarConverter const &cpy) {}
-ScalarConverter::~ScalarConverter() {}
-
-/*______________________________________ OPERATOR OVERLOAD ______________________________________*/
-
-ScalarConverter &ScalarConverter::operator=(ScalarConverter const &rhs) {
-	
+const char *ScalarConverter::ScalarConverterWrongInputException::what() const throw() {
+	return WRONGINPUT;
 }
 
+const char *ScalarConverter::ScalarWrongArgCountException::what() const throw() { return ARGCOUNT; }
+
 /*__________________________________________ FUNCTIONS __________________________________________*/
+
+void ScalarConverter::convert(std::string &input) { (void)input; }
