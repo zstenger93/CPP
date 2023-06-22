@@ -64,6 +64,7 @@ void Bureaucrat::DecrementGrade() {
 }
 
 void Bureaucrat::signForm(AForm &form) {
+	std::cout << "what the fuck" << std::endl;
 	try {
 		form.beSigned(*this);
 	} catch (const std::exception &error) {

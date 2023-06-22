@@ -48,6 +48,7 @@ const char *AForm::AFormIsAlreadySignedExecption::what() const throw() { return 
 const char *AForm::AFormRobotomyFailedException::what() const throw() { return RFE; }
 const char *AForm::AFormCreationFailedException::what() const throw() { return FCF; }
 const char *AForm::AFormCannotExecuteException::what() const throw() { return CEE; }
+const char *AForm::AFormIsNullException::what() const throw() { return ISNULL; }
 
 /*___________________________________________ GETTERS ___________________________________________*/
 

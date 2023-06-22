@@ -1,3 +1,5 @@
+#include <exception>
+
 #include "../includes/Bureaucrat.hpp"
 #include "../includes/Intern.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
@@ -33,7 +35,36 @@ static void TestMakeForm() {
 	AForm *shrubberyCreation = nullptr;
 	AForm *robotomyRequest = nullptr;
 	AForm *presidentalPardon = nullptr;
-	AForm *iDontExist = nullptr;
+
+	try {
+		shrubberyCreation = brainDamage.makeForm("shrubbery creation", "home");
+		robotomyRequest = brainDamage.makeForm("robotomy request", "idiotTasks");
+		presidentalPardon = brainDamage.makeForm("presidental pardon", "TVA");
+	} catch (const std::exception &error) {
+		std::cout << RED << error.what() << END << std::endl;
+	}
+	std::cout << std::endl << std::endl;
+	loki.signForm(*shrubberyCreation);
+	loki.executeForm(*shrubberyCreation);
+	std::cout << std::endl;
+	loki.signForm(*robotomyRequest);
+	loki.executeForm(*robotomyRequest);
+	std::cout << std::endl;
+	loki.signForm(*presidentalPardon);
+	loki.executeForm(*presidentalPardon);
+	std::cout << std::endl << std::endl;
+	delete presidentalPardon;
+	delete robotomyRequest;
+	delete shrubberyCreation;
+}
+
+static void TestMakeMoreForm() {
+	Bureaucrat loki("Loki", 1);
+	Intern brainDamage;
+	AForm *shrubberyCreation = NULL;
+	AForm *robotomyRequest = NULL;
+	AForm *presidentalPardon = NULL;
+	AForm *iDontExist = NULL;
 
 	try {
 		shrubberyCreation = brainDamage.makeForm("shrubbery creation", "home");
@@ -47,34 +78,25 @@ static void TestMakeForm() {
 	}
 	std::cout << std::endl << std::endl;
 	loki.signForm(*shrubberyCreation);
-	loki.signForm(*robotomyRequest);
-	loki.signForm(*presidentalPardon);
 	loki.executeForm(*shrubberyCreation);
+	std::cout << std::endl;
+	loki.signForm(*robotomyRequest);
 	loki.executeForm(*robotomyRequest);
+	std::cout << std::endl;
+	loki.signForm(*presidentalPardon);
 	loki.executeForm(*presidentalPardon);
-	if (iDontExist != nullptr) {
+	std::cout << std::endl;
+	try {
+		if (iDontExist == NULL) throw(AForm::AFormIsNullException());
 		loki.signForm(*iDontExist);
 		loki.executeForm(*iDontExist);
-	} 
-	std::cout << std::endl << std::endl;
-	delete shrubberyCreation;
-	delete robotomyRequest;
-	delete presidentalPardon;
-	delete iDontExist;
-}
-
-static void TestMakeMoreForm() {
-	try {
-		Bureaucrat loki("Loki", 130);
-		ShrubberyCreationForm everSaid("kocsogfa");
-
-		std::cout << std::endl;
-		loki.signForm(everSaid);
-		everSaid.execute(loki);
-		std::cout << std::endl;
 	} catch (const std::exception &error) {
-		std::cout << RED << error.what() << END << std::endl;
+		std::cout << "iDontExist" << RED << error.what() << END << std::endl << std::endl;
 	}
+	delete iDontExist;
+	delete presidentalPardon;
+	delete robotomyRequest;
+	delete shrubberyCreation;
 }
 
 int main(int argc, char **argv) {

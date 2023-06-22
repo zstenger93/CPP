@@ -17,5 +17,6 @@
 #define PARDONED " has been pardoned by Zaphod Beeblebrox"
 #define FCF " form creation failed. The requested form doesn't exist."
 #define DUMB "Our Intern is dumb so the "
+#define ISNULL ": The form passed for signature request or execution is NULL."
 
 #endif

@@ -24,6 +24,7 @@ Intern &Intern::operator=(Intern const &rhs) {
 AForm *Intern::makeForm(std::string const &formName, std::string const &target) const {
 	int caseId;
 	AForm *form = nullptr;
+
 	std::string forms[3] = {"shrubbery creation", "robotomy request", "presidental pardon"};
 
 	for (caseId = -1; caseId < 3; caseId++)

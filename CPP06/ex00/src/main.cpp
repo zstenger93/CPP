@@ -23,4 +23,17 @@ static int GetId(int argc, char **argv, int TestCaseId) {
 	return TestCaseId;
 }
 
-int main(int argc, char **argv) {}
+
+int main(int argc, char **argv) {
+	int TestCaseId = GetId(argc, argv, 0);
+
+	switch (TestCaseId) {
+		case 1:
+			break;
+		case 2:
+			break;
+		default:
+			AvailableTestCases();
+			break;
+	}
+}
