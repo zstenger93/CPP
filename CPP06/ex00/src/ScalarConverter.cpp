@@ -1,5 +1,18 @@
 #include "../includes/ScalarConverter.hpp"
 
+/*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
+
+ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter(ScalarConverter const &cpy) { *this = cpy; }
+ScalarConverter::~ScalarConverter() {}
+
+/*_____________________________________ OPERATOR OVERLOADS ______________________________________*/
+
+ScalarConverter &ScalarConverter::operator=(ScalarConverter const &rhs) {
+	if (this != &rhs) *this = rhs;
+	return *this;
+}
+
 /*_______________________________________ NESTED CLASSES ________________________________________*/
 
 const char *ScalarConverter::WrongInputException::what() const throw() { return WRONGINPUT; }

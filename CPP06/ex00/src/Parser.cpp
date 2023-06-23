@@ -1,18 +1,5 @@
 #include "../includes/ScalarConverter.hpp"
 
-/*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
-
-ScalarConverter::ScalarConverter() {}
-ScalarConverter::ScalarConverter(ScalarConverter const &cpy) { *this = cpy; }
-ScalarConverter::~ScalarConverter() {}
-
-/*_____________________________________ OPERATOR OVERLOADS ______________________________________*/
-
-ScalarConverter &ScalarConverter::operator=(ScalarConverter const &rhs) {
-	if (this != &rhs) *this = rhs;
-	return *this;
-}
-
 /*__________________________________________ INITIALIZE _________________________________________*/
 
 int ScalarConverter::type = 0;
