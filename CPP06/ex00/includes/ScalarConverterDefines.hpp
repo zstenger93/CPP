@@ -12,4 +12,9 @@
 #define TOOMARG "Too many arguments, please provide only one."
 #define ARGCOUNT "The program needs only one argument."
 
+#define PCHAR "\033[1;4;34mchar:\033[0;39m   \033[1;39m"
+#define PINT "\033[1;4;34mint:\033[0;39m    \033[1;39m"
+#define PFLOAT "\033[1;4;34mfloat:\033[0;39m  \033[1;39m"
+#define PDOUBLE "\033[1;4;34mdouble:\033[0;39m \033[1;39m"
+
 #endif

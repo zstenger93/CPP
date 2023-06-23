@@ -1,5 +1,24 @@
 #include "../includes/ScalarConverter.hpp"
 
+/*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
+
+ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter(ScalarConverter const &cpy) { *this = cpy; }
+ScalarConverter::~ScalarConverter() {}
+
+/*_____________________________________ OPERATOR OVERLOADS ______________________________________*/
+
+ScalarConverter &ScalarConverter::operator=(ScalarConverter const &rhs) {
+	if (this != &rhs) *this = rhs;
+	return *this;
+}
+
+/*__________________________________________ INITIALIZE _________________________________________*/
+
+int ScalarConverter::type = 0;
+
+/*__________________________________________ FUNCTIONS __________________________________________*/
+
 bool ScalarConverter::argCount(int argc) {
 	if (argc < 2) return std::cout << NOARG << std::endl, false;
 	if (argc > 2) return std::cout << TOOMARG << std::endl, false;
@@ -10,9 +29,10 @@ bool ScalarConverter::parser(std::string &input) {
 	if (input.size() == 0) return false;
 	if (ScalarConverter::containsOnlySpace(input)) return false;
 	if (ScalarConverter::hasInvalidSpace(input)) return false;
-	if (ScalarConverter::isInf(input)) return true;
-	if (ScalarConverter::isValidNumber(input)) return true;
-	std::cout << input << std::endl;
+	std::string trimmedInput = trimSpace(input, " ");
+	if (ScalarConverter::isInf(trimmedInput)) return true;
+	if (ScalarConverter::isValidNumber(trimmedInput)) return true;
+	if (ScalarConverter::isValidCharString(trimmedInput)) return true;
 	return false;
 }
 
@@ -25,7 +45,6 @@ bool ScalarConverter::containsOnlySpace(std::string &input) {
 bool ScalarConverter::hasInvalidSpace(std::string &input) {
 	std::string trimmedString = trimSpace(input, " ");
 	if (trimmedString.find(" ") != std::string::npos) return true;
-	//might trim float f off
 	return false;
 }
 
@@ -36,18 +55,26 @@ std::string ScalarConverter::trimSpace(std::string &input, std::string toTrim) {
 }
 
 bool ScalarConverter::isInf(std::string &input) {
-	std::string inf[4] = {"inf", "-inf", "+inf", "nan"};
-	for (int type = 0; type < 4; type++)
-		if (input.compare(inf[type]) == 0) return true;
+	std::string inf[8] = {"inf", "-inf", "+inf", "nan", "inff", "-inff", "+inff", "nanf"};
+	for (int infType = 0; infType < 8; infType++)
+		if (input.compare(inf[infType]) == 0) return type = INF, true;
 	return false;
 }
 
 bool ScalarConverter::isValidNumber(std::string &input) {
 	int dotCount = 0;
+	if (input[input.size() - 1] == 'f') input.erase(input.size() - 1);
 	for (std::string::size_type i = 0; i < input.length(); i++) {
 		if (input[i] == '.') dotCount++;
-		if (dotCount > 1) return false;
 		if ((input[i] > '9' || input[i] < '0') && input[i] != '.') return false;
+		if (dotCount > 1) return false;
 	}
-	return true;
+	return type = NUMBER, true;
+}
+
+bool ScalarConverter::isValidCharString(std::string &input) {
+	if (input.length() > 1) return false;
+	for (std::string::size_type i = 0; i < input.length(); i++)
+		if (input[i] < '!' || input[i] > '~') return false;
+	return type = CHAR, true;
 }
