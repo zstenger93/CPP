@@ -53,17 +53,13 @@ void ScalarConverter::convertNumber(std::string &input) {
 	if (input[input.size() - 1] == 'f') input.erase(input.size() - 1);
 	std::istringstream iss(input);
 	iss >> number;
-	if (number == 42)
-		ScalarConverter::fortyTwo();
-	else {
-		if (number > 32 && 127 > number)
-			std::cout << PCHAR << static_cast<char>(number) << std::endl;
-		else
-			std::cout << PCHAR << "Non displayable" << std::endl;
-		ScalarConverter::convertInt(number);
-		ScalarConverter::convertFloat(number);
-		ScalarConverter::convertDouble(number);
-	}
+	if (number > 32 && 127 > number)
+		std::cout << PCHAR << static_cast<char>(number) << std::endl;
+	else
+		std::cout << PCHAR << "Non displayable" << std::endl;
+	ScalarConverter::convertInt(number);
+	ScalarConverter::convertFloat(number);
+	ScalarConverter::convertDouble(number);
 }
 
 void ScalarConverter::convertInt(double &number) {
@@ -87,11 +83,4 @@ void ScalarConverter::convertDouble(double &number) {
 		std::cout << PDOUBLE << "impossible" << std::endl;
 	else
 		std::cout << PDOUBLE << std::fixed << std::setprecision(1) << number << std::endl;
-}
-
-void ScalarConverter::fortyTwo() {
-	std::cout << PCHAR << "  the" << std::endl;
-	std::cout << PINT << "meaning" << std::endl;
-	std::cout << PFLOAT << "  of" << std::endl;
-	std::cout << PDOUBLE << " life" << std::endl;
 }

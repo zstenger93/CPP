@@ -1,4 +1,4 @@
-NAME	= intern
+NAME	= serializer
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -6,6 +6,7 @@ SRC_DIR = src/
 OBJ_DIR = objects/
 
 SRC		= main \
+		  Serializer \
 		 
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))

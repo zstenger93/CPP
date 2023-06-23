@@ -44,7 +44,6 @@ class ScalarConverter {
 	static void convertFloat(double &number);
 	static void convertDouble(double &number);
 	static void convertInfinity(std::string &input);
-	static void fortyTwo();
 };
 
 #endif
