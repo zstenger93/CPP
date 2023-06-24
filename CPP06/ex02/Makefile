@@ -1,4 +1,4 @@
-NAME	= intern
+NAME	= identity
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -6,6 +6,7 @@ SRC_DIR = src/
 OBJ_DIR = objects/
 
 SRC		= main \
+		  Identify \
 		 
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
