@@ -39,7 +39,7 @@ void Identify::identify(Base *p) {
 	else if (dynamic_cast<C *>(p) != NULL)
 		imessage('C');
 	else
-		std::cout << RED << "bad casting" << std::endl;
+		std::cout << RED << BADCAST << std::endl;
 }
 
 void Identify::identify(Base &p) {
@@ -58,5 +58,5 @@ void Identify::identify(Base &p) {
 		return rmessage('C');
 	} catch (std::exception &error) {
 	}
-	std::cout << RED << "bad reference" << std::endl;
+	std::cout << RED << BADREF << std::endl;
 }

@@ -18,6 +18,8 @@
 #define CREATED "\033[1;33m was randomly created.\033[1;39m"
 #define IS "\033[1;34m pointer is identified as: \033[1;39m"
 #define REF "\033[1;34m reference is from class: \033[1;39m"
+#define BADCAST "bad casting, identification failed."
+#define BADREF "bad reference, casting failed."
 
 class Base;
 
