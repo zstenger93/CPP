@@ -5,13 +5,13 @@
 
 #include <iostream>
 
-template <typename Num>
-void iter(Num *array, size_t length, void (*func)(Num)) {
+template <typename T>
+void iter(T *array, size_t length, void (*func)(T)) {
 	for (size_t i = 0; i < length; i++) func(array[i]);
 }
 
-template <typename Num>
-void printNum(Num element) {
+template <typename T>
+void printNum(T element) {
 	std::cout << element << " ";
 }
 

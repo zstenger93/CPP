@@ -3,19 +3,19 @@
 
 #include <iostream>
 
-template <typename Num>
-Num max(Num a, Num b) {
+template <typename T>
+T max(T a, T b) {
 	return (a > b) ? a : b;
 }
 
-template <typename Num>
-Num min(Num a, Num b) {
+template <typename T>
+T min(T a, T b) {
 	return (a < b) ? a : b;
 }
 
-template <typename Num>
-void swap(Num &a, Num &b) {
-	Num tmp = a;
+template <typename T>
+void swap(T &a, T &b) {
+	T tmp = a;
 	a = b;
 	b = tmp;
 }
