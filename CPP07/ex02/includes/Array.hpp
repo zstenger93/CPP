@@ -9,7 +9,7 @@
 #define BLUE "\033[1;34m"
 #define YELLOW "\033[1;33m"
 
-template <typename T>
+template <typename A>
 class Array {
    public:
 	Array() : elements(nullptr), arraySize(0) {}
@@ -18,11 +18,11 @@ class Array {
 		if (n == 0)
 			elements = nullptr;
 		else
-			elements = new T[arraySize]();
+			elements = new A[arraySize]();
 	}
 
 	Array(const Array& cpy) : arraySize(cpy.arraySize) {
-		elements = new T[arraySize];
+		elements = new A[arraySize];
 		for (unsigned int i = 0; i < arraySize; ++i) {
 			elements[i] = cpy.elements[i];
 		}
@@ -32,7 +32,7 @@ class Array {
 		if (this != &rhs) {
 			delete[] elements;
 			arraySize = rhs.arraySize;
-			elements = new T[arraySize];
+			elements = new A[arraySize];
 			for (unsigned int i = 0; i < arraySize; ++i) {
 				elements[i] = rhs.elements[i];
 			}
@@ -42,7 +42,7 @@ class Array {
 
 	~Array() { delete[] elements; }
 
-	T& operator[](unsigned int index) {
+	A& operator[](unsigned int index) {
 		if (index >= arraySize) {
 			throw std::exception();
 		}
@@ -57,7 +57,7 @@ class Array {
 	unsigned int size() const { return arraySize; }
 
    private:
-	T* elements;
+	A* elements;
 	unsigned int arraySize;
 };
 
