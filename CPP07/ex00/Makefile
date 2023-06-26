@@ -1,4 +1,4 @@
-NAME	= identity
+NAME	= whatever
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
