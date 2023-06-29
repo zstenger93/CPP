@@ -42,12 +42,12 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 		"         666 6666\n"
 		"        66 I AM 66\n"
 		"        66 GROOT 66\n"
-		"         66    66\n"
-		"          666666\n"
-		"            66\n"
-		"            66\n"
-		"            66\n"
-		"____________66____________\n";
+		"         66 ಥ⁠‿⁠ಥ 6\n"
+		"          6666666\n"
+		"            666\n"
+		"            666\n"
+		"            666\n"
+		"____________666____________\n";
 
 	if (isAlreadySigned() == false) throw(AFormIsAlreadySignedExecption());
 	if (executor.getGrade() > ShrubberyCreationForm::execReq){
