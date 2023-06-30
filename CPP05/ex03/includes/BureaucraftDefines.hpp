@@ -19,9 +19,9 @@
 #define GTL "\033[1;31m's grade is too low, cannot initialize.\n\033[1;39m"
 #define GTH "\033[1;31m's grade is too high, cannot initialize.\n\033[1;39m"
 
-#define BAD_INPUT "Wrong testcase ID. Available options are:"
-#define TEST0 "      nothing -> options"
-#define TEST1 "         1    -> test for making valid forms"
-#define TEST2 "         2    -> test for trying to make non existent forms"
+#define BAD_INPUT "Wrong testcase ID. Available options are:\n\n"
+#define TEST0 "      nothing -> options\n"
+#define TEST1 "         1    -> test for making valid forms\n"
+#define TEST2 "         2    -> test for trying to make non existent forms\n"
 
 #endif

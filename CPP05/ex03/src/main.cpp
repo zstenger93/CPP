@@ -7,11 +7,9 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 
 static void AvailableTestCases() {
-	std::cout << BAD_INPUT << std::endl << std::endl;
-	std::cout << TEST0 << std::endl;
-	std::cout << TEST1 << std::endl;
-	std::cout << TEST2 << std::endl;
-	std::cout << std::endl;
+	std::cout << BAD_INPUT << TEST0 << TEST1 << TEST2 << std::endl;
+	std::cout << YELLOW << W1 << W2 << W3 << W4 << W5 << W6 << W7 << W8 << W9 << W10 << W11 << W12 << W13
+			  << W14 << W15 << W16 << W17 << END << std::endl;
 }
 
 static int GetId(int argc, char **argv, int TestCaseId) {
