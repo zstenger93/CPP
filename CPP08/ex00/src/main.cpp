@@ -9,6 +9,7 @@ int main() {
 	vector.push_back(5);
 
 	std::list<int> list;
+	
 	list.push_back(10);
 	list.push_back(20);
 	list.push_back(30);
