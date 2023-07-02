@@ -24,22 +24,22 @@ class Form {
 
 	class FormGradeTooLowException : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class FormGradeTooHighException : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class FormCannotBeSignedExecption : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class FormIsAlreadySignedExecption : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
    private:

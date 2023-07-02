@@ -1,5 +1,5 @@
 NAME	= whatever
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
+CFLAGS	= -Wall -Wextra -Werror -Wconversion -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
 SRC_DIR = src/

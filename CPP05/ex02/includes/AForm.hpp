@@ -26,32 +26,32 @@ class AForm {
 
 	class AFormGradeTooLowException : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class AFormGradeTooHighException : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class AFormCannotBeSignedExecption : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class AFormIsAlreadySignedExecption : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class AFormCannotExecuteException : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class AFormRobotomyFailedException : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
    private:
