@@ -17,12 +17,12 @@ class ScalarConverter {
 
 	class WrongInputException : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
 	class ArgCountException : public std::exception {
 	   public:
-		virtual const char *what() const throw();
+		const char *what() const throw();
 	};
 
    private:
