@@ -93,6 +93,8 @@ Subtype polymorphism, abstract classes, interfaces
 
 # cpp 05
 
+<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/anyway.png">
+
 # cpp 06
 
 # cpp 07
