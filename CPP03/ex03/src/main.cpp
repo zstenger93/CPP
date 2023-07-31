@@ -23,6 +23,8 @@ int main(int argc, char **argv) {
 	VanegyCigid.attack("FogatlanVampir");
 
 	std::cout << std::endl;
+	std::cout << LakatosRonaldo.getPoints() << std::endl;
+	std::cout << std::endl;
 
 	LakatosRonaldo.attack("KingOfBlaha");
 	KingOfBlaha.takeDamage(5);

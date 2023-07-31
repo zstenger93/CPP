@@ -13,6 +13,7 @@ class ScavTrap : public virtual ClapTrap {
 		ScavTrap &operator=(ScavTrap const &rhs);
 		void guardGate(void);
 		void attack(const std::string &target);
+		int getPoints();
 };
 
 #endif
