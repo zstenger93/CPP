@@ -1,6 +1,7 @@
 #include "../includes/Span.hpp"
 
 #include <algorithm>
+#include <cstdlib>
 #include <vector>
 
 /*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
@@ -37,6 +38,15 @@ void Span::addNumber(int number) {
 	numbers.push_back(number);
 }
 
+void Span::fillSpan() {
+	std::srand(std::time(NULL));
+	for (unsigned long int i = 0; i < spanSize; i++) {
+		numbers.push_back(rand() % RAND_MAX + 1);
+	}
+}
+
+int Span::size() { return numbers.size(); }
+
 unsigned int Span::shortestSpan() {
 	if (numbers.size() < 2) throw(noSpanFoundException());
 	std::vector<int> tmp = numbers;
@@ -44,11 +54,13 @@ unsigned int Span::shortestSpan() {
 	unsigned int shortest = *(tmp.begin() + 1) - *(tmp.begin());
 	for (std::vector<int>::iterator i = tmp.begin(); i < tmp.end(); i++)
 		if ((unsigned int)(*(i + 1) - *i) < shortest) shortest = *(i + 1) - *i;
+	std::cout << "\033[1;32mThe shortest span is: \033[0;39m";
 	return shortest;
 }
 
 unsigned int Span::longestSpan() {
 	if (numbers.size() < 2) throw(noSpanFoundException());
+	std::cout << "\033[1;32mThe longest span is: \033[0;39m";
 	return *std::max_element(numbers.begin(), numbers.end()) -
 		   *std::min_element(numbers.begin(), numbers.end());
 }

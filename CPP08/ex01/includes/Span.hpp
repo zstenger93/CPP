@@ -17,8 +17,10 @@
 
 #define BAD_INPUT "Wrong testcase ID. Available options are:\n\n      nothing -> options\n"
 #define TEST1 "         1    -> test for shortest span\n         2    -> test for longest span\n"
-#define TEST2 "         3    -> test for both\n         4    -> test for full span\n"
-#define TEST3 "         5    -> test for no span\n         6    -> test for no span\n"
+#define TEST2 "         3    -> test for both\n         4    -> test for 10k span\n"
+#define TEST3                                                                                   \
+	"         5    -> test for full span\n         6    -> test for no span\n         7    -> " \
+	"test fillspan\n"
 
 class Span {
    public:
@@ -30,6 +32,8 @@ class Span {
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 	void addNumber(int number);
+	void fillSpan();
+	int size();
 
 	template <typename Iterate>
 	void addNumber(Iterate begin, Iterate end) {

@@ -8,7 +8,7 @@ static void AvailableTestCases() { std::cout << BAD_INPUT << TEST1 << TEST2 << T
 static int GetId(int argc, char **argv, int TestCaseId) {
 	if (argc > 1) {
 		int input = std::atoi(argv[1]);
-		if (input < 1 || input > 6) return AvailableTestCases(), exit(1), 1;
+		if (input < 1 || input > 7) return AvailableTestCases(), exit(1), 1;
 		for (int i = 1; i >= 0; i++) {
 			if (i == input) {
 				TestCaseId = i;
@@ -28,6 +28,7 @@ void TestShortestSpan() {
 		span.addNumber(25);
 		span.addNumber(8);
 		span.addNumber(14);
+		std::cout << "The spansize is: " << span.size() << std::endl;
 		std::cout << span.shortestSpan() << std::endl;
 	} catch (const std::exception &error) {
 		std::cout << RED << error.what() << END << std::endl;
@@ -42,6 +43,7 @@ void TestLongestSpan() {
 		span.addNumber(25);
 		span.addNumber(8);
 		span.addNumber(14);
+		std::cout << "The spansize is: " << span.size() << std::endl;
 		std::cout << span.longestSpan() << std::endl;
 	} catch (const std::exception &error) {
 		std::cout << RED << error.what() << END << std::endl;
@@ -56,6 +58,7 @@ void TestBothSpan() {
 		span.addNumber(25);
 		span.addNumber(8);
 		span.addNumber(14);
+		std::cout << "The spansize is: " << span.size() << std::endl;
 		std::cout << span.shortestSpan() << std::endl;
 		std::cout << span.longestSpan() << std::endl;
 	} catch (const std::exception &error) {
@@ -68,12 +71,14 @@ void TestTenK() {
 		Span span = Span(10000);
 		std::srand(std::time(NULL));
 		for (int size = 0; size < 10000; size++) span.addNumber(rand() % RAND_MAX + 1);
+		std::cout << "The spansize is: " << span.size() << std::endl;
 		std::cout << span.shortestSpan() << std::endl;
 		std::cout << span.longestSpan() << std::endl;
 	} catch (const std::exception &error) {
 		std::cout << RED << error.what() << END << std::endl;
 	}
 }
+
 
 void TestSpanIsFull() {
 	try {
@@ -94,12 +99,24 @@ void TestNoSpan() {
 	try {
 		Span span = Span(1);
 		span.addNumber(54);
+		std::cout << "The spansize is: " << span.size() << std::endl;
 		std::cout << span.shortestSpan() << std::endl;
 	} catch (const std::exception &error) {
 		std::cout << RED << error.what() << END << std::endl;
 	}
 }
 
+void TestFillSpan() {
+	try {
+		Span span = Span(20000);
+		span.fillSpan();
+		std::cout << "The spansize is: " << span.size() << std::endl;
+		std::cout << span.shortestSpan() << std::endl;
+		std::cout << span.longestSpan() << std::endl;
+	} catch (const std::exception &error) {
+		std::cout << RED << error.what() << END << std::endl;
+	}
+}
 int main(int argc, char **argv) {
 	int TestCaseId = GetId(argc, argv, 0);
 
@@ -121,6 +138,9 @@ int main(int argc, char **argv) {
 			break;
 		case 6:
 			TestNoSpan();
+			break;
+		case 7:
+			TestFillSpan();
 			break;
 		default:
 			AvailableTestCases();
