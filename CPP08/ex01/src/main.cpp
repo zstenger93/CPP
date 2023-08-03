@@ -13,7 +13,6 @@ static int GetId(int argc, char **argv, int TestCaseId) {
 			if (i == input) {
 				TestCaseId = i;
 				return TestCaseId;
-				;
 			}
 		}
 	}
@@ -79,7 +78,6 @@ void TestTenK() {
 	}
 }
 
-
 void TestSpanIsFull() {
 	try {
 		Span span = Span(5);
@@ -117,6 +115,22 @@ void TestFillSpan() {
 		std::cout << RED << error.what() << END << std::endl;
 	}
 }
+
+void TestInvalidInput() {
+	try {
+		Span span = Span(0);
+		span.addNumber(54);
+		span.addNumber(6);
+		span.addNumber(25);
+		span.addNumber(8);
+		span.addNumber(14);
+		std::cout << "The spansize is: " << span.size() << std::endl;
+		std::cout << span.shortestSpan() << std::endl;
+	} catch (const std::exception &error) {
+		std::cout << RED << error.what() << END << std::endl;
+	}
+}
+
 int main(int argc, char **argv) {
 	int TestCaseId = GetId(argc, argv, 0);
 
@@ -141,6 +155,9 @@ int main(int argc, char **argv) {
 			break;
 		case 7:
 			TestFillSpan();
+			break;
+		case 8:
+			TestInvalidInput();
 			break;
 		default:
 			AvailableTestCases();

@@ -13,7 +13,9 @@ Span::Span(Span const &cpy) {
 	this->numbers = cpy.numbers;
 }
 
-Span::Span(const unsigned int &nums) : spanSize(nums) {}
+Span::Span(const unsigned int &nums) : spanSize(nums) {
+	if (spanSize < 1) throw spanInvalidSizeException();
+}
 Span::~Span() {}
 
 /*_____________________________________ OPERATOR OVERLOADS ______________________________________*/
@@ -30,6 +32,7 @@ Span &Span::operator=(Span const &rhs) {
 
 const char *Span::noSpanFoundException::what() const throw() { return NSPF; }
 const char *Span::spanAlreadyFullException::what() const throw() { return SPAF; }
+const char *Span::spanInvalidSizeException::what() const throw() { return INVS; }
 
 /*__________________________________________ FUNCTIONS __________________________________________*/
 
@@ -40,15 +43,13 @@ void Span::addNumber(int number) {
 
 void Span::fillSpan() {
 	std::srand(std::time(NULL));
-	for (unsigned long int i = 0; i < spanSize; i++) {
-		numbers.push_back(rand() % RAND_MAX + 1);
-	}
+	for (unsigned long int i = 0; i < spanSize; i++) numbers.push_back(rand() % RAND_MAX + 1);
 }
 
 int Span::size() { return numbers.size(); }
 
 unsigned int Span::shortestSpan() {
-	if (numbers.size() < 2) throw(noSpanFoundException());
+	if (numbers.size() < 2) throw noSpanFoundException();
 	std::vector<int> tmp = numbers;
 	std::sort(tmp.begin(), tmp.end());
 	unsigned int shortest = *(tmp.begin() + 1) - *(tmp.begin());
@@ -59,7 +60,7 @@ unsigned int Span::shortestSpan() {
 }
 
 unsigned int Span::longestSpan() {
-	if (numbers.size() < 2) throw(noSpanFoundException());
+	if (numbers.size() < 2) throw noSpanFoundException();
 	std::cout << "\033[1;32mThe longest span is: \033[0;39m";
 	return *std::max_element(numbers.begin(), numbers.end()) -
 		   *std::min_element(numbers.begin(), numbers.end());

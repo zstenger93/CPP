@@ -8,6 +8,7 @@
 #include <vector>
 
 #define NSPF "No span can be found."
+#define INVS "Invalid size has been passed to span, it must be 1 or above."
 #define SPAF "The span is already full, cannot accept more numbers."
 
 #define RED "\033[1;31m"
@@ -37,7 +38,7 @@ class Span {
 
 	template <typename Iterate>
 	void addNumber(Iterate begin, Iterate end) {
-		if (spanSize < numbers.size() + end - begin) throw(spanAlreadyFullException());
+		if (spanSize < numbers.size() + end - begin) throw spanAlreadyFullException();
 		numbers.insert(numbers.end(), begin, end);
 	}
 
@@ -47,6 +48,11 @@ class Span {
 	};
 
 	class spanAlreadyFullException : public std::exception {
+	   public:
+		const char *what() const throw();
+	};
+
+	class spanInvalidSizeException : public std::exception {
 	   public:
 		const char *what() const throw();
 	};
