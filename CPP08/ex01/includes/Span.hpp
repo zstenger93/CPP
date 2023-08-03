@@ -21,7 +21,7 @@
 #define TEST2 "         3    -> test for both\n         4    -> test for 10k span\n"
 #define TEST3                                                                                   \
 	"         5    -> test for full span\n         6    -> test for no span\n         7    -> " \
-	"test fillspan\n"
+	"test fillspan\n         8    -> test for invalid span\n"
 
 class Span {
    public:
