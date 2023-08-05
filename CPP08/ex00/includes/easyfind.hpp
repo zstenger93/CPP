@@ -8,7 +8,7 @@
 #include <list>
 #include <vector>
 
-#define NOTFOUND "Not found by easyfind so it was hard to find."
+#define NOTFOUND "\033[1;31mNot found by easyfind so it was hard to find.\033[0;39m"
 
 template <typename T>
 int easyfind(T &container, int num) {
