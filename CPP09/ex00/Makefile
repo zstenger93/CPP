@@ -6,6 +6,7 @@ SRC_DIR = src/
 OBJ_DIR = objects/
 
 SRC		= main \
+		  BitcoinExchange \
 
 SRCS	= $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC)))
 OBJS	= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
