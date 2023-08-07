@@ -1,18 +1,21 @@
 #include "../includes/BitcoinExchange.hpp"
 
 int main(int argc, char **argv) {
+	Bitcoin coin;
+
 	try {
-		if (argc != 2) throw;
-		if (isInputFileCorrect(argv[1]) == false) throw;
-		// read the database file and store it in a map
-		// read the argument file to a map as well
+		std::string inputFile = argv[1];
+		coin.isInputCorrect(argc, inputFile);
+		coin.exchange();
 	} catch (std::exception &error) {
-		
-    }
+		std::cout << error.what() << std::endl;
+	}
+	return 0;
 }
 
-bool isInputFileCorrect(char *argv) {
-
-
-	return true;
+void Bitcoin::isInputCorrect(int argc, std::string inputFile) {
+	if (argc != 2) throw CustomException(WRONGARG);
+	if (inputFile.find(".csv") == false) throw CustomException(WRONGEXT);
+	// read the database file and store it in a map
+	// read the argument file to a map as well
 }
