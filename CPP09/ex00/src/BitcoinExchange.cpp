@@ -94,7 +94,7 @@ void Bitcoin::exchange() {
 	for (std::vector<std::string>::iterator inputIt = inputDataBase.begin();
 		 inputIt != inputDataBase.end(); inputIt++) {
 		std::string date = inputIt->substr(0, inputIt->find(" "));
-		if (validDate(inputIt->c_str()) == true && validValue(inputIt->c_str()) == true)
+		if (validDate(inputIt->c_str()) == true && validValue(inputIt->c_str()) == true) {
 			for (std::map<std::string, float>::iterator mapIt = csvDataBase.begin();
 				 mapIt != csvDataBase.end(); mapIt++) {
 				// if (mapIt->first.compare(0, 8, date.c_str(), 0, 8) == 0) {
@@ -103,20 +103,44 @@ void Bitcoin::exchange() {
 					std::cout << date << " => " << inputIt->substr(inputIt->find("|") + 2) << " = "
 							  << amIRichYet(inputIt->c_str(), mapIt->second) << std::endl;
 					break;
+				} else if (mapIt->first.compare(0, 8, date.c_str(), 0, 8) == 0) {
+					std::string closestDate;
+					std::string day = date.substr(8);		  // current day on the date
+					std::string subDate = date.substr(0, 8);  // the date without the day
+
+					// std::cout << subDate << std::endl;
+					// std::cout << day << std::endl;
+
+					std::vector<std::string>::iterator dayListIt = validDays.begin();
+					while (dayListIt != validDays.end()) {
+						if (dayListIt->compare(day) == 0) break;
+						dayListIt++;
+					}
+					std::map<std::string, float>::iterator closeIt = csvDataBase.begin();
+					closestDate = subDate + *dayListIt;
+					for (; closeIt != csvDataBase.end(); closeIt++) {
+						if (closeIt->first.compare(closestDate.c_str()) == 0) {
+							std::cout << date << " => " << inputIt->substr(inputIt->find("|") + 2)
+									  << " = " << amIRichYet(inputIt->c_str(), closeIt->second)
+									  << std::endl;
+						break;
+						}
+					}
 				}
 			}
+		}
 	}
 }
 
 bool Bitcoin::validDate(std::string line) {
 	std::string date = line.substr(0, line.find(" "));
-	// 1970
 	std::string year = date.substr(0, date.find("-"));
 	std::string month = date.substr(5, 2);
 	std::string day = date.substr(8, 2);
-	int int_Y, int_M, int_D;
 	std::stringstream yy(year), mm(month), dd(day);
+	int int_Y, int_M, int_D;
 	yy >> int_Y, mm >> int_M, dd >> int_D;
+
 	if (int_Y < 1970 || int_Y > 2042) return std::cout << WRONGYEAR << std::endl, false;
 	if (validMonth(month) == false) return std::cout << WRONGMONTH << std::endl, false;
 	if (validDay(day) == false) return std::cout << WRONGDAY << std::endl, false;

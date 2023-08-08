@@ -13,7 +13,7 @@
 #define WRONGMONTH "\033[1;31mError: The month is invalid.\033[0;39m"
 #define WRONGDAY "\033[1;31mError: The day is invalid.\033[0;39m"
 #define NOTPOS "\033[1;31mError: Not a positive number. The allowed range is 0-1000.\033[0;39m"
-#define TOOBIG "\033[1;31mError: Not a positive number. The allowed range is 0-1000.\033[0;39m"
+#define TOOBIG "\033[1;31mError: Too big number. The allowed range is 0-1000.\033[0;39m"
 
 class Bitcoin {
    public:
