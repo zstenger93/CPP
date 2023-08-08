@@ -1,44 +1,21 @@
 #include "../includes/BitcoinExchange.hpp"
 
-#include <sstream>
-#include <string>
-
 /*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
 
-Bitcoin::Bitcoin() : csvDataBase() {
+Bitcoin::Bitcoin() {
 	std::ifstream csvFile("./src/data.csv");
 	std::string line;
 
-	validMonths.insert(validMonths.end(), "01");
-	validMonths.insert(validMonths.end(), "02");
-	validMonths.insert(validMonths.end(), "03");
-	validMonths.insert(validMonths.end(), "04");
-	validMonths.insert(validMonths.end(), "05");
-	validMonths.insert(validMonths.end(), "06");
-	validMonths.insert(validMonths.end(), "07");
-	validMonths.insert(validMonths.end(), "08");
-	validMonths.insert(validMonths.end(), "09");
-	validMonths.insert(validMonths.end(), "10");
-	validMonths.insert(validMonths.end(), "11");
-	validMonths.insert(validMonths.end(), "12");
-	validDays.insert(validDays.end(), "01");
-	validDays.insert(validDays.end(), "02");
-	validDays.insert(validDays.end(), "03");
-	validDays.insert(validDays.end(), "04");
-	validDays.insert(validDays.end(), "05");
-	validDays.insert(validDays.end(), "06");
-	validDays.insert(validDays.end(), "07");
-	validDays.insert(validDays.end(), "08");
-	validDays.insert(validDays.end(), "09");
-	for (int i = 10; i < 32; i++) validDays.insert(validDays.end(), std::to_string(i));
+	setMonths();
 	if (csvFile.is_open()) {
-		int i = 0;
+		std::getline(csvFile, line);
+		if (line.compare("date,exchange_rate") != 0) throw std::logic_error("invalid file header");
 		while (std::getline(csvFile, line))
-			if (i++ > 0) csvDataBase.insert(std::make_pair(saveDate(line), saveRate(line)));
+			csvDataBase.insert(std::make_pair(saveDate(line), saveRate(line)));
 		csvFile.close();
 		return;
-	}
-	csvFile.close();
+	} else
+		throw std::logic_error(NODATA);
 }
 
 Bitcoin::~Bitcoin() {}
@@ -47,89 +24,61 @@ Bitcoin::Bitcoin(Bitcoin const &cpy) { *this = cpy; }
 /*_____________________________________ OPERATOR OVERLOADS ______________________________________*/
 
 Bitcoin &Bitcoin::operator=(Bitcoin const &cpy) {
+	this->months = cpy.months;
 	this->csvDataBase = cpy.csvDataBase;
 	return *this;
 }
 
 /*_______________________________________ NESTED CLASSES ________________________________________*/
-
-Bitcoin::CustomException::CustomException(const std::string &word) : message(word) {}
-const char *Bitcoin::CustomException::what() const throw() { return message.c_str(); }
-Bitcoin::CustomException::~CustomException() throw() {}
-
 /*__________________________________________ FUNCTIONS __________________________________________*/
 
-std::string Bitcoin::saveDate(std::string line) const {
-	size_t pos = line.find(",");
-	return line.substr(0, pos);
-}
-
-float Bitcoin::saveRate(std::string line) const {
-	size_t pos = line.find(",") + 1;
-	std::string rate = line.substr(pos);
-	return std::stof(rate);
-}
-
 void Bitcoin::isInputCorrect(int argc, char **argv) {
-	if (argc != 2) throw CustomException(WRONGARG);
+	if (argc != 2) throw std::logic_error(WRONGARG);
 	std::string inputFile = argv[1];
-	if (inputFile.find(".txt") == std::string::npos) throw CustomException(WRONGEXT);
-	saveInput(inputFile);
+	if (inputFile.find(".txt") == std::string::npos || inputFile.length() < 5)
+		throw std::logic_error(WRONGEXT);
+	chechkInputFile(inputFile);
 }
 
-void Bitcoin::saveInput(std::string inputFile) {
+void Bitcoin::chechkInputFile(std::string inputFile) {
+	std::string line, date, value;
+	std::ifstream input("./" + inputFile);
+	if (input.is_open()) {
+		std::getline(input, line);
+		if (line.compare("date | value") != 0) throw std::logic_error("invalid file header");
+		return input.close();
+	}
+}
+
+void Bitcoin::exchange(std::string inputFile) {
 	std::string line;
 	std::ifstream input("./" + inputFile);
 	if (input.is_open()) {
 		int i = 0;
 		while (std::getline(input, line))
-			if (i++ > 0) inputDataBase.insert(inputDataBase.end(), line);
-		// printVector(getInputData());
-		input.close();
+			if (i++ > 0)
+				if (validData(line) == true) {
+					std::string date = line.substr(0, line.find(" "));
+					float coins = std::atof(line.substr(line.find("|") + 2).c_str());
+					float value = getExchangeRate(date);
+					std::cout << date << " => " << coins << " = " << coins * value << std::endl;
+				}
+		return input.close();
 	}
-	input.close();
 }
 
-void Bitcoin::exchange() {
-	for (std::vector<std::string>::iterator inputIt = inputDataBase.begin();
-		 inputIt != inputDataBase.end(); inputIt++) {
-		std::string date = inputIt->substr(0, inputIt->find(" "));
-		if (validDate(inputIt->c_str()) == true && validValue(inputIt->c_str()) == true) {
-			for (std::map<std::string, float>::iterator mapIt = csvDataBase.begin();
-				 mapIt != csvDataBase.end(); mapIt++) {
-				// if (mapIt->first.compare(0, 8, date.c_str(), 0, 8) == 0) {
-				// IF NO DATE, NEED TO CHECK THE CLOSEST, BUT BEFORE THAT DATE
-				if (mapIt->first.compare(date.c_str()) == 0) {
-					std::cout << date << " => " << inputIt->substr(inputIt->find("|") + 2) << " = "
-							  << amIRichYet(inputIt->c_str(), mapIt->second) << std::endl;
-					break;
-				} else if (mapIt->first.compare(0, 8, date.c_str(), 0, 8) == 0) {
-					std::string closestDate;
-					std::string day = date.substr(8);		  // current day on the date
-					std::string subDate = date.substr(0, 8);  // the date without the day
+bool Bitcoin::validData(std::string line) {
+	std::string date = line.substr(0, line.find(" ")), value;
+	if (line.find("|") != std::string::npos) value = line.substr(line.find("|") + 2);
+	if (line.find("|") == std::string::npos) value = "-42";
+	if (validDate(date) != true || validValue(value) != true) return false;
+	return true;
+}
 
-					// std::cout << subDate << std::endl;
-					// std::cout << day << std::endl;
+std::string Bitcoin::saveDate(std::string line) const { return line.substr(0, line.find(",")); }
 
-					std::vector<std::string>::iterator dayListIt = validDays.begin();
-					while (dayListIt != validDays.end()) {
-						if (dayListIt->compare(day) == 0) break;
-						dayListIt++;
-					}
-					std::map<std::string, float>::iterator closeIt = csvDataBase.begin();
-					closestDate = subDate + *dayListIt;
-					for (; closeIt != csvDataBase.end(); closeIt++) {
-						if (closeIt->first.compare(closestDate.c_str()) == 0) {
-							std::cout << date << " => " << inputIt->substr(inputIt->find("|") + 2)
-									  << " = " << amIRichYet(inputIt->c_str(), closeIt->second)
-									  << std::endl;
-						break;
-						}
-					}
-				}
-			}
-		}
-	}
+float Bitcoin::saveRate(std::string line) const {
+	return std::stof(line.substr(line.find(",") + 1));
 }
 
 bool Bitcoin::validDate(std::string line) {
@@ -143,44 +92,63 @@ bool Bitcoin::validDate(std::string line) {
 
 	if (int_Y < 1970 || int_Y > 2042) return std::cout << WRONGYEAR << std::endl, false;
 	if (validMonth(month) == false) return std::cout << WRONGMONTH << std::endl, false;
-	if (validDay(day) == false) return std::cout << WRONGDAY << std::endl, false;
+	if (validDay(day, month) == false) return std::cout << WRONGDAY << std::endl, false;
 	return true;
 }
 
 bool Bitcoin::validMonth(std::string month) {
-	std::vector<std::string>::iterator monthIt = validMonths.begin();
-	for (; monthIt != validMonths.end(); monthIt++)
-		if (monthIt->compare(month) == 0) return true;
+	std::map<int, int>::iterator monthIt = months.begin();
+	if (month[0] == '0' && month.length() == 2) month = month.substr(1);
+	for (; monthIt != months.end(); monthIt++)
+		if (monthIt->first == std::atoi(month.c_str())) return true;
 	return false;
 }
 
-bool Bitcoin::validDay(std::string day) {
-	std::vector<std::string>::iterator dayIt = validDays.begin();
-	for (; dayIt != validDays.end(); dayIt++)
-		if (dayIt->compare(day) == 0) return true;
+bool Bitcoin::validDay(std::string day, std::string month) {
+	std::map<int, int>::iterator monthIt = months.begin();
+	if (day[0] == '0' && day.length() == 2) day = day.substr(1);
+	if (month[0] == '0' && month.length() == 2) month = month.substr(1);
+	for (; monthIt != months.end(); monthIt++)
+		if (monthIt->first == std::atoi(month.c_str()) && std::atoi(day.c_str()) > 0 &&
+			monthIt->second >= std::atoi(day.c_str()))
+			return true;
 	return false;
 }
 
 bool Bitcoin::validValue(std::string line) {
-	std::string strValue = line.substr(line.find("|") + 2);
+	std::string strValue = line.substr(line.find("|") + 1);
 	std::stringstream numValue(strValue);
 	float num;
 	numValue >> num;
+	if (num == -42) return std::cout << INVALID << std::endl, false;
 	if (num < 0) return std::cout << NOTPOS << std::endl, false;
 	if (num > 1000) return std::cout << TOOBIG << std::endl, false;
 	return true;
 }
 
-float Bitcoin::amIRichYet(std::string line, float coins) {
-	std::string strValue = line.substr(line.find("|") + 2);
-	std::stringstream numValue(strValue);
-	float value;
-	numValue >> value;
-	return coins * value;
+float Bitcoin::getExchangeRate(std::string date) {
+	std::map<std::string, float>::iterator dataBase = csvDataBase.begin();
+	for (; dataBase != csvDataBase.end(); dataBase++)
+		if (dataBase->first.compare(date) == 0) return dataBase->second;
+	dataBase = csvDataBase.lower_bound(date);
+	return dataBase->second;
 }
 
 /*___________________________________________ SETTERS ___________________________________________*/
-/*___________________________________________ GETTERS ___________________________________________*/
 
-std::map<std::string, float> Bitcoin::getCsvData() const { return csvDataBase; }
-std::vector<std::string> Bitcoin::getInputData() const { return inputDataBase; }
+void Bitcoin::setMonths() {
+	months.insert(std::make_pair(1, 31));
+	months.insert(std::make_pair(2, 28));
+	months.insert(std::make_pair(3, 31));
+	months.insert(std::make_pair(4, 30));
+	months.insert(std::make_pair(5, 31));
+	months.insert(std::make_pair(6, 30));
+	months.insert(std::make_pair(7, 31));
+	months.insert(std::make_pair(8, 31));
+	months.insert(std::make_pair(9, 30));
+	months.insert(std::make_pair(10, 31));
+	months.insert(std::make_pair(11, 30));
+	months.insert(std::make_pair(12, 31));
+}
+
+/*___________________________________________ GETTERS ___________________________________________*/

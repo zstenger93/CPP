@@ -4,7 +4,7 @@ int main(int argc, char **argv) {
 	try {
 		Bitcoin coin;
 		coin.isInputCorrect(argc, argv);
-		coin.exchange();
+		coin.exchange(argv[1]);
 	} catch (std::exception &error) {
 		std::cout << error.what() << std::endl;
 	}
@@ -15,15 +15,11 @@ void Bitcoin::printMap(std::map<std::string, float> dataBaseType) {
 	std::map<std::string, float> print = dataBaseType;
 	int i = 0;
 	for (std::map<std::string, float>::iterator printIt = print.begin(); printIt != print.end();
-		 printIt++)
-		std::cout << i++ << ": " << printIt->first << " | " << printIt->second << std::endl;
-}
-
-void Bitcoin::printVector(std::vector<std::string> dataBaseType) {
-	std::vector<std::string> print = dataBaseType;
-	int i = 0;
-	for (std::vector<std::string>::iterator printIt = print.begin(); printIt != print.end();
-		 printIt++)
-		std::cout << i++ << ": " << *printIt << std::endl;
-	
+		 printIt++) {
+		if (printIt->second == -42)
+			std::cout << i++ << ": " << printIt->first.substr(0, 10) << std::endl;
+		else
+			std::cout << i++ << ": " << printIt->first.substr(0, 10) << " | " << printIt->second
+					  << std::endl;
+	}
 }
