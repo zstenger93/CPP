@@ -2,8 +2,9 @@
 
 int main(int argc, char **argv) {
 	try {
+		if (argc != 2) throw std::logic_error(WRONGARG);
 		Bitcoin coin;
-		coin.isInputCorrect(argc, argv);
+		coin.isInputCorrect(argv);
 		coin.exchange(argv[1]);
 	} catch (std::exception &error) {
 		std::cout << error.what() << std::endl;

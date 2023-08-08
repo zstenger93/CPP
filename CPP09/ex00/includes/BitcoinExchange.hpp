@@ -30,7 +30,7 @@ class Bitcoin {
 	float saveRate(std::string line) const;
 	std::string saveDate(std::string line) const;
 	// INPUT FILE
-	void isInputCorrect(int argc, char **argv);
+	void isInputCorrect(char **argv);
 	void chechkInputFile(std::string inputFile);
 	std::map<std::string, float> getCsvData() const;
 	// EXCHANGE AND VALUE CHECKS
