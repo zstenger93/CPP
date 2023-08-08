@@ -98,6 +98,7 @@ void Bitcoin::exchange() {
 			for (std::map<std::string, float>::iterator mapIt = csvDataBase.begin();
 				 mapIt != csvDataBase.end(); mapIt++) {
 				// if (mapIt->first.compare(0, 8, date.c_str(), 0, 8) == 0) {
+				// IF NO DATE, NEED TO CHECK THE CLOSEST, BUT BEFORE THAT DATE
 				if (mapIt->first.compare(date.c_str()) == 0) {
 					std::cout << date << " => " << inputIt->substr(inputIt->find("|") + 2) << " = "
 							  << amIRichYet(inputIt->c_str(), mapIt->second) << std::endl;
