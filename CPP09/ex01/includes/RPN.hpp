@@ -20,8 +20,8 @@
 #define VALID_ELEMENTS "0123456789 -+*/"
 
 #define SPACE "\033[1;31m           | \033[1;39m"
-#define SPACE_ "\033[1;31m           |-----------|\033[1;39m"
-#define RESULT "              \033[1;4;32mResult:\033[1;0;39m"
+#define SPACE_ "\033[1;31m |\n           |-----------|\033[1;39m"
+#define RESULT "              \033[1;4;32mResult:\033[1;0;39m\n                 "
 #define AREXP "\033[1;4;33mThe arithmetic expression is:\033[1;0;39m "
 #define EMPTYARG "\033[1;31mEmpty argument is not a valid input.\033[1;39m"
 #define TOOMANYSPACE "\033[1;31mConsecutive spaces in the input.\033[1;39m"

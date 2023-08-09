@@ -19,7 +19,6 @@ void RPN::getArithmeticExpression(std::string input) {
 	if (input.length() == 0) throw std::logic_error(EMPTYARG);
 	if (input.length() < 3) throw std::logic_error(TOOSHORT);
 	if (containsOnlyValidChars(input) == false) throw std::logic_error(INVALIDCHAR);
-	if (input[0] == ' ') input = input.substr(1);
 	arithmeticExpression = input;
 	std::cout << std::endl << AREXP << arithmeticExpression << std::endl;
 }
@@ -43,10 +42,10 @@ void RPN::executeArithmeticExpression() {
 			stackIt.push(arithmeticExpression[i] - '0');
 		} else if (isOperator(arithmeticExpression[i]) == true) {
 			stackIt.push(handleOperator(arithmeticExpression[i]));
-			std::cout << stackIt.top() << RED << " |" << std::endl << SPACE_ << std::endl;
+			std::cout << stackIt.top() << SPACE_ << std::endl;
 		}
 	}
-	std::cout << RESULT << std::endl << "                 " << stackIt.top() << std::endl;
+	std::cout << RESULT << stackIt.top() << std::endl;
 }
 
 bool RPN::isOperator(char character) {
