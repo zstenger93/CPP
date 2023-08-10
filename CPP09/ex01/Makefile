@@ -38,6 +38,18 @@ re:
 	@make all
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
 
+t1:
+	./$(NAME) "2 3 +"
+
+t2:
+	./$(NAME) "2 3 + 4 2 - / 5 +"
+
+t3:
+	./$(NAME) "2 3 + 4 2 - / 5 + 9 8 - * 4 -"
+
+t4:
+	./$(NAME) "2 3 + 4 2 - / 5 + 9 8 - * 4 - 6 3 / -"
+
 .PHONY: all clean fclean re test
 
 COLOR_END = \033[0;39m

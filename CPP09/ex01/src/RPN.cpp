@@ -28,6 +28,7 @@ bool RPN::containsOnlyValidChars(std::string input) {
 	for (size_t i = 0; i < input.length(); i++) {
 		if (std::string(VALID_ELEMENTS).find(input[i]) == std::string::npos) return false;
 		if (i > 0 && input[i] == ' ' && input[i - 1] == ' ') throw std::logic_error(TOOMANYSPACE);
+		if (i > 0 && input[i] != ' ' && input[i - 1] != ' ') throw std::logic_error(LESSSPACE);
 		if (std::string(NUMBERS).find(input[i]) != std::string::npos) numbers++;
 		if (std::string(OPERATORS).find(input[i]) != std::string::npos) operators++;
 	}
@@ -36,7 +37,7 @@ bool RPN::containsOnlyValidChars(std::string input) {
 }
 
 void RPN::executeArithmeticExpression() {
-	std::cout << RED << "           _____________" << END << std::endl;
+	std::cout << START << std::endl;
 	for (size_t i = 0; i < arithmeticExpression.length(); i++) {
 		if (std::isdigit(arithmeticExpression[i])) {
 			stackIt.push(arithmeticExpression[i] - '0');
