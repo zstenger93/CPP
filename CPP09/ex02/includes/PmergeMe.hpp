@@ -1,10 +1,13 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
+#include <algorithm>
+#include <ctime>
 #include <deque>
 #include <exception>
 #include <iostream>
 #include <stdexcept>
+#include <utility>
 #include <vector>
 
 #define RED "\033[1;31m"
@@ -31,10 +34,32 @@ class PmergeMe {
 	PmergeMe &operator=(PmergeMe const &cpy);
 
 	void sortSequence();
+	void setSequence();
+
+	void sort_Vector();
+	void set_VectorSequence();
+	void n2_VectorSequence();
+	void n2_Swap_VectorSequence();
+	void set_LargerAndSmaller_VectorSequence();
+	void mergeSmallerIntoLarger_VectorSequence();
+
+	void sortDeque();
+	void setDequeSequence();
 
    private:
 	int sequenceSize;
 	char **sequence;
+	std::vector<int> inputSequence;
+
+	std::vector<std::pair<int, int> > n2Sequence;
+
+	std::vector<int> smallerSequence;
+	std::vector<int> largerSequence;
+
+	std::vector<int> sortedSequence;
+
+	clock_t startTime;
+	clock_t endTime;
 };
 
 #endif
