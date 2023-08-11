@@ -29,7 +29,6 @@ Bitcoin &Bitcoin::operator=(Bitcoin const &cpy) {
 	return *this;
 }
 
-/*_______________________________________ NESTED CLASSES ________________________________________*/
 /*__________________________________________ FUNCTIONS __________________________________________*/
 
 void Bitcoin::isInputCorrect(char **argv) {
@@ -60,7 +59,8 @@ void Bitcoin::exchange(std::string inputFile) {
 					std::string date = line.substr(0, line.find(" "));
 					float coins = std::atof(line.substr(line.find("|") + 2).c_str());
 					float value = getExchangeRate(date);
-					std::cout << date << " => " << coins << " = " << coins * value << std::endl;
+					std::cout << date << " => " << coins << " = " << std::fixed
+							  << std::setprecision(2) << coins * value << std::endl;
 				}
 		return input.close();
 	}
@@ -149,5 +149,3 @@ void Bitcoin::setMonths() {
 	months.insert(std::make_pair(11, 30));
 	months.insert(std::make_pair(12, 31));
 }
-
-/*___________________________________________ GETTERS ___________________________________________*/
