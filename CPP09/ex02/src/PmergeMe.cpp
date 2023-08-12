@@ -32,34 +32,34 @@ void PmergeMe::sort_Vector() {
 	n2_Vector();
 	n2_Swap_Vector();
 	set_LargerAndSmaller_Vector();
-	insertionSort_Vector(smallerSequence);
-	insertionSort_Vector(largerSequence);
-	// std::sort(smallerSequence.begin(), smallerSequence.end());
-	// std::sort(largerSequence.begin(), largerSequence.end());
+	insertionSort_Vector(smallerSequence_Vector);
+	insertionSort_Vector(largerSequence_Vector);
+	// std::sort(smallerSequence_Vector.begin(), smallerSequence_Vector.end());
+	// std::sort(largerSequence_Vector.begin(), largerSequence_Vector.end());
 	mergeSmallerIntoLarger_Vector();
 	endTime = clock();
 	print_VectorResult();
 }
 
 void PmergeMe::n2_Vector() {
-	std::vector<int>::iterator prevIt = inputSequence.begin();
-	std::vector<int>::iterator n2It = inputSequence.begin();
-	for (; n2It < inputSequence.end(); n2It++) {
-		if (std::distance(inputSequence.begin(), n2It) % 2 != 0)
-			n2Sequence.push_back(std::make_pair(*prevIt, *n2It));
+	std::vector<int>::iterator prevIt = inputSequence_Vector.begin();
+	std::vector<int>::iterator n2It = inputSequence_Vector.begin();
+	for (; n2It < inputSequence_Vector.end(); n2It++) {
+		if (std::distance(inputSequence_Vector.begin(), n2It) % 2 != 0)
+			n2Sequence_Vector.push_back(std::make_pair(*prevIt, *n2It));
 		prevIt = n2It;
 	}
-	if (std::distance(inputSequence.begin(), n2It) % 2 != 0)
-		n2Sequence.push_back(std::make_pair(*prevIt, -1));
-	// for (std::vector<std::pair<int, int> >::iterator n2It = n2Sequence.begin();
-	// 	 n2It < n2Sequence.end(); n2It++)
+	if (std::distance(inputSequence_Vector.begin(), n2It) % 2 != 0)
+		n2Sequence_Vector.push_back(std::make_pair(*prevIt, -1));
+	// for (std::vector<std::pair<int, int> >::iterator n2It = n2Sequence_Vector.begin();
+	// 	 n2It < n2Sequence_Vector.end(); n2It++)
 	// 	std::cout << n2It->first << " " << n2It->second << std::endl;
 }
 
 void PmergeMe::n2_Swap_Vector() {
-	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence.begin();
+	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence_Vector.begin();
 	int temp;
-	for (; n2It < n2Sequence.end(); n2It++) {
+	for (; n2It < n2Sequence_Vector.end(); n2It++) {
 		// std::cout << "Before: " << n2It->first << " " << n2It->second << std::endl;
 		if (n2It->second != -1)
 			if (n2It->first > n2It->second) {
@@ -69,7 +69,7 @@ void PmergeMe::n2_Swap_Vector() {
 				// std::cout << "After: " << n2It->first << " " << n2It->second << std::endl;
 			}
 	}
-	// for (n2It = n2Sequence.begin(); n2It != n2Sequence.end(); n2It++)
+	// for (n2It = n2Sequence_Vector.begin(); n2It != n2Sequence_Vector.end(); n2It++)
 	// 	std::cout << n2It->first << " " << n2It->second << std::endl;
 }
 
@@ -86,32 +86,33 @@ void PmergeMe::insertionSort_Vector(std::vector<int> &seq) {
 }
 
 void PmergeMe::mergeSmallerIntoLarger_Vector() {
-	sortedSequence.reserve(largerSequence.size() + smallerSequence.size());
+	sortedSequence_Vector.reserve(largerSequence_Vector.size() + smallerSequence_Vector.size());
 	size_t indexLarge = 0, indexSmall = 0;
 
-	while (indexLarge < largerSequence.size() && indexSmall < smallerSequence.size()) {
-		if (largerSequence[indexLarge] < smallerSequence[indexSmall]) {
-			sortedSequence.push_back(largerSequence[indexLarge]);
+	while (indexLarge < largerSequence_Vector.size() &&
+		   indexSmall < smallerSequence_Vector.size()) {
+		if (largerSequence_Vector[indexLarge] < smallerSequence_Vector[indexSmall]) {
+			sortedSequence_Vector.push_back(largerSequence_Vector[indexLarge]);
 			indexLarge++;
 		} else {
-			sortedSequence.push_back(smallerSequence[indexSmall]);
+			sortedSequence_Vector.push_back(smallerSequence_Vector[indexSmall]);
 			indexSmall++;
 		}
 	}
-	// Insert remaining elements from largerSequence and smallerSequence
-	while (indexLarge < largerSequence.size()) {
-		sortedSequence.push_back(largerSequence[indexLarge]);
+	// Insert remaining elements from largerSequence_Vector and smallerSequence_Vector
+	while (indexLarge < largerSequence_Vector.size()) {
+		sortedSequence_Vector.push_back(largerSequence_Vector[indexLarge]);
 		indexLarge++;
 	}
-	while (indexSmall < smallerSequence.size()) {
-		sortedSequence.push_back(smallerSequence[indexSmall]);
+	while (indexSmall < smallerSequence_Vector.size()) {
+		sortedSequence_Vector.push_back(smallerSequence_Vector[indexSmall]);
 		indexSmall++;
 	}
 }
 
 void PmergeMe::print_VectorResult() {
-	std::vector<int>::iterator sortedIt = sortedSequence.begin();
-	for (; sortedIt < sortedSequence.end(); sortedIt++) std::cout << *sortedIt << " ";
+	std::vector<int>::iterator sortedIt = sortedSequence_Vector.begin();
+	for (; sortedIt < sortedSequence_Vector.end(); sortedIt++) std::cout << *sortedIt << " ";
 	std::cout << std::endl;
 	// std::cout << startTime << " " << endTime << std::endl;
 	std::cout << VECTOR_RESULT1 << sequenceSize << VECTOR_RESULT2 << std::fixed
@@ -128,18 +129,17 @@ void PmergeMe::setSequence() {
 }
 
 void PmergeMe::set_Vector() {
-	for (int i = 1; i < sequenceSize + 1; i++) inputSequence.push_back(std::atoi(sequence[i]));
-	// for (std::vector<int>::iterator seqIt = inputSequence.begin(); seqIt < inputSequence.end();
-	// 	 seqIt++)
-	// 	std::cout << *seqIt << " ";
-	// std::cout << std::endl;
+	for (int i = 1; i < sequenceSize + 1; i++)
+		inputSequence_Vector.push_back(std::atoi(sequence[i]));
+	// for (std::vector<int>::iterator seqIt = inputSequence_Vector.begin(); seqIt <
+	// inputSequence_Vector.end(); 	 seqIt++) 	std::cout << *seqIt << " "; std::cout << std::endl;
 }
 
 void PmergeMe::set_LargerAndSmaller_Vector() {
-	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence.begin();
-	for (; n2It < n2Sequence.end(); n2It++) {
-		smallerSequence.push_back(n2It->first);
-		if (n2It->second != -1) largerSequence.push_back(n2It->second);
+	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence_Vector.begin();
+	for (; n2It < n2Sequence_Vector.end(); n2It++) {
+		smallerSequence_Vector.push_back(n2It->first);
+		if (n2It->second != -1) largerSequence_Vector.push_back(n2It->second);
 	}
 }
 
