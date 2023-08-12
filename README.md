@@ -91,6 +91,10 @@ Inheritance
 
 Subtype polymorphism, abstract classes, interfaces
 
+<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/claptrap.jpeg">
+
+<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/poly.png">
+
 # cpp 05
 
 Exceptions (in short TRYing to CATCH what you f*cked up)
@@ -107,6 +111,8 @@ Static casting in different ways
 
 Templates
 
+<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/template.png">
+
 # cpp 08
 
 Templated containers, iterators, algorithms
@@ -118,3 +124,5 @@ Reverse Polish notation
 <img align=center src="https://github.com/zstenger93/CPP/blob/master/images/ford.png">
 
 <img align=center src="https://github.com/zstenger93/CPP/blob/master/images/johnson.jpeg">
+
+<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/algorithm.jpeg">
