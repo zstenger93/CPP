@@ -28,26 +28,20 @@ void PmergeMe::sortSequence() {
 }
 
 void PmergeMe::sort_Vector() {
-	clock_t startTime = clock();
-	n2_VectorSequence();
-	n2_Swap_VectorSequence();
-	set_LargerAndSmaller_VectorSequence();
-	insertionSort(smallerSequence);
-	insertionSort(largerSequence);
+	startTime = clock();
+	n2_Vector();
+	n2_Swap_Vector();
+	set_LargerAndSmaller_Vector();
+	insertionSort_Vector(smallerSequence);
+	insertionSort_Vector(largerSequence);
 	// std::sort(smallerSequence.begin(), smallerSequence.end());
 	// std::sort(largerSequence.begin(), largerSequence.end());
-	mergeSmallerIntoLarger_VectorSequence();
-	clock_t endTime = clock();
-	std::vector<int>::iterator sortedIt = sortedSequence.begin();
-	for (; sortedIt < sortedSequence.end(); sortedIt++) std::cout << *sortedIt << " ";
-	std::cout << std::endl;
-	std::cout << startTime << " " << endTime << std::endl;
-	std::cout << std::fixed << std::setprecision(2)
-			  << static_cast<double>(endTime - startTime) / (CLOCKS_PER_SEC / 1000000.0) << " us"
-			  << std::endl;
+	mergeSmallerIntoLarger_Vector();
+	endTime = clock();
+	print_VectorResult();
 }
 
-void PmergeMe::n2_VectorSequence() {
+void PmergeMe::n2_Vector() {
 	std::vector<int>::iterator prevIt = inputSequence.begin();
 	std::vector<int>::iterator n2It = inputSequence.begin();
 	for (; n2It < inputSequence.end(); n2It++) {
@@ -62,7 +56,7 @@ void PmergeMe::n2_VectorSequence() {
 	// 	std::cout << n2It->first << " " << n2It->second << std::endl;
 }
 
-void PmergeMe::n2_Swap_VectorSequence() {
+void PmergeMe::n2_Swap_Vector() {
 	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence.begin();
 	int temp;
 	for (; n2It < n2Sequence.end(); n2It++) {
@@ -79,7 +73,19 @@ void PmergeMe::n2_Swap_VectorSequence() {
 	// 	std::cout << n2It->first << " " << n2It->second << std::endl;
 }
 
-void PmergeMe::mergeSmallerIntoLarger_VectorSequence() {
+void PmergeMe::insertionSort_Vector(std::vector<int> &seq) {
+	for (size_t i = 1; i < seq.size(); i++) {
+		int prevIndex = i - 1, currentIndex = seq[i];
+
+		while (prevIndex >= 0 && seq[prevIndex] > currentIndex) {
+			seq[prevIndex + 1] = seq[prevIndex];
+			prevIndex--;
+		}
+		seq[prevIndex + 1] = currentIndex;
+	}
+}
+
+void PmergeMe::mergeSmallerIntoLarger_Vector() {
 	sortedSequence.reserve(largerSequence.size() + smallerSequence.size());
 	size_t indexLarge = 0, indexSmall = 0;
 
@@ -103,14 +109,25 @@ void PmergeMe::mergeSmallerIntoLarger_VectorSequence() {
 	}
 }
 
+void PmergeMe::print_VectorResult() {
+	std::vector<int>::iterator sortedIt = sortedSequence.begin();
+	for (; sortedIt < sortedSequence.end(); sortedIt++) std::cout << *sortedIt << " ";
+	std::cout << std::endl;
+	// std::cout << startTime << " " << endTime << std::endl;
+	std::cout << VECTOR_RESULT1 << sequenceSize << VECTOR_RESULT2 << std::fixed
+			  << std::setprecision(2)
+			  << static_cast<double>(endTime - startTime) / (CLOCKS_PER_SEC / 1000000.0) << " us"
+			  << std::endl;
+}
+
 /*___________________________________________ SETTERS ___________________________________________*/
 
 void PmergeMe::setSequence() {
-	set_VectorSequence();
-	setDequeSequence();
+	set_Vector();
+	set_DequeSequence();
 }
 
-void PmergeMe::set_VectorSequence() {
+void PmergeMe::set_Vector() {
 	for (int i = 1; i < sequenceSize + 1; i++) inputSequence.push_back(std::atoi(sequence[i]));
 	// for (std::vector<int>::iterator seqIt = inputSequence.begin(); seqIt < inputSequence.end();
 	// 	 seqIt++)
@@ -118,7 +135,7 @@ void PmergeMe::set_VectorSequence() {
 	// std::cout << std::endl;
 }
 
-void PmergeMe::set_LargerAndSmaller_VectorSequence() {
+void PmergeMe::set_LargerAndSmaller_Vector() {
 	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence.begin();
 	for (; n2It < n2Sequence.end(); n2It++) {
 		smallerSequence.push_back(n2It->first);
@@ -126,6 +143,6 @@ void PmergeMe::set_LargerAndSmaller_VectorSequence() {
 	}
 }
 
-void PmergeMe::setDequeSequence() {}
+void PmergeMe::set_DequeSequence() {}
 
 /*___________________________________________ GETTERS ___________________________________________*/

@@ -18,13 +18,13 @@
 
 #define BEFORE "\033[1;4;33mBefore:\033[1;0;39m "
 #define AFTER "\033[1;4;32mAfter:\033[1;0;39m "
-#define DEQUE_RESULT \
-	"\033[1;4;34mTime to process a range of 5 elements with std::deque:\033[1;0;39m "
-#define VECTOR_RESULT \
-	"\033[1;4;34mTime to process a range of 5 elements with std::vector:\033[1;0;39m "
+#define DEQUE_RESULT1 "\033[1;4;34mTime to process a range of "
+#define DEQUE_RESULT2 "\033[1;4;34m elements with std::deque:\033[1;0;39m "
+#define VECTOR_RESULT1 "\033[1;4;34mTime to process a range of\033[1;0;39m "
+#define VECTOR_RESULT2 " \033[1;4;34melements with std::vector is:\033[1;0;39m "
 
-#define TOOSHORT "\033[1;31mThe sequence is too short, there is nothing to sort.\033[1;39m"
 #define NOARG "\033[1;31mFord needs a sequence to be able to Johnson around.\033[1;39m"
+#define TOOSHORT "\033[1;31mThe sequence is too short, there is nothing to sort.\033[1;39m"
 
 class PmergeMe {
    public:
@@ -38,17 +38,16 @@ class PmergeMe {
 	void setSequence();
 
 	void sort_Vector();
-	void set_VectorSequence();
-	void n2_VectorSequence();
-	void n2_Swap_VectorSequence();
-	void set_LargerAndSmaller_VectorSequence();
-	void mergeSmallerIntoLarger_VectorSequence();
+	void set_Vector();
+	void n2_Vector();
+	void n2_Swap_Vector();
+	void set_LargerAndSmaller_Vector();
+	void mergeSmallerIntoLarger_Vector();
+	void insertionSort_Vector(std::vector<int> &seq);
+	void print_VectorResult();
 
 	void sortDeque();
-	void setDequeSequence();
-
-
-	void insertionSort(std::vector<int>& sequence);
+	void set_DequeSequence();
 
    private:
 	int sequenceSize;
@@ -62,8 +61,8 @@ class PmergeMe {
 
 	std::vector<int> sortedSequence;
 
-	// clock_t startTime;
-	// clock_t endTime;
+	clock_t startTime;
+	clock_t endTime;
 };
 
 #endif
