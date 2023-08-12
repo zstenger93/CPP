@@ -99,13 +99,18 @@ Subtype polymorphism, abstract classes, interfaces
 
 Exceptions (in short TRYing to CATCH what you f*cked up)
 
-Dealing with Bureaucrats whom can create forms, but at the end creating a lot of form is boring, so we have to create an intern whom we can pass any form and he will create it, then te need to be able to sign these forms based on the grades they have and also execute them.
+<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/try.jpeg">
+
+Dealing with Bureaucrats whom can create forms, but at the end creating a lot of form is boring, so we have to create an intern whom we can pass any form and he will create it, then he need to be able to sign these forms based on the grades they have and also execute them.
+
 
 <img align=center src="https://github.com/zstenger93/CPP/blob/master/images/anyway.png">
 
 # cpp 06
 
 Static casting in different ways
+
+<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/static.png">
 
 # cpp 07
 
