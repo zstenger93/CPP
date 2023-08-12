@@ -10,3 +10,17 @@ int main(int argc, char **argv) {
 		std::cout << error.what() << std::endl;
 	}
 }
+
+void PmergeMe::insertionSort(std::vector<int>& seq) {
+    for (size_t i = 1; i < seq.size(); i++) {
+        int key = seq[i];
+        int j = i - 1;
+
+        while (j >= 0 && seq[j] > key) {
+            seq[j + 1] = seq[j];
+            j--;
+        }
+
+        seq[j + 1] = key;
+    }
+}

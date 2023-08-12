@@ -5,6 +5,7 @@
 #include <ctime>
 #include <deque>
 #include <exception>
+#include <iomanip>
 #include <iostream>
 #include <stdexcept>
 #include <utility>
@@ -46,6 +47,9 @@ class PmergeMe {
 	void sortDeque();
 	void setDequeSequence();
 
+
+	void insertionSort(std::vector<int>& sequence);
+
    private:
 	int sequenceSize;
 	char **sequence;
@@ -58,8 +62,8 @@ class PmergeMe {
 
 	std::vector<int> sortedSequence;
 
-	clock_t startTime;
-	clock_t endTime;
+	// clock_t startTime;
+	// clock_t endTime;
 };
 
 #endif

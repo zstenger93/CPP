@@ -1,7 +1,5 @@
 #include "../includes/PmergeMe.hpp"
 
-#include <ctime>
-
 /*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
 
 PmergeMe::PmergeMe() {}
@@ -30,18 +28,22 @@ void PmergeMe::sortSequence() {
 }
 
 void PmergeMe::sort_Vector() {
-	startTime = clock();
+	clock_t startTime = clock();
 	n2_VectorSequence();
 	n2_Swap_VectorSequence();
 	set_LargerAndSmaller_VectorSequence();
-	std::sort(smallerSequence.begin(), smallerSequence.end());
-	std::sort(largerSequence.begin(), largerSequence.end());
+	insertionSort(smallerSequence);
+	insertionSort(largerSequence);
+	// std::sort(smallerSequence.begin(), smallerSequence.end());
+	// std::sort(largerSequence.begin(), largerSequence.end());
 	mergeSmallerIntoLarger_VectorSequence();
-	endTime = clock();
+	clock_t endTime = clock();
 	std::vector<int>::iterator sortedIt = sortedSequence.begin();
 	for (; sortedIt < sortedSequence.end(); sortedIt++) std::cout << *sortedIt << " ";
 	std::cout << std::endl;
-	std::cout << static_cast<double>(endTime - startTime) / (CLOCKS_PER_SEC / 1000000.0) << " us"
+	std::cout << startTime << " " << endTime << std::endl;
+	std::cout << std::fixed << std::setprecision(2)
+			  << static_cast<double>(endTime - startTime) / (CLOCKS_PER_SEC / 1000000.0) << " us"
 			  << std::endl;
 }
 
@@ -79,27 +81,25 @@ void PmergeMe::n2_Swap_VectorSequence() {
 
 void PmergeMe::mergeSmallerIntoLarger_VectorSequence() {
 	sortedSequence.reserve(largerSequence.size() + smallerSequence.size());
+	size_t indexLarge = 0, indexSmall = 0;
 
-	size_t i = 0, j = 0;
-
-	while (i < largerSequence.size() && j < smallerSequence.size()) {
-		if (largerSequence[i] < smallerSequence[j]) {
-			sortedSequence.push_back(largerSequence[i]);
-			i++;
+	while (indexLarge < largerSequence.size() && indexSmall < smallerSequence.size()) {
+		if (largerSequence[indexLarge] < smallerSequence[indexSmall]) {
+			sortedSequence.push_back(largerSequence[indexLarge]);
+			indexLarge++;
 		} else {
-			sortedSequence.push_back(smallerSequence[j]);
-			j++;
+			sortedSequence.push_back(smallerSequence[indexSmall]);
+			indexSmall++;
 		}
 	}
-
 	// Insert remaining elements from largerSequence and smallerSequence
-	while (i < largerSequence.size()) {
-		sortedSequence.push_back(largerSequence[i]);
-		i++;
+	while (indexLarge < largerSequence.size()) {
+		sortedSequence.push_back(largerSequence[indexLarge]);
+		indexLarge++;
 	}
-	while (j < smallerSequence.size()) {
-		sortedSequence.push_back(smallerSequence[j]);
-		j++;
+	while (indexSmall < smallerSequence.size()) {
+		sortedSequence.push_back(smallerSequence[indexSmall]);
+		indexSmall++;
 	}
 }
 
