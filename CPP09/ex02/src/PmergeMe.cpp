@@ -1,5 +1,9 @@
 #include "../includes/PmergeMe.hpp"
 
+#include <cstddef>
+#include <cstring>
+#include <stdexcept>
+
 /*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
 
 PmergeMe::PmergeMe() {}
@@ -112,6 +116,7 @@ void PmergeMe::mergeSmallerIntoLarger_Vector() {
 
 void PmergeMe::print_VectorResult() {
 	std::vector<int>::iterator sortedIt = sortedSequence_Vector.begin();
+	std::cout << AFTER << std::endl;
 	for (; sortedIt < sortedSequence_Vector.end(); sortedIt++) std::cout << *sortedIt << " ";
 	std::cout << std::endl;
 	// std::cout << startTime << " " << endTime << std::endl;
@@ -129,8 +134,30 @@ void PmergeMe::setSequence() {
 }
 
 void PmergeMe::set_Vector() {
-	for (int i = 1; i < sequenceSize + 1; i++)
+	for (int i = 1; i < sequenceSize + 1; i++) {
+		for (size_t j = 0; j < std::strlen(sequence[i]); j++)
+			if (std::string(NUMBERS).find(sequence[i][j]) == std::string::npos)
+				throw std::logic_error(WRONGCHAR);
 		inputSequence_Vector.push_back(std::atoi(sequence[i]));
+	}
+	int prevIndex = -1;
+	std::vector<int>::iterator seqIt = inputSequence_Vector.begin();
+	for (; seqIt < inputSequence_Vector.end(); seqIt++) {
+		if (prevIndex != -1) {
+			if (prevIndex < *seqIt)
+				;
+			else {
+				std::vector<int>::iterator unSortedIt = inputSequence_Vector.begin();
+				std::cout << BEFORE << std::endl;
+				for (; unSortedIt < inputSequence_Vector.end(); unSortedIt++)
+					std::cout << *unSortedIt << " ";
+				std::cout << std::endl;
+				return;
+			}
+		}
+		prevIndex = *seqIt;
+	}
+	throw std::logic_error(ALREADYSORTED);
 	// for (std::vector<int>::iterator seqIt = inputSequence_Vector.begin(); seqIt <
 	// inputSequence_Vector.end(); 	 seqIt++) 	std::cout << *seqIt << " "; std::cout << std::endl;
 }

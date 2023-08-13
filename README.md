@@ -87,11 +87,11 @@ and the splitting planes or lines divide the space into two child nodes.
 
 Inheritance
 
+<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/claptrap.jpeg">
+
 # cpp 04
 
 Subtype polymorphism, abstract classes, interfaces
-
-<img align=center src="https://github.com/zstenger93/CPP/blob/master/images/claptrap.jpeg">
 
 <img align=center src="https://github.com/zstenger93/CPP/blob/master/images/poly.png">
 
@@ -116,11 +116,13 @@ Static casting in different ways
 
 Templates
 
+A way to write felxible and reusable code 
+
 <img align=center src="https://github.com/zstenger93/CPP/blob/master/images/template.png">
 
 # cpp 08
 
-Templated containers, iterators, algorithms
+An intro to templated containers, iterators, algorithms
 
 # cpp 09
 
