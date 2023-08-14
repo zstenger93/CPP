@@ -41,7 +41,7 @@ class PmergeMe {
 	void setSequence();
 
 	void sort_Vector();
-	void set_Vector();
+	void set_VectorSequence();
 	void n2_Vector();
 	void n2_Swap_Vector();
 	void set_LargerAndSmaller_Vector();

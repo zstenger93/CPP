@@ -129,11 +129,11 @@ void PmergeMe::print_VectorResult() {
 /*___________________________________________ SETTERS ___________________________________________*/
 
 void PmergeMe::setSequence() {
-	set_Vector();
+	set_VectorSequence();
 	set_DequeSequence();
 }
 
-void PmergeMe::set_Vector() {
+void PmergeMe::set_VectorSequence() {
 	for (int i = 1; i < sequenceSize + 1; i++) {
 		for (size_t j = 0; j < std::strlen(sequence[i]); j++)
 			if (std::string(NUMBERS).find(sequence[i][j]) == std::string::npos)
