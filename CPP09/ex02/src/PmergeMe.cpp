@@ -1,9 +1,5 @@
 #include "../includes/PmergeMe.hpp"
 
-#include <cstddef>
-#include <cstring>
-#include <stdexcept>
-
 /*__________________________________ CONSTRUCTORS / DESTRUCTOR __________________________________*/
 
 PmergeMe::PmergeMe() {}
@@ -42,7 +38,7 @@ void PmergeMe::sort_Vector() {
 	// std::sort(largerSequence_Vector.begin(), largerSequence_Vector.end());
 	mergeSmallerIntoLarger_Vector();
 	endTime = clock();
-	print_VectorResult();
+	printResult_Vector();
 }
 
 void PmergeMe::n2_Vector() {
@@ -114,7 +110,7 @@ void PmergeMe::mergeSmallerIntoLarger_Vector() {
 	}
 }
 
-void PmergeMe::print_VectorResult() {
+void PmergeMe::printResult_Vector() {
 	std::vector<int>::iterator sortedIt = sortedSequence_Vector.begin();
 	std::cout << AFTER << std::endl;
 	for (; sortedIt < sortedSequence_Vector.end(); sortedIt++) std::cout << *sortedIt << " ";

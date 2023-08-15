@@ -9,4 +9,5 @@ int main(int argc, char **argv) {
 	} catch (std::exception &error) {
 		std::cout << error.what() << std::endl;
 	}
+	return 0;
 }

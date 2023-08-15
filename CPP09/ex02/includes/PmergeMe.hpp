@@ -2,6 +2,8 @@
 #define PMERGEME_HPP
 
 #include <algorithm>
+#include <cstddef>
+#include <cstring>
 #include <ctime>
 #include <deque>
 #include <exception>
@@ -47,7 +49,7 @@ class PmergeMe {
 	void set_LargerAndSmaller_Vector();
 	void mergeSmallerIntoLarger_Vector();
 	void insertionSort_Vector(std::vector<int> &seq);
-	void print_VectorResult();
+	void printResult_Vector();
 
 	void sortDeque();
 	void set_DequeSequence();
