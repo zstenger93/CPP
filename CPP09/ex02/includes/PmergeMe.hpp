@@ -2,6 +2,7 @@
 #define PMERGEME_HPP
 
 #include <algorithm>
+#include <cmath>
 #include <cstddef>
 #include <cstring>
 #include <ctime>
@@ -45,10 +46,19 @@ class PmergeMe {
 	void sort_Vector();
 	void set_VectorSequence();
 	void n2_Vector();
-	void n2_Swap_Vector();
+	void n2_SwapPairValues_Vector();
+	// sort pairs
+	void n2_RecursiveMergeSort_Vector(std::vector<std::pair<int, int> > &n2Sqnc, int left,
+									  int right);
+	void merge(std::vector<std::pair<int, int> > &n2Sqnc, int left, int mid, int right);
 	void set_LargerAndSmaller_Vector();
-	void mergeSmallerIntoLarger_Vector();
-	void insertionSort_Vector(std::vector<int> &seq);
+	void n2_SortWithJacobsthalNumbers_Vector(std::vector<int> &targetVector,
+											 std::vector<int> &insertionVector);
+	int getNextJacobsthalNumber(int n);
+	unsigned int getUpperJacobsIndex(const std::vector<int> &insertionVector);
+	unsigned int getNextUpperJacobsIndex(const std::vector<int> &insertionVector,
+										 unsigned int upperJacobsIndex);
+	void n2_BinaryInsert_Vector(std::vector<int> &targetVector, int value, int insertionRange);
 	void printResult_Vector();
 
 	void sort_Deque();

@@ -27,7 +27,17 @@ void PmergeMe::sortSequence() {
 	sort_Deque();
 }
 
+int PmergeMe::getNextJacobsthalNumber(int current) {
+	int currentJacobsthalTerm = 0, previousJacobsthalTerm = 1, nextJacobsthalNumber = current;
 
+	while (true) {
+		nextJacobsthalNumber = 2 * currentJacobsthalTerm + previousJacobsthalTerm;
+		currentJacobsthalTerm = previousJacobsthalTerm;
+		previousJacobsthalTerm = nextJacobsthalNumber;
+		if (nextJacobsthalNumber > current) return nextJacobsthalNumber;
+	}
+	return nextJacobsthalNumber;
+}
 
 /*___________________________________________ SETTERS ___________________________________________*/
 

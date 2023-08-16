@@ -5,20 +5,18 @@
 void PmergeMe::sort_Vector() {
 	startTime = clock();
 	n2_Vector();
-	n2_Swap_Vector();
+	n2_SwapPairValues_Vector();
+	n2_RecursiveMergeSort_Vector(n2Sequence_Vector, 0, n2Sequence_Vector.size() - 1);
 	set_LargerAndSmaller_Vector();
-	insertionSort_Vector(smallerSequence_Vector);
-	insertionSort_Vector(largerSequence_Vector);
-	// std::sort(smallerSequence_Vector.begin(), smallerSequence_Vector.end());
-	// std::sort(largerSequence_Vector.begin(), largerSequence_Vector.end());
-	mergeSmallerIntoLarger_Vector();
+	n2_SortWithJacobsthalNumbers_Vector(largerSequence_Vector, smallerSequence_Vector);
 	endTime = clock();
 	printResult_Vector();
 }
 
 void PmergeMe::n2_Vector() {
-	std::vector<int>::iterator prevIt = inputSequence_Vector.begin();
-	std::vector<int>::iterator n2It = inputSequence_Vector.begin();
+	std::vector<int>::iterator prevIt = inputSequence_Vector.begin(),
+							   n2It = inputSequence_Vector.begin();
+
 	for (; n2It < inputSequence_Vector.end(); n2It++) {
 		if (std::distance(inputSequence_Vector.begin(), n2It) % 2 != 0)
 			n2Sequence_Vector.push_back(std::make_pair(*prevIt, *n2It));
@@ -26,72 +24,98 @@ void PmergeMe::n2_Vector() {
 	}
 	if (std::distance(inputSequence_Vector.begin(), n2It) % 2 != 0)
 		n2Sequence_Vector.push_back(std::make_pair(*prevIt, -1));
-	// for (std::vector<std::pair<int, int> >::iterator n2It = n2Sequence_Vector.begin();
-	// 	 n2It < n2Sequence_Vector.end(); n2It++)
-	// 	std::cout << n2It->first << " " << n2It->second << std::endl;
 }
 
-void PmergeMe::n2_Swap_Vector() {
+void PmergeMe::n2_SwapPairValues_Vector() {
 	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence_Vector.begin();
 	int temp;
-	for (; n2It < n2Sequence_Vector.end(); n2It++) {
-		// std::cout << "Before: " << n2It->first << " " << n2It->second << std::endl;
+	for (; n2It < n2Sequence_Vector.end(); n2It++)
 		if (n2It->second != -1)
 			if (n2It->first > n2It->second) {
 				temp = n2It->first;
 				n2It->first = n2It->second;
 				n2It->second = temp;
-				// std::cout << "After: " << n2It->first << " " << n2It->second << std::endl;
 			}
-	}
-	// for (n2It = n2Sequence_Vector.begin(); n2It != n2Sequence_Vector.end(); n2It++)
-	// 	std::cout << n2It->first << " " << n2It->second << std::endl;
 }
 
-void PmergeMe::insertionSort_Vector(std::vector<int> &seq) {
-	for (size_t i = 1; i < seq.size(); i++) {
-		int prevIndex = i - 1, currentIndex = seq[i];
+void PmergeMe::merge(std::vector<std::pair<int, int> >& n2Sqnc, int left, int mid, int right) {
+	int leftSize = mid - left + 1, rigthSize = right - mid;
 
-		while (prevIndex >= 0 && seq[prevIndex] > currentIndex) {
-			seq[prevIndex + 1] = seq[prevIndex];
-			prevIndex--;
-		}
-		seq[prevIndex + 1] = currentIndex;
+	std::vector<std::pair<int, int> > leftVectorPart(leftSize), rightVectorPart(rigthSize);
+
+	// copy stuff to righthalf and lefthalf
+	for (int i = 0; i < leftSize; ++i) leftVectorPart[i] = n2Sqnc[left + i];
+	for (int j = 0; j < rigthSize; ++j) rightVectorPart[j] = n2Sqnc[mid + 1 + j];
+
+	int i = 0, j = 0, leftCopy = left;
+
+	// merging elemetns based on the 2nd value of pairs
+	while (i < leftSize && j < rigthSize) {
+		if (leftVectorPart[i].second <= rightVectorPart[j].second) {
+			n2Sqnc[leftCopy] = leftVectorPart[i++];
+		} else
+			n2Sqnc[leftCopy] = rightVectorPart[j++];
+		++leftCopy;
+	}
+	while (i < leftSize) n2Sqnc[leftCopy++] = leftVectorPart[i++];
+	while (j < rigthSize) n2Sqnc[leftCopy++] = rightVectorPart[j++];
+}
+
+void PmergeMe::n2_RecursiveMergeSort_Vector(std::vector<std::pair<int, int> >& n2Sqnc, int left,
+											int right) {
+	if (left < right) {
+		int mid = left + (right - left) / 2;
+
+		n2_RecursiveMergeSort_Vector(n2Sqnc, left, mid);
+		n2_RecursiveMergeSort_Vector(n2Sqnc, mid + 1, right);
+		merge(n2Sqnc, left, mid, right);
 	}
 }
 
-void PmergeMe::mergeSmallerIntoLarger_Vector() {
-	sortedSequence_Vector.reserve(largerSequence_Vector.size() + smallerSequence_Vector.size());
-	size_t indexLarge = 0, indexSmall = 0;
+void PmergeMe::n2_SortWithJacobsthalNumbers_Vector(std::vector<int>& targetVector,
+												   std::vector<int>& insertionVector) {
+	unsigned long lowerJacobsIndex = 1;
+	unsigned long upperJacobsIndex = getUpperJacobsIndex(insertionVector);
+	unsigned long iterationCount = upperJacobsIndex;
 
-	while (indexLarge < largerSequence_Vector.size() &&
-		   indexSmall < smallerSequence_Vector.size()) {
-		if (largerSequence_Vector[indexLarge] < smallerSequence_Vector[indexSmall]) {
-			sortedSequence_Vector.push_back(largerSequence_Vector[indexLarge]);
-			indexLarge++;
-		} else {
-			sortedSequence_Vector.push_back(smallerSequence_Vector[indexSmall]);
-			indexSmall++;
-		}
+	targetVector.insert(targetVector.begin(), insertionVector.at(0));
+	for (; lowerJacobsIndex < insertionVector.size();) {
+		n2_BinaryInsert_Vector(targetVector, insertionVector.at(iterationCount),
+							   upperJacobsIndex + lowerJacobsIndex - 1);
+		if (iterationCount == lowerJacobsIndex) {
+			lowerJacobsIndex = upperJacobsIndex + 1;
+			upperJacobsIndex = getNextUpperJacobsIndex(insertionVector, upperJacobsIndex);
+			iterationCount = upperJacobsIndex;
+		} else
+			iterationCount--;
 	}
-	// Insert remaining elements from largerSequence_Vector and smallerSequence_Vector
-	while (indexLarge < largerSequence_Vector.size()) {
-		sortedSequence_Vector.push_back(largerSequence_Vector[indexLarge]);
-		indexLarge++;
+	sortedSequence_Vector = targetVector;
+}
+
+void PmergeMe::n2_BinaryInsert_Vector(std::vector<int>& targetVector, int value,
+									  int insertionRange) {
+	int lowerBound = 0, upperBound = insertionRange - 1;
+
+	while (lowerBound <= upperBound) {
+		int mid = lowerBound + (upperBound - lowerBound) / 2;
+
+		if (targetVector[mid] == value) {
+			targetVector.insert(targetVector.begin() + mid + 1, value);
+			return;
+		} else if (targetVector[mid] < value) {
+			lowerBound = mid + 1;
+		} else
+			upperBound = mid - 1;
 	}
-	while (indexSmall < smallerSequence_Vector.size()) {
-		sortedSequence_Vector.push_back(smallerSequence_Vector[indexSmall]);
-		indexSmall++;
-	}
+	targetVector.insert(targetVector.begin() + lowerBound, value);
 }
 
 void PmergeMe::printResult_Vector() {
 	std::vector<int>::iterator sortedIt = sortedSequence_Vector.begin();
 	std::cout << AFTER << std::endl;
 	for (; sortedIt < sortedSequence_Vector.end(); sortedIt++) std::cout << *sortedIt << " ";
-	std::cout << std::endl;
-	// std::cout << startTime << " " << endTime << std::endl;
-	std::cout << VECTOR_RESULT1 << sequenceSize << VECTOR_RESULT2 << std::fixed
+	std::cout << std::endl
+			  << VECTOR_RESULT1 << sequenceSize << VECTOR_RESULT2 << std::fixed
 			  << std::setprecision(2)
 			  << static_cast<double>(endTime - startTime) / (CLOCKS_PER_SEC / 1000000.0) << " us"
 			  << std::endl;
@@ -124,8 +148,6 @@ void PmergeMe::set_VectorSequence() {
 		prevIndex = *seqIt;
 	}
 	throw std::logic_error(ALREADYSORTED);
-	// for (std::vector<int>::iterator seqIt = inputSequence_Vector.begin(); seqIt <
-	// inputSequence_Vector.end(); 	 seqIt++) 	std::cout << *seqIt << " "; std::cout << std::endl;
 }
 
 void PmergeMe::set_LargerAndSmaller_Vector() {
@@ -134,4 +156,23 @@ void PmergeMe::set_LargerAndSmaller_Vector() {
 		smallerSequence_Vector.push_back(n2It->first);
 		if (n2It->second != -1) largerSequence_Vector.push_back(n2It->second);
 	}
+}
+
+/*___________________________________________ GETTERS ___________________________________________*/
+
+unsigned int PmergeMe::getUpperJacobsIndex(const std::vector<int>& insertionVector) {
+	if (insertionVector.size() > 2) {
+		return 2;
+	} else
+		return insertionVector.size() - 1;
+	return -42;
+}
+
+unsigned int PmergeMe::getNextUpperJacobsIndex(const std::vector<int>& insertionVector,
+											   unsigned int upperJacobsIndex) {
+	if (getNextJacobsthalNumber(upperJacobsIndex + 1) > static_cast<int>(insertionVector.size())) {
+		return insertionVector.size() - 1;
+	} else
+		return getNextJacobsthalNumber(upperJacobsIndex + 1) - 1;
+	return -42;
 }
