@@ -22,7 +22,7 @@
 #define NUMBERS "0123456789"
 #define AFTER "\033[1;4;32mAfter:\033[1;0;39m "
 #define BEFORE "\033[1;4;33mBefore:\033[1;0;39m "
-#define DEQUE_RESULT1 "\033[1;4;34mTime to process a range of "
+#define DEQUE_RESULT1 "\033[1;4;34mTime to process a range of\033[1;0;39m "
 #define DEQUE_RESULT2 "\033[1;4;34m elements with std::deque:\033[1;0;39m "
 #define VECTOR_RESULT1 "\033[1;4;34mTime to process a range of\033[1;0;39m "
 #define VECTOR_RESULT2 " \033[1;4;34melements with std::vector is:\033[1;0;39m "
@@ -42,6 +42,8 @@ class PmergeMe {
 
 	void sortSequence();
 	void setSequence();
+	int getNextJacobsthalNumber(int n);
+	void printTime();
 
 	void sort_Vector();
 	void set_VectorSequence();
@@ -50,19 +52,34 @@ class PmergeMe {
 	// sort pairs
 	void n2_RecursiveMergeSort_Vector(std::vector<std::pair<int, int> > &n2Sqnc, int left,
 									  int right);
-	void merge(std::vector<std::pair<int, int> > &n2Sqnc, int left, int mid, int right);
-	void set_LargerAndSmaller_Vector();
+	void merge_Vector(std::vector<std::pair<int, int> > &n2Sqnc, int left, int mid, int right);
+	void set_LargerAndSmallerFromN2sequence_Vector();
+	// final sorting
 	void n2_SortWithJacobsthalNumbers_Vector(std::vector<int> &targetVector,
 											 std::vector<int> &insertionVector);
-	int getNextJacobsthalNumber(int n);
-	unsigned int getUpperJacobsIndex(const std::vector<int> &insertionVector);
-	unsigned int getNextUpperJacobsIndex(const std::vector<int> &insertionVector,
-										 unsigned int upperJacobsIndex);
+	unsigned long getUpperJacobsIndex_Vector(const std::vector<int> &insertionVector);
+	unsigned long getNextUpperJacobsIndex_Vector(const std::vector<int> &insertionVector,
+												 unsigned int upperJacobsIndex);
 	void n2_BinaryInsert_Vector(std::vector<int> &targetVector, int value, int insertionRange);
 	void printResult_Vector();
 
 	void sort_Deque();
 	void set_DequeSequence();
+	void n2_Deque();
+	void n2_SwapPairValues_Deque();
+	// sort pairs
+	void n2_RecursiveMergeSort_Deque(std::deque<std::pair<int, int> > &n2Sqnc, int left, int right);
+	void merge_Deque(std::deque<std::pair<int, int> > &n2Sqnc, int left, int mid, int right);
+	void set_LargerAndSmallerFromN2sequence_Deque();
+	// final sorting
+	void n2_SortWithJacobsthalNumbers_Deque(std::deque<int> &targetDeque,
+											std::deque<int> &insertionDeque);
+	unsigned long getUpperJacobsIndex_Deque(const std::deque<int> &insertionDeque);
+	unsigned long getNextUpperJacobsIndex_Deque(const std::deque<int> &insertionDeque,
+												unsigned int upperJacobsIndex);
+	void n2_BinaryInsert_Deque(std::deque<int> &targetDeque, int value, int insertionRange);
+
+	void printResult_Deque();
 
    private:
 	int sequenceSize;
@@ -74,8 +91,17 @@ class PmergeMe {
 	std::vector<int> largerSequence_Vector;
 	std::vector<int> sortedSequence_Vector;
 
-	clock_t startTime;
-	clock_t endTime;
+	clock_t startTime_Vector;
+	clock_t endTime_Vector;
+
+	std::deque<int> inputSequence_Deque;
+	std::deque<std::pair<int, int> > n2_Sequence_Deque;
+	std::deque<int> smallerSequence_Deque;
+	std::deque<int> largerSequence_Deque;
+	std::deque<int> sortedSequence_Deque;
+
+	clock_t startTime_Deque;
+	clock_t endTime_Deque;
 };
 
 #endif

@@ -6,7 +6,8 @@ int main(int argc, char **argv) {
 		PmergeMe fordJohnson(argc - 1, argv);
 		fordJohnson.setSequence();
 		fordJohnson.sortSequence();
-	} catch (std::exception &error) {
+		fordJohnson.printTime();
+		} catch (std::exception &error) {
 		std::cout << error.what() << std::endl;
 	}
 	return 0;
