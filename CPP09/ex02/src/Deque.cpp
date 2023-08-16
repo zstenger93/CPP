@@ -132,11 +132,11 @@ void PmergeMe::set_DequeSequence() {
 			if (prevIndex < *seqIt)
 				;
 			else {
-				std::deque<int>::iterator unSortedIt = inputSequence_Deque.begin();
-				std::cout << BEFORE << std::endl;
-				for (; unSortedIt < inputSequence_Deque.end(); unSortedIt++)
-					std::cout << *unSortedIt << " ";
-				std::cout << std::endl;
+				// std::deque<int>::iterator unSortedIt = inputSequence_Deque.begin();
+				// std::cout << BEFORE << std::endl;
+				// for (; unSortedIt < inputSequence_Deque.end(); unSortedIt++)
+				// 	std::cout << *unSortedIt << " ";
+				// std::cout << std::endl;
 				return;
 			}
 		}

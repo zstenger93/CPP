@@ -40,8 +40,8 @@ re:
 	@make all
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
 
-t10:
-	@$(eval ARG = $(shell seq 1 20000 | shuf -n 10))
+t5:
+	@$(eval ARG = $(shell seq 1 20000 | shuf -n 5))
 	@./PmergeMe $(ARG)
 
 t3k:
