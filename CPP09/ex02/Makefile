@@ -1,4 +1,4 @@
-NAME	= PmergMe
+NAME	= PmergeMe
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD
 RM		= rm -rf
 CC		= c++
@@ -37,6 +37,33 @@ re:
 	@make fclean
 	@make all
 	@echo "$(GREEN)The project has been recompiled.$(COLOR_END)"
+
+t10:
+	@$(eval ARG = $(shell seq 1 20000 | shuf -n 10))
+	@./PmergeMe $(ARG)
+
+t3k:
+	@$(eval ARG = $(shell seq 1 20000 | shuf -n 3000))
+	@./PmergeMe $(ARG)
+
+t5k:
+	@$(eval ARG = $(shell seq 1 20000 | shuf -n 5000))
+	@./PmergeMe $(ARG)
+
+t10k:
+	@$(eval ARG = $(shell seq 1 20000 | shuf -n 10000))
+	@./PmergeMe $(ARG)
+
+tw:
+	@./PmergeMe 5 a 3 1
+	@echo
+	@./PmergeMe 5 3 1a5
+	@echo
+	@./PmergeMe
+	@echo
+	@./PmergeMe 5
+	@echo
+	@./PmergeMe 5 6 7 8
 
 .PHONY: all clean fclean re test
 
