@@ -101,8 +101,6 @@ class PmergeMe {
 	std::deque<int> largerSequence_Deque;
 	std::deque<int> sortedSequence_Deque;
 	clock_t endTime_Deque;
-
-	struct timeval gstartTime, gendTime;
 };
 
 #endif

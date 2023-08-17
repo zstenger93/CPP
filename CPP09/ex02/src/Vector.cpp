@@ -1,17 +1,15 @@
 #include "../includes/PmergeMe.hpp"
-#include <sys/time.h>
+
 /*__________________________________________ FUNCTIONS __________________________________________*/
 
 void PmergeMe::sort_Vector() {
 	startTime_Vector = clock();
-	gettimeofday(&gstartTime, NULL);
 	n2_Vector();
 	n2_SwapPairValues_Vector();
 	n2_RecursiveMergeSort_Vector(n2Sequence_Vector, 0, n2Sequence_Vector.size() - 1);
 	set_LargerAndSmallerFromN2sequence_Vector();
 	n2_SortWithJacobsthalNumbers_Vector(largerSequence_Vector, smallerSequence_Vector);
 	endTime_Vector = clock();
-	gettimeofday(&gendTime, NULL);
 	printResult_Vector();
 }
 
@@ -30,14 +28,10 @@ void PmergeMe::n2_Vector() {
 
 void PmergeMe::n2_SwapPairValues_Vector() {
 	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence_Vector.begin();
-	int temp;
+
 	for (; n2It < n2Sequence_Vector.end(); n2It++)
 		if (n2It->second != -1)
-			if (n2It->first > n2It->second) {
-				temp = n2It->first;
-				n2It->first = n2It->second;
-				n2It->second = temp;
-			}
+			if (n2It->first > n2It->second) std::swap(n2It->first, n2It->second);
 }
 
 void PmergeMe::merge_Vector(std::vector<std::pair<int, int> >& n2Sqnc, int left, int mid,
@@ -77,18 +71,17 @@ void PmergeMe::n2_RecursiveMergeSort_Vector(std::vector<std::pair<int, int> >& n
 
 void PmergeMe::n2_SortWithJacobsthalNumbers_Vector(std::vector<int>& targetVector,
 												   std::vector<int>& insertionVector) {
-	unsigned long lowerJacobsIndex = 1;
-	unsigned long upperJacobsIndex = getUpperJacobsIndex_Vector(insertionVector);
-	unsigned long iterationCount = upperJacobsIndex;
+	unsigned long lowerIndex = 1, upperIndex = getUpperJacobsIndex_Vector(insertionVector),
+				  iterationCount = upperIndex;
 
 	targetVector.insert(targetVector.begin(), insertionVector.at(0));
-	for (; lowerJacobsIndex < insertionVector.size();) {
+	for (; lowerIndex < insertionVector.size();) {
 		n2_BinaryInsert_Vector(targetVector, insertionVector.at(iterationCount),
-							   upperJacobsIndex + lowerJacobsIndex - 1);
-		if (iterationCount == lowerJacobsIndex) {
-			lowerJacobsIndex = upperJacobsIndex + 1;
-			upperJacobsIndex = getNextUpperJacobsIndex_Vector(insertionVector, upperJacobsIndex);
-			iterationCount = upperJacobsIndex;
+							   upperIndex + lowerIndex - 1);
+		if (iterationCount == lowerIndex) {
+			lowerIndex = upperIndex + 1;
+			upperIndex = getNextUpperJacobsIndex_Vector(insertionVector, upperIndex);
+			iterationCount = upperIndex;
 		} else
 			iterationCount--;
 	}
@@ -168,10 +161,10 @@ unsigned long PmergeMe::getUpperJacobsIndex_Vector(const std::vector<int>& inser
 }
 
 unsigned long PmergeMe::getNextUpperJacobsIndex_Vector(const std::vector<int>& insertionVector,
-													  unsigned int upperJacobsIndex) {
-	if (getNextJacobsthalNumber(upperJacobsIndex + 1) > static_cast<int>(insertionVector.size())) {
+													   unsigned int upperIndex) {
+	if (getNextJacobsthalNumber(upperIndex + 1) > static_cast<int>(insertionVector.size())) {
 		return insertionVector.size() - 1;
 	} else
-		return getNextJacobsthalNumber(upperJacobsIndex + 1) - 1;
+		return getNextJacobsthalNumber(upperIndex + 1) - 1;
 	return -42;
 }
