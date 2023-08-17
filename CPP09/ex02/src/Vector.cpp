@@ -37,13 +37,9 @@ void PmergeMe::n2_SwapPairValues_Vector() {
 void PmergeMe::merge_Vector(std::vector<std::pair<int, int> >& n2Sqnc, int left, int mid,
 							int right) {
 	int leftSize = mid - left + 1, rigthSize = right - mid;
-
 	std::vector<std::pair<int, int> > leftVectorPart(leftSize), rightVectorPart(rigthSize);
-
-	// copy stuff to righthalf and lefthalf
-	for (int i = 0; i < leftSize; ++i) leftVectorPart[i] = n2Sqnc[left + i];
-	for (int j = 0; j < rigthSize; ++j) rightVectorPart[j] = n2Sqnc[mid + 1 + j];
-
+	for (int i = 0; i < leftSize; ++i) leftVectorPart[i] = n2Sqnc[left + i];	   // copy stuff to
+	for (int j = 0; j < rigthSize; ++j) rightVectorPart[j] = n2Sqnc[mid + 1 + j];  // the half parts
 	int i = 0, j = 0, leftCopy = left;
 
 	// merging elemetns based on the 2nd value of pairs
@@ -128,14 +124,8 @@ void PmergeMe::set_VectorSequence() {
 		if (prevIndex != -1) {
 			if (prevIndex < *seqIt)
 				;
-			else {
-				std::vector<int>::iterator unSortedIt = inputSequence_Vector.begin();
-				std::cout << BEFORE << std::endl;
-				for (; unSortedIt < inputSequence_Vector.end(); unSortedIt++)
-					std::cout << *unSortedIt << " ";
-				std::cout << std::endl;
+			else
 				return;
-			}
 		}
 		prevIndex = *seqIt;
 	}
@@ -153,18 +143,13 @@ void PmergeMe::set_LargerAndSmallerFromN2sequence_Vector() {
 /*___________________________________________ GETTERS ___________________________________________*/
 
 unsigned long PmergeMe::getUpperJacobsIndex_Vector(const std::vector<int>& insertionVector) {
-	if (insertionVector.size() > 2) {
-		return 2;
-	} else
-		return insertionVector.size() - 1;
-	return -42;
+	if (insertionVector.size() > 2) return 2;
+	return insertionVector.size() - 1;
 }
 
 unsigned long PmergeMe::getNextUpperJacobsIndex_Vector(const std::vector<int>& insertionVector,
 													   unsigned int upperIndex) {
-	if (getNextJacobsthalNumber(upperIndex + 1) > static_cast<int>(insertionVector.size())) {
+	if (getNextJacobsthalNumber(upperIndex + 1) > static_cast<int>(insertionVector.size()))
 		return insertionVector.size() - 1;
-	} else
-		return getNextJacobsthalNumber(upperIndex + 1) - 1;
-	return -42;
+	return getNextJacobsthalNumber(upperIndex + 1) - 1;
 }

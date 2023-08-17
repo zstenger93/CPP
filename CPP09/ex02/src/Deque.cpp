@@ -36,13 +36,9 @@ void PmergeMe::n2_SwapPairValues_Deque() {
 
 void PmergeMe::merge_Deque(std::deque<std::pair<int, int> > &n2Sqnc, int left, int mid, int right) {
 	int leftSize = mid - left + 1, rightSize = right - mid;
-
 	std::deque<std::pair<int, int> > leftVectorPart(leftSize), rightVectorPart(rightSize);
-
-	// copy stuff to righthalf and lefthalf
-	for (int i = 0; i < leftSize; i++) leftVectorPart[i] = n2Sqnc[left + i];
-	for (int j = 0; j < rightSize; j++) rightVectorPart[j] = n2Sqnc[mid + 1 + j];
-
+	for (int i = 0; i < leftSize; i++) leftVectorPart[i] = n2Sqnc[left + i];	   // copy stuff to
+	for (int j = 0; j < rightSize; j++) rightVectorPart[j] = n2Sqnc[mid + 1 + j];  // the half parts
 	int i = 0, j = 0, leftCopy = left;
 
 	// merging elemetns based on the 2nd value of pairs
@@ -126,14 +122,8 @@ void PmergeMe::set_DequeSequence() {
 		if (prevIndex != -1) {
 			if (prevIndex < *seqIt)
 				;
-			else {
-				// std::deque<int>::iterator unSortedIt = inputSequence_Deque.begin();
-				// std::cout << BEFORE << std::endl;
-				// for (; unSortedIt < inputSequence_Deque.end(); unSortedIt++)
-				// 	std::cout << *unSortedIt << " ";
-				// std::cout << std::endl;
+			else
 				return;
-			}
 		}
 		prevIndex = *seqIt;
 	}
@@ -151,18 +141,13 @@ void PmergeMe::set_LargerAndSmallerFromN2sequence_Deque() {
 /*___________________________________________ GETTERS ___________________________________________*/
 
 unsigned long PmergeMe::getUpperJacobsIndex_Deque(const std::deque<int> &insertionDeque) {
-	if (insertionDeque.size() > 2) {
-		return 2;
-	} else
-		return insertionDeque.size() - 1;
-	return -42;
+	if (insertionDeque.size() > 2) return 2;
+	return insertionDeque.size() - 1;
 }
 
 unsigned long PmergeMe::getNextUpperJacobsIndex_Deque(const std::deque<int> &insertionDeque,
 													  unsigned int upperJacobsIndex) {
-	if (getNextJacobsthalNumber(upperJacobsIndex + 1) > static_cast<int>(insertionDeque.size())) {
+	if (getNextJacobsthalNumber(upperJacobsIndex + 1) > static_cast<int>(insertionDeque.size()))
 		return insertionDeque.size() - 1;
-	} else
-		return getNextJacobsthalNumber(upperJacobsIndex + 1) - 1;
-	return -42;
+	return getNextJacobsthalNumber(upperJacobsIndex + 1) - 1;
 }

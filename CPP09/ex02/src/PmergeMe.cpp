@@ -58,4 +58,8 @@ void PmergeMe::printTime() {
 void PmergeMe::setSequence() {
 	set_VectorSequence();
 	set_DequeSequence();
+	std::vector<int>::iterator unSortedIt = inputSequence_Vector.begin();
+	std::cout << BEFORE << std::endl;
+	for (; unSortedIt < inputSequence_Vector.end(); unSortedIt++) std::cout << *unSortedIt << " ";
+	std::cout << std::endl;
 }
