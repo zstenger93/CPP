@@ -35,7 +35,7 @@ void PmergeMe::n2_SwapPairValues_Vector() {
 }
 
 void PmergeMe::merge_Vector(std::vector<std::pair<int, int> >& n2Sqnc, int left, int mid,
-							int right) {
+						   int right) {
 	int leftSize = mid - left + 1, rigthSize = right - mid;
 	std::vector<std::pair<int, int> > leftVectorPart(leftSize), rightVectorPart(rigthSize);
 	for (int i = 0; i < leftSize; ++i) leftVectorPart[i] = n2Sqnc[left + i];	   // copy stuff to

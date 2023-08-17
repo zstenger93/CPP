@@ -7,8 +7,12 @@ int main(int argc, char **argv) {
 		fordJohnson.setSequence();
 		fordJohnson.sortSequence();
 		fordJohnson.printTime();
-		} catch (std::exception &error) {
+	} catch (std::exception &error) {
 		std::cout << error.what() << std::endl;
 	}
 	return 0;
 }
+
+// https://en.wikipedia.org/wiki/Merge-insertion_sort
+// https://en.wikipedia.org/wiki/Jacobsthal_number
+// https://www.geeksforgeeks.org/binary-insertion-sort/
