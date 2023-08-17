@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 
+#define CSVFAIL "\033[1;31mError: csv database is corrupted.\033[0;39m"
 #define INVALID "\033[1;31mError: No value provided.\033[0;39m"
 #define WRONGDAY "\033[1;31mError: The day is invalid.\033[0;39m"
 #define WRONGYEAR "\033[1;31mError: The year is invalid.\033[0;39m"
@@ -29,6 +30,7 @@ class Bitcoin {
 	// CSV FILE
 	float saveRate(std::string line) const;
 	std::string saveDate(std::string line) const;
+	void validDataBase();
 	// INPUT FILE
 	void isInputCorrect(char **argv);
 	void chechkInputFile(std::string inputFile);

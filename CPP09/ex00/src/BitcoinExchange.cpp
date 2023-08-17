@@ -9,10 +9,12 @@ Bitcoin::Bitcoin() {
 	setMonths();
 	if (csvFile.is_open()) {
 		std::getline(csvFile, line);
+		if (csvFile.peek() == std::ifstream::traits_type::eof()) throw std::logic_error(CSVFAIL);
 		if (line.compare("date,exchange_rate") != 0) throw std::logic_error("invalid file header");
 		while (std::getline(csvFile, line))
 			csvDataBase.insert(std::make_pair(saveDate(line), saveRate(line)));
 		csvFile.close();
+		validDataBase();
 		return;
 	} else
 		throw std::logic_error(NODATA);
@@ -30,6 +32,14 @@ Bitcoin &Bitcoin::operator=(Bitcoin const &cpy) {
 }
 
 /*__________________________________________ FUNCTIONS __________________________________________*/
+
+void Bitcoin::validDataBase() {
+	std::map<std::string, float>::iterator dataIt = csvDataBase.begin();
+	for (; dataIt != csvDataBase.end(); dataIt++) {
+		if (validDate(dataIt->first) == false) throw std::logic_error(CSVFAIL);
+		if (dataIt->second < 0) throw std::logic_error(CSVFAIL);
+	}
+}
 
 void Bitcoin::isInputCorrect(char **argv) {
 	std::string inputFile = argv[1];
@@ -70,14 +80,18 @@ bool Bitcoin::validData(std::string line) {
 	std::string date = line.substr(0, line.find(" ")), value;
 	if (line.find("|") != std::string::npos) value = line.substr(line.find("|") + 2);
 	if (line.find("|") == std::string::npos) value = "-42";
-	if (validDate(date) != true || validValue(value) != true) return false;
+	if (validDate(date) == false || validValue(value) == false) return false;
 	return true;
 }
 
 std::string Bitcoin::saveDate(std::string line) const { return line.substr(0, line.find(",")); }
 
 float Bitcoin::saveRate(std::string line) const {
-	return std::stof(line.substr(line.find(",") + 1));
+	if (line.find(",") != std::string::npos && line[line.size() - 1] != ',')
+		return std::stof(line.substr(line.find(",") + 1));
+	else
+		throw std::logic_error(CSVFAIL);
+	return -42;
 }
 
 bool Bitcoin::validDate(std::string line) {
@@ -130,6 +144,7 @@ float Bitcoin::getExchangeRate(std::string date) {
 	for (; dataBase != csvDataBase.end(); dataBase++)
 		if (dataBase->first.compare(date) == 0) return dataBase->second;
 	dataBase = csvDataBase.lower_bound(date);
+	dataBase--;
 	return dataBase->second;
 }
 
