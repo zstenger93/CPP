@@ -1,15 +1,17 @@
 #include "../includes/PmergeMe.hpp"
-
+#include <sys/time.h>
 /*__________________________________________ FUNCTIONS __________________________________________*/
 
 void PmergeMe::sort_Vector() {
 	startTime_Vector = clock();
+	gettimeofday(&gstartTime, NULL);
 	n2_Vector();
 	n2_SwapPairValues_Vector();
 	n2_RecursiveMergeSort_Vector(n2Sequence_Vector, 0, n2Sequence_Vector.size() - 1);
 	set_LargerAndSmallerFromN2sequence_Vector();
 	n2_SortWithJacobsthalNumbers_Vector(largerSequence_Vector, smallerSequence_Vector);
 	endTime_Vector = clock();
+	gettimeofday(&gendTime, NULL);
 	printResult_Vector();
 }
 

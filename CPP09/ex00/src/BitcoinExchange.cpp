@@ -43,7 +43,7 @@ void Bitcoin::validDataBase() {
 
 void Bitcoin::isInputCorrect(char **argv) {
 	std::string inputFile = argv[1];
-	if (inputFile.find(".txt") == std::string::npos || inputFile.length() < 5)
+	if (inputFile.find(".csv") == std::string::npos || inputFile.length() < 5)
 		throw std::logic_error(WRONGEXT);
 	chechkInputFile(inputFile);
 }
