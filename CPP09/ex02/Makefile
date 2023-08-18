@@ -56,6 +56,10 @@ t10k:
 	@$(eval ARG = $(shell seq 1 20000 | shuf -n 10000))
 	@./PmergeMe $(ARG)
 
+t15k:
+	@$(eval ARG = $(shell seq 1 50000 | shuf -n 15000))
+	@./PmergeMe $(ARG)
+
 tw:
 	@./PmergeMe 5 a 3 1
 	@echo

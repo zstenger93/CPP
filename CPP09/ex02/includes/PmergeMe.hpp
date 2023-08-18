@@ -15,6 +15,7 @@ class PmergeMe {
 	void setSequence();
 	int getNextJacobsthalNumber(int n);
 	void printTime();
+	void isSorted();
 
 	void sort_Vector();
 	void set_VectorSequence();
@@ -29,6 +30,8 @@ class PmergeMe {
 	unsigned long getUpperJacobsIndex_Vector(const std::vector<int> &insertionVector);
 	unsigned long getNextUpperJacobsIndex_Vector(const std::vector<int> &insertionVector,
 												 unsigned int upperJacobsIndex);
+	unsigned int getUpperBound_Vector(const std::vector<int> &targetVector,
+									  unsigned long insertionRange);
 	void n2_BinaryInsert_Vector(std::vector<int> &targetVector, int value, int insertionRange);
 	void printResult_Vector();
 
@@ -44,6 +47,8 @@ class PmergeMe {
 	unsigned long getUpperJacobsIndex_Deque(const std::deque<int> &insertionDeque);
 	unsigned long getNextUpperJacobsIndex_Deque(const std::deque<int> &insertionDeque,
 												unsigned int upperJacobsIndex);
+	unsigned int getUpperBound_Deque(const std::deque<int> &targetDeque,
+									 unsigned long insertionRange);
 	void n2_BinaryInsert_Deque(std::deque<int> &targetDeque, int value, int insertionRange);
 	void printResult_Deque();
 

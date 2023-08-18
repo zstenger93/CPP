@@ -30,12 +30,11 @@ void PmergeMe::n2_SwapPairValues_Vector() {
 	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence_Vector.begin();
 
 	for (; n2It < n2Sequence_Vector.end(); n2It++)
-		if (n2It->second != -1)
-			if (n2It->first > n2It->second) std::swap(n2It->first, n2It->second);
+		if (n2It->first > n2It->second) std::swap(n2It->first, n2It->second);
 }
 
 void PmergeMe::merge_Vector(std::vector<std::pair<int, int> >& n2Sqnc, int left, int mid,
-						   int right) {
+							int right) {
 	int leftSize = mid - left + 1, rigthSize = right - mid;
 	std::vector<std::pair<int, int> > leftVectorPart(leftSize), rightVectorPart(rigthSize);
 	for (int i = 0; i < leftSize; ++i) leftVectorPart[i] = n2Sqnc[left + i];	   // copy stuff to
@@ -81,12 +80,13 @@ void PmergeMe::n2_SortWithJacobsthalNumbers_Vector(std::vector<int>& targetVecto
 		} else
 			iterationCount--;
 	}
+	if (targetVector.front() == -1) targetVector.erase(targetVector.begin());
 	sortedSequence_Vector = targetVector;
 }
 
 void PmergeMe::n2_BinaryInsert_Vector(std::vector<int>& targetVector, int value,
 									  int insertionRange) {
-	int lowerBound = 0, upperBound = insertionRange - 1;
+	int lowerBound = 0, upperBound = getUpperBound_Vector(targetVector, insertionRange);
 
 	while (lowerBound <= upperBound) {
 		int mid = lowerBound + (upperBound - lowerBound) / 2;
@@ -136,7 +136,7 @@ void PmergeMe::set_LargerAndSmallerFromN2sequence_Vector() {
 	std::vector<std::pair<int, int> >::iterator n2It = n2Sequence_Vector.begin();
 	for (; n2It < n2Sequence_Vector.end(); n2It++) {
 		smallerSequence_Vector.push_back(n2It->first);
-		if (n2It->second != -1) largerSequence_Vector.push_back(n2It->second);
+		largerSequence_Vector.push_back(n2It->second);
 	}
 }
 
@@ -152,4 +152,12 @@ unsigned long PmergeMe::getNextUpperJacobsIndex_Vector(const std::vector<int>& i
 	if (getNextJacobsthalNumber(upperIndex + 1) > static_cast<int>(insertionVector.size()))
 		return insertionVector.size() - 1;
 	return getNextJacobsthalNumber(upperIndex + 1) - 1;
+}
+
+unsigned int PmergeMe::getUpperBound_Vector(const std::vector<int>& targetVector,
+											unsigned long insertionRange) {
+	if (targetVector.size() < static_cast<unsigned long>(insertionRange)) {
+		return targetVector.size();
+	} else
+		return static_cast<unsigned int>(insertionRange);
 }

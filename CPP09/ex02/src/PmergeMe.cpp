@@ -53,6 +53,31 @@ void PmergeMe::printTime() {
 			  << " us" << std::endl;
 }
 
+void PmergeMe::isSorted() {
+	std::vector<int>::iterator vec = sortedSequence_Vector.begin() + 1;
+	std::deque<int>::iterator deq = sortedSequence_Deque.begin() + 1;
+
+	std::cout << std::endl;
+	for (; vec < sortedSequence_Vector.end(); vec++) {
+		if (vec > vec - 1)
+			;
+		else {
+			std::cout << VEC_NOTSORTED << std::endl;
+			break;
+		}
+	}
+	if (vec == sortedSequence_Vector.end()) std::cout << VEC_SORTED << std::endl;
+	for (; deq < sortedSequence_Deque.end(); deq++) {
+		if (deq > deq - 1)
+			;
+		else {
+			std::cout << DEQ_NOTSORTED << std::endl;
+			break;
+		}
+	}
+	if (deq == sortedSequence_Deque.end()) std::cout << DEQ_SORTED << std::endl;
+}
+
 /*___________________________________________ SETTERS ___________________________________________*/
 
 void PmergeMe::setSequence() {

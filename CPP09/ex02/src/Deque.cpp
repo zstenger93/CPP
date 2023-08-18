@@ -30,8 +30,7 @@ void PmergeMe::n2_SwapPairValues_Deque() {
 	std::deque<std::pair<int, int> >::iterator n2It = n2_Sequence_Deque.begin();
 
 	for (; n2It < n2_Sequence_Deque.end(); n2It++)
-		if (n2It->second != -1)
-			if (n2It->first > n2It->second) std::swap(n2It->first, n2It->second);
+		if (n2It->first > n2It->second) std::swap(n2It->first, n2It->second);
 }
 
 void PmergeMe::merge_Deque(std::deque<std::pair<int, int> > &n2Sqnc, int left, int mid, int right) {
@@ -80,11 +79,12 @@ void PmergeMe::n2_SortWithJacobsthalNumbers_Deque(std::deque<int> &targetDeque,
 		} else
 			iterationCount--;
 	}
+	if (targetDeque.front() == -1) targetDeque.erase(targetDeque.begin());
 	sortedSequence_Deque = targetDeque;
 }
 
 void PmergeMe::n2_BinaryInsert_Deque(std::deque<int> &targetDeque, int value, int insertionRange) {
-	int lowerBound = 0, upperBound = insertionRange - 1;
+	int lowerBound = 0, upperBound = getUpperBound_Deque(targetDeque, insertionRange);
 
 	while (lowerBound <= upperBound) {
 		int mid = lowerBound + (upperBound - lowerBound) / 2;
@@ -134,7 +134,7 @@ void PmergeMe::set_LargerAndSmallerFromN2sequence_Deque() {
 	std::deque<std::pair<int, int> >::iterator n2It = n2_Sequence_Deque.begin();
 	for (; n2It < n2_Sequence_Deque.end(); n2It++) {
 		smallerSequence_Deque.push_back(n2It->first);
-		if (n2It->second != -1) largerSequence_Deque.push_back(n2It->second);
+		largerSequence_Deque.push_back(n2It->second);
 	}
 }
 
@@ -150,4 +150,12 @@ unsigned long PmergeMe::getNextUpperJacobsIndex_Deque(const std::deque<int> &ins
 	if (getNextJacobsthalNumber(upperJacobsIndex + 1) > static_cast<int>(insertionDeque.size()))
 		return insertionDeque.size() - 1;
 	return getNextJacobsthalNumber(upperJacobsIndex + 1) - 1;
+}
+
+unsigned int PmergeMe::getUpperBound_Deque(const std::deque<int> &targetDeque,
+										   unsigned long insertionRange) {
+	if (targetDeque.size() < static_cast<unsigned long>(insertionRange)) {
+		return targetDeque.size();
+	} else
+		return static_cast<unsigned int>(insertionRange);
 }

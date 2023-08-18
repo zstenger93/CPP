@@ -7,6 +7,7 @@ int main(int argc, char **argv) {
 		fordJohnson.setSequence();
 		fordJohnson.sortSequence();
 		fordJohnson.printTime();
+		fordJohnson.isSorted();
 	} catch (std::exception &error) {
 		std::cout << error.what() << std::endl;
 	}
