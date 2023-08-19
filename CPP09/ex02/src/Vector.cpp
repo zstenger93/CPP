@@ -41,7 +41,7 @@ void PmergeMe::merge_Vector(std::vector<std::pair<int, int> >& n2Sqnc, int left,
 	for (int j = 0; j < rigthSize; ++j) rightVectorPart[j] = n2Sqnc[mid + 1 + j];  // the half parts
 	int i = 0, j = 0, leftCopy = left;
 
-	// merging elemetns based on the 2nd value of pairs
+	// sort the pairs based on the 2nd val
 	while (i < leftSize && j < rigthSize) {
 		if (leftVectorPart[i].second <= rightVectorPart[j].second) {
 			n2Sqnc[leftCopy] = leftVectorPart[i++];
@@ -58,8 +58,8 @@ void PmergeMe::n2_RecursiveMergeSort_Vector(std::vector<std::pair<int, int> >& n
 	if (left < right) {
 		int mid = left + (right - left) / 2;
 
-		n2_RecursiveMergeSort_Vector(n2Sqnc, left, mid);
-		n2_RecursiveMergeSort_Vector(n2Sqnc, mid + 1, right);
+		n2_RecursiveMergeSort_Vector(n2Sqnc, left, mid);	   // left
+		n2_RecursiveMergeSort_Vector(n2Sqnc, mid + 1, right);  // right
 		merge_Vector(n2Sqnc, left, mid, right);
 	}
 }
