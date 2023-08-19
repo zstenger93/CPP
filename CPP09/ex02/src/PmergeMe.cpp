@@ -57,23 +57,31 @@ void PmergeMe::isSorted() {
 	std::vector<int>::iterator vec = sortedSequence_Vector.begin() + 1;
 	std::deque<int>::iterator deq = sortedSequence_Deque.begin() + 1;
 
+	int prev = -1;
 	std::cout << std::endl;
 	for (; vec < sortedSequence_Vector.end(); vec++) {
-		if (vec > vec - 1)
-			;
-		else {
-			std::cout << VEC_NOTSORTED << std::endl;
-			break;
+		if (prev != -1) {
+			if (prev < *vec)
+				;
+			else {
+				std::cout << VEC_NOTSORTED << std::endl;
+				break;
+			}
 		}
+		prev = *vec;
 	}
 	if (vec == sortedSequence_Vector.end()) std::cout << VEC_SORTED << std::endl;
+	prev = -1;
 	for (; deq < sortedSequence_Deque.end(); deq++) {
-		if (deq > deq - 1)
-			;
-		else {
-			std::cout << DEQ_NOTSORTED << std::endl;
-			break;
+		if (prev != -1) {
+			if (prev < *deq)
+				;
+			else {
+				std::cout << DEQ_NOTSORTED << std::endl;
+				break;
+			}
 		}
+		prev = *deq;
 	}
 	if (deq == sortedSequence_Deque.end()) std::cout << DEQ_SORTED << std::endl;
 }
