@@ -69,8 +69,9 @@ void Bitcoin::exchange(std::string inputFile) {
 					std::string date = line.substr(0, line.find(" "));
 					float coins = std::atof(line.substr(line.find("|") + 2).c_str());
 					float value = getExchangeRate(date);
-					std::cout << date << " => " << coins << " = " << std::fixed
-							  << std::setprecision(2) << coins * value << std::endl;
+					if (value != -42)
+						std::cout << date << " => " << coins << " = " << std::fixed
+								  << std::setprecision(2) << coins * value << std::endl;
 				}
 		return input.close();
 	}
@@ -144,6 +145,7 @@ float Bitcoin::getExchangeRate(std::string date) {
 	for (; dataBase != csvDataBase.end(); dataBase++)
 		if (dataBase->first.compare(date) == 0) return dataBase->second;
 	dataBase = csvDataBase.lower_bound(date);
+	if (dataBase == csvDataBase.begin()) return std::cout << NODATAONDATE << std::endl, -42;
 	dataBase--;
 	return dataBase->second;
 }

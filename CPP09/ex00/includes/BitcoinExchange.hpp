@@ -8,16 +8,17 @@
 #include <string>
 #include <vector>
 
-#define CSVFAIL "\033[1;31mError: csv database is corrupted.\033[0;39m"
 #define INVALID "\033[1;31mError: No value provided.\033[0;39m"
 #define WRONGDAY "\033[1;31mError: The day is invalid.\033[0;39m"
 #define WRONGYEAR "\033[1;31mError: The year is invalid.\033[0;39m"
 #define WRONGMONTH "\033[1;31mError: The month is invalid.\033[0;39m"
+#define CSVFAIL "\033[1;31mError: csv database is corrupted.\033[0;39m"
 #define WRONGEXT "\033[1;31mThis program only runs with a csv file.\033[0;39m"
 #define WRONGARG "\033[1;31mThis program only runs with 2 arguments.\033[0;39m"
 #define NODATA "\033[1;31mWe have backup right? Yes. Where? On the server...\033[0;39m"
 #define TOOBIG "\033[1;31mError: Too big number. The allowed range is 0-1000.\033[0;39m"
 #define NOTPOS "\033[1;31mError: Not a positive number. The allowed range is 0-1000.\033[0;39m"
+#define NODATAONDATE "\033[1;31mError: csv database has no information about this date.\033[0;39m"
 
 class Bitcoin {
    public:
